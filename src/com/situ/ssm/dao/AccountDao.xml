@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.situ.ssm.dao.AccountDao">
+    <update id="increaseMoney">
+       <!-- UPDATE account SET money=money+#{1} WHERE id=#{0}; -->
+       UPDATE account SET money=money+#{money} WHERE id=#{account};
+    </update>
+    
+    <update id="decreaseMoney">
+       UPDATE account SET money=money-#{money} WHERE id=#{account};
+    </update>
+</mapper>
+
