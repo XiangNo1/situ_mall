@@ -1,9 +1,8 @@
-package com.situ.mall.controller;
+package com.situ.mall.controller.back;
 
 import java.util.List;
 
-import javax.annotation.Resource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,7 +13,7 @@ import com.situ.mall.service.IStudentService;
 @Controller
 @RequestMapping(value="/student")
 public class StudentController {
-    @Resource(name="studentService")
+    @Autowired
     private IStudentService studentService;
     //入口
     @RequestMapping(value="/list")
@@ -27,4 +26,3 @@ public class StudentController {
        return "student_list";
     }
 }
-

@@ -2,17 +2,16 @@ package com.situ.mall.service;
 
 import java.util.List;
 
-import javax.annotation.Resource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.situ.mall.dao.StudentDao;
 import com.situ.mall.pojo.Student;
 
-@Service("studentService")
+@Service
 public class StudentServiceImpl implements IStudentService{
     
-    @Resource(name="studentDao")
+    @Autowired
     private StudentDao studentDao;
     public List<Student> findAll() {
        return studentDao.findAll();
