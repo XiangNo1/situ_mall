@@ -11,7 +11,7 @@ http://www.springframework.org/schema/context
 http://www.springframework.org/schema/context/spring-context-4.0.xsd">
        
         <!-- 扫描@Controler  @Service   base-package是要扫描注解的包 -->
-        <context:component-scan base-package="com.situ.ssm.controller"/>
+        <context:component-scan base-package="com.situ.mall.controller"/>
        
         <!-- 注解驱动 -->
         <mvc:annotation-driven/>

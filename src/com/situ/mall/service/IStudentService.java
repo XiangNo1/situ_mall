@@ -1,8 +1,8 @@
-package com.situ.ssm.service;
+package com.situ.mall.service;
 
 import java.util.List;
 
-import com.situ.ssm.pojo.Student;
+import com.situ.mall.pojo.Student;
 
 public interface IStudentService {
 

@@ -17,7 +17,7 @@ http://www.springframework.org/schema/util/spring-util-4.1.xsd">
     <!-- 配置 读取properties文件 jdbc.properties -->
     <context:property-placeholder location="classpath:db.properties" />
     <!-- 配置Service扫描 -->
-    <context:component-scan base-package="com.situ.ssm.service" />
+    <context:component-scan base-package="com.situ.mall.service" />
     <!-- ********************************************************************** -->
     <!-- 数据库相关配置 -->
     <!-- 配置 数据源 -->
@@ -41,7 +41,7 @@ http://www.springframework.org/schema/util/spring-util-4.1.xsd">
       自动创建到spring容器中，bean的id是mapper的类名（首字母小写） --> 
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
        <!-- 设置Mapper扫描包 -->
-       <property name="basePackage" value="com.situ.ssm.dao" />
+       <property name="basePackage" value="com.situ.mall.dao" />
     </bean>
     <!-- ********************************************************************** -->
     <!-- 事务相关 -->
@@ -70,6 +70,6 @@ http://www.springframework.org/schema/util/spring-util-4.1.xsd">
     <!-- 切面 -->
     <aop:config>
        <aop:advisor advice-ref="txAdvice"
-           pointcut="execution(* com.situ.ssm.service.impl.*.*(..))" />
+           pointcut="execution(* com.situ.mall.service.impl.*.*(..))" />
     </aop:config>
 </beans>

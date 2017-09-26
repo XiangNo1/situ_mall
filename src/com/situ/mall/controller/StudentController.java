@@ -1,4 +1,4 @@
-package com.situ.ssm.controller;
+package com.situ.mall.controller;
 
 import java.util.List;
 
@@ -8,8 +8,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.situ.ssm.pojo.Student;
-import com.situ.ssm.service.IStudentService;
+import com.situ.mall.pojo.Student;
+import com.situ.mall.service.IStudentService;
 
 @Controller
 @RequestMapping(value="/student")

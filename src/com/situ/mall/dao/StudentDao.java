@@ -1,8 +1,8 @@
-package com.situ.ssm.dao;
+package com.situ.mall.dao;
 
 import java.util.List;
 
-import com.situ.ssm.pojo.Student;
+import com.situ.mall.pojo.Student;
 
 public interface StudentDao {
 

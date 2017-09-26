@@ -1,4 +1,4 @@
-package com.situ.ssm.pojo;
+package com.situ.mall.pojo;
 
 import java.io.Serializable;
 import java.util.Date;
