@@ -21,5 +21,7 @@ public interface ProductDao {
 
 	void updateProduct(Product product);
 
+	int updateStatusProduct(@Param(value="id")Integer id, @Param(value="status")Integer status);
+
 
 }

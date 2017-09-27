@@ -96,6 +96,9 @@
 												<th>商品状态</th>
 												<th>创建时间</th>
 												<th>更新时间</th>
+												<th>状态设置</th>
+												<th>删除</th>
+												<th>修改</th>
 						                    </tr>
 						                </thead>
 						                <tbody>
@@ -119,8 +122,20 @@
 										<td>下架</td>
 										</c:if>
 										
-										<td>${product.create_time}</td>
-										<td>${product.update_time}</td>
+										<td>
+										<fmt:formatDate value="${product.create_time}" pattern="yyyy-MM-dd hh:mm:ss"/>
+										</td>
+										<td>
+										<fmt:formatDate value="${product.update_time}" pattern="yyyy-MM-dd hh:mm:ss"/>
+										</td>
+										
+										<c:if test="${product.status==1}">
+										<td><a href="${ctx }/product/updateStatusProduct.action?id=${product.id}&status=2">下架</a></td>
+										</c:if>
+										<c:if test="${product.status==2}">
+										<td><a href="${ctx }/product/updateStatusProduct.action?id=${product.id}&status=1">上架</a></td>
+										</c:if>
+										
 										<td><a href="javascript:delProduct(${product.id });">删除</a></td>
 										<td><a href="${ctx }/product/updateProduct.action?id=${product.id}">修改</a></td>
 									</tr>

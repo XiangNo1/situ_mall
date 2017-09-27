@@ -32,8 +32,15 @@ public class ProductController {
                 new SimpleDateFormat("yyyy-MM-dd"), true));
     }
 	
+	@RequestMapping(value="updateStatusProduct")
+	public String updateStatusProduct(Integer id, Integer status){
+		productservice.updateStatusProduct(id, status);
+		return "redirect:/product/findAllProduct.action";
+	}
+	
 	@RequestMapping(value="updateProduct2")
 	public String updateProduct2(Product product){
+		System.out.println(product);
 		productservice.updateProduct(product);
 		return "redirect:/product/findAllProduct.action";
 	}
@@ -41,6 +48,7 @@ public class ProductController {
 	@RequestMapping(value="updateProduct")
 	public String updateProduct(Integer id, Model model){
 		Product product = productservice.findProductById(id);
+		System.out.println(product);
 		model.addAttribute("product", product);
 		return "updateProduct";
 	}

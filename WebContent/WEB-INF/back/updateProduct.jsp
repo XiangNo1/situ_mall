@@ -30,7 +30,7 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li class="active"><a href="${ctx}/product/findAllProduct.action"> <span class="glyphicon glyphicon-user" aria-hidden="true"></span> 商品管理 <span class="sr-only">(current)</span></a></li>
-        <li><a href="${ctx}/banji/findBanji.action"> <span class="glyphicon glyphicon-home" aria-hidden="true"></span> 分类管理 </a></li>
+        <li><a href="${ctx}/category/findAllCategory.action"> <span class="glyphicon glyphicon-home" aria-hidden="true"></span> 分类管理 </a></li>
         <li><a href="${ctx}/banji/findKecheng.action"> <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> xx管理 </a></li>
         <li><a href="${ctx}/banji/findJiaowu.action"> <span class="glyphicon glyphicon-tags" aria-hidden="true"></span> xx管理 </a></li>
         <li><a href="#"> 欢迎回来:${accounts.name }</a> </li>
@@ -60,7 +60,6 @@
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
-		</div>
 		
 		
 		
@@ -91,11 +90,9 @@
 	          产品主图地址：<input class="form-control" type="text" name="main_image" value="${product.main_image }"/><br/>
 	         图片地址:<input id="sub_images" name="sub_images"  class="form-control value="${product.sub_images }"">
 	         商品详情:<input id="detail" name="detail"  class="form-control value="${product.detail }"">
- -->	         价格:<input id="price" name="price"  class="form-control value="${product.price }"">
+ -->	         价格:<input id="price" name="price"  class="form-control" value="${product.price }">
 	         库存数量:<input id="stock" name="stock"  class="form-control" value="${product.stock }">
 	         商品状态:<input id="status" name="status"  class="form-control" value="${product.status }">
-	         创建时间:<input id="create_time" name="create_time"  class="form-control" value="${product.create_time }">
-	         更新时间:<input id="update_time" name="update_time"  class="form-control" value="${product.update_time }">
        <p><button class="btn btn-primary" type="submit">保存</button></p>
     </form>
 </div>

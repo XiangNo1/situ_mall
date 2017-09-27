@@ -54,5 +54,11 @@ public class ProductServiceImpl implements IProductService {
 		productDao.updateProduct(product);
 	}
 
+	@Override
+	public boolean updateStatusProduct(Integer id, Integer status) {
+		int i = productDao.updateStatusProduct(id, status);
+		return i > 0 ? true : false;
+	}
+
 	
 }

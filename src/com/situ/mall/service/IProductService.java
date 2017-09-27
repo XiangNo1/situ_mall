@@ -17,4 +17,6 @@ public interface IProductService {
 
 	void updateProduct(Product product);
 
+	boolean updateStatusProduct(Integer id, Integer status);
+
 }
