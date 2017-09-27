@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.situ.mall.dao.ProductDao">
+
+
+	<update id="updateProduct" parameterType="Product">
+		update product set category_id=#{category_id},name=#{name},stock=#{stock},status=#{status},create_time=#{create_time},update_time=#{update_time} where id=#{id}
+	</update>
+
+	<select id="findProductById" parameterType="Integer" resultType="Product">
+		select * from product where id=#{id}
+	</select>
+
+	<select id="findTotalCountProduct" resultType="Integer">
+		select count(*) from product
+	</select>
+	
+	<select id="findProductBeanList" resultType="Product">
+		select * from product limit #{index},#{pageSize}
+	</select>
+	
+	<insert id="addProduct" parameterType="Product">
+		insert into product(id,category_id,name,price,stock,status,create_time,update_time) values(#{id},#{category_id},#{name},#{price},#{stock},#{status},#{create_time},#{update_time})
+	</insert>
+	
+	<delete id="deleteProductById" parameterType="Integer">
+		delete from product where id=#{id}
+	</delete>
+</mapper>
