@@ -2,7 +2,6 @@ package com.situ.mall.controller.back;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
@@ -16,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.situ.mall.pojo.Product;
 import com.situ.mall.service.IProductService;
 import com.situ.mall.vo.PageBean;
+import com.situ.mall.vo.SearchProductByCondition;
 
 @Controller
 @RequestMapping(value="/product")
@@ -31,6 +31,30 @@ public class ProductController {
         binder.registerCustomEditor(Date.class, new CustomDateEditor(
                 new SimpleDateFormat("yyyy-MM-dd"), true));
     }
+	
+	@RequestMapping(value="searchProductByCondition")
+public ModelAndView searchByCondition(ModelAndView modelAndView, String pageIndex,String pageSize, Integer category_id){
+		
+			int pageIndex1 = 1;
+			if (pageIndex!= null && !pageIndex.equals("")) {
+				pageIndex1 = Integer.parseInt(pageIndex);
+			}
+			int pageSize1 = 3;
+			if (pageSize != null && !pageSize.equals("")) {
+				pageSize1 = Integer.parseInt(pageSize);
+			}
+			SearchProductByCondition searchCondition = new SearchProductByCondition(pageIndex1, pageSize1);
+			Product product = new Product();
+			product.setCategory_id(category_id);
+			searchCondition.setProduct(product);
+			PageBean pageBean = productservice.getProductSearchPageBean(searchCondition);
+			System.out.println(pageBean);
+			System.out.println(searchCondition);
+			modelAndView.addObject("searchCondition", searchCondition);
+			modelAndView.addObject("pageBean", pageBean);
+			modelAndView.setViewName("findProduct");
+			return modelAndView;
+	}
 	
 	@RequestMapping(value="updateStatusProduct")
 	public String updateStatusProduct(Integer id, Integer status){

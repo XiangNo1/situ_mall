@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.situ.mall.dao.ProductDao;
 import com.situ.mall.pojo.Product;
 import com.situ.mall.vo.PageBean;
+import com.situ.mall.vo.SearchProductByCondition;
 
 @Service
 public class ProductServiceImpl implements IProductService {
@@ -58,6 +59,23 @@ public class ProductServiceImpl implements IProductService {
 	public boolean updateStatusProduct(Integer id, Integer status) {
 		int i = productDao.updateStatusProduct(id, status);
 		return i > 0 ? true : false;
+	}
+
+	@Override
+	public PageBean getProductSearchPageBean(SearchProductByCondition searchCondition) {
+		int pageIndex = searchCondition.getPageIndex();
+		int pageSize = searchCondition.getPageSize();
+		PageBean<Product> pageBean = new PageBean<Product>();
+		pageBean.setPageIndex(pageIndex);
+		pageBean.setPageSize(pageSize);
+		int totalCount = productDao.findTotalCountSearchProduct(searchCondition);
+		pageBean.setTotalCount(totalCount);
+		int totalPage =(int) Math.ceil((double) totalCount / pageSize );
+		pageBean.setTotalPage(totalPage);
+		int index =( pageIndex - 1) * pageSize;
+		List<Product> list = productDao.findSearchProductBeanList(index, searchCondition);
+		pageBean.setList(list);
+		return pageBean;
 	}
 
 	

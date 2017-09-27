@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.situ.mall.pojo.Product;
 import com.situ.mall.vo.PageBean;
+import com.situ.mall.vo.SearchProductByCondition;
 
 public interface IProductService {
 
@@ -18,5 +19,7 @@ public interface IProductService {
 	void updateProduct(Product product);
 
 	boolean updateStatusProduct(Integer id, Integer status);
+
+	PageBean getProductSearchPageBean(SearchProductByCondition searchCondition);
 
 }

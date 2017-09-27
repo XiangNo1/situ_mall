@@ -79,6 +79,13 @@
 		            </ul>
 		            <div class="alert alert-info" role="alert">删除前请认真核对商品的信息<strong>确保无误</strong></div>
 					    
+					    <form id="searchForm" class="container" action="${ctx}/product/searchProductByCondition.action" method="post">
+					    	<input type="hidden" name="pageIndex" id="pageIndex" />
+					  	 	    请输入要查询的商品分类id:<input type="text" name="category_id" value="${searchCondition.product.category_id}"/>
+					           	&nbsp;&nbsp;&nbsp;
+					      	 <button class="btn btn-primary">搜索</button>
+					    </form>
+					    
 					    <form id="mainForm" action="" method="post">
 						            <table class="table">
 						                <thead>
@@ -157,7 +164,7 @@
           		 </c:if>
 		           <c:if test="${pageBean.pageIndex!=1}">
 		              <li>
-		                 <a href="${ctx }/product/findAllProduct.action?pageIndex=${pageBean.pageIndex-1}" aria-label="Previous">
+		                 <a href="javascript:goPage('${pageBean.pageIndex-1}');" aria-label="Previous">
 		                   <span aria-hidden="true">&laquo;</span>
 		                 </a>
 		              </li>
@@ -165,7 +172,7 @@
 
 			   <c:forEach begin="1" end="${pageBean.totalPage}" var="page">
               <c:if test="${pageBean.pageIndex!=page}">
-                   <li><a href="${ctx }/product/findAllProduct.action?pageIndex=${page}">${page}</a></li>
+                   <li><a href="javascript:goPage('${page}');">${page}</a></li>
               </c:if>
               <!-- 遍历的时候page和pageIndex相等，高亮显示 -->
               <c:if test="${pageBean.pageIndex==page}">
@@ -184,7 +191,7 @@
           		 </c:if>
 		           <c:if test="${pageBean.pageIndex!=pageBean.totalPage}">
 		              <li>
-		                 <a href="${ctx }/product/findAllProduct.action?pageIndex=${pageBean.pageIndex+1}" aria-label="Previous">
+		                 <a href="javascript:goPage('${pageBean.pageIndex+1}');" aria-label="Previous">
 		                   <span aria-hidden="true">&raquo;</span>
 		                 </a>
 		              </li>
@@ -200,6 +207,11 @@
 		</div>
 		
 	<script>
+	
+	function goPage(pageIndex){
+		$("#pageIndex").val(pageIndex);
+		$("#searchForm").submit();
+	}
 	
 	function delProduct(id) {
 	       var isDel = confirm("您确认要删除吗？");

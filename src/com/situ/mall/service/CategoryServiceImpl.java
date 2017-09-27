@@ -36,7 +36,7 @@ public class CategoryServiceImpl implements ICategoryService {
 		return pageBean;
 	}
 
-	@Override
+	/*@Override
 	public void addCategory(Category category) {
 		// TODO Auto-generated method stub
 		categoryDao.addCategory(category);
@@ -52,5 +52,5 @@ public class CategoryServiceImpl implements ICategoryService {
 	public void deleteCategoryById(Category category) {
 		// TODO Auto-generated method stub
 		categoryDao.deleteCategoryById(category);
-	}
+	}*/
 }

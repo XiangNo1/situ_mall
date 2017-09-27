@@ -103,8 +103,12 @@
 										<td>${category.name }</td>
 										<td>${category.status}</td>
 										<%-- <td>${category.sort_order}</td> --%>
-										<td>${category.create_time}</td>
-										<td>${category.update_time}</td>
+										<td>
+										<fmt:formatDate value="${category.create_time}" pattern="yyyy-MM-dd hh:mm:ss"/>
+										</td>
+										<td>
+										<fmt:formatDate value="${category.update_time}" pattern="yyyy-MM-dd hh:mm:ss"/>
+										</td>
 										<td><a href="javascript:delCategory(${category.id });">删除</a></td>
 										<td><a href="${ctx }/category/updateCategory.action?id=${category.id}">修改</a></td>
 									</tr>

@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Param;
 import org.springframework.context.annotation.Primary;
 
 import com.situ.mall.pojo.Product;
+import com.situ.mall.vo.SearchProductByCondition;
 
 public interface ProductDao {
 
@@ -22,6 +23,10 @@ public interface ProductDao {
 	void updateProduct(Product product);
 
 	int updateStatusProduct(@Param(value="id")Integer id, @Param(value="status")Integer status);
+
+	List<Product> findSearchProductBeanList(@Param(value="index")int index, @Param(value="searchCondition")SearchProductByCondition searchCondition);
+
+	int findTotalCountSearchProduct(SearchProductByCondition searchCondition);
 
 
 }

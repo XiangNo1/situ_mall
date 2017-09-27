@@ -5,6 +5,25 @@
 <mapper namespace="com.situ.mall.dao.ProductDao">
 
 
+	<select id="findSearchProductBeanList" resultType="Product">
+		select * from product
+		<where>
+       <if test="searchCondition.product.category_id != null">
+           and category_id=#{searchCondition.product.category_id}
+       </if>
+       </where>
+		limit #{index},#{searchCondition.pageSize}
+	</select>
+
+	<select id="findTotalCountSearchProduct" parameterType="SearchProductByCondition" resultType="Integer">
+		select count(*) from product 
+		<where>
+       <if test="product.category_id != null">
+           and category_id=#{product.category_id}
+       </if>
+       </where>
+	</select>
+
 	<update id="updateStatusProduct">
 		update product set status=#{status} where id=#{id}
 	</update>
