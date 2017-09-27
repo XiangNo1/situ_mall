@@ -32,8 +32,16 @@ public class ProductController {
                 new SimpleDateFormat("yyyy-MM-dd"), true));
     }
 	
+	@RequestMapping(value="/deleteAllProduct")
+	public String deleteAllProduct(Integer[] selectIds){
+		for (Integer id : selectIds) {
+			productservice.deleteProductById(id);
+		}
+		return "redirect:/product/findAllProduct.action";
+	}
+	
 	@RequestMapping(value="searchProductByCondition")
-public ModelAndView searchByCondition(ModelAndView modelAndView, String pageIndex,String pageSize, Integer category_id){
+	public ModelAndView searchByCondition(ModelAndView modelAndView, String pageIndex,String pageSize, Integer category_id){
 		
 			int pageIndex1 = 1;
 			if (pageIndex!= null && !pageIndex.equals("")) {

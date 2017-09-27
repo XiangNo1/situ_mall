@@ -230,7 +230,7 @@
 		 var isDel = confirm("您确认要删除吗？");
 		    if (isDel) {
 		       //要删除
-		       $("#mainForm").attr("action", "${ctx}/student/deleteAllStudent.action");
+		       $("#mainForm").attr("action", "${ctx}/product/deleteAllProduct.action");
 		       $("#mainForm").submit();
 		    }
 
