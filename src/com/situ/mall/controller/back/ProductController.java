@@ -1,8 +1,14 @@
 package com.situ.mall.controller.back;
 
+import java.io.File;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
 
+import org.apache.commons.io.FilenameUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
@@ -10,6 +16,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.situ.mall.pojo.Product;
@@ -31,6 +39,25 @@ public class ProductController {
         binder.registerCustomEditor(Date.class, new CustomDateEditor(
                 new SimpleDateFormat("yyyy-MM-dd"), true));
     }
+	
+	 @RequestMapping("/uploadPic")
+	    @ResponseBody
+	    public Map<String, Object> uploadPic(MultipartFile pictureFile) {
+	       //为了防止重名生成随机的名字
+	       String name = UUID.randomUUID().toString().replace("-", "");
+	       //jpg,png
+	       String ext = FilenameUtils.getExtension(pictureFile.getOriginalFilename());
+	       String fileName = name + "." + ext;//数据库里面
+	       String filePath = "F:\\pic\\" + fileName;
+	       try {
+	           pictureFile.transferTo(new File(filePath));
+	       } catch (IllegalStateException | IOException e) {
+	           e.printStackTrace();
+	       }
+	       Map<String, Object> map = new HashMap<String, Object>();
+	       map.put("fileName", fileName);
+	       return map;
+	    }
 	
 	@RequestMapping(value="/deleteAllProduct")
 	public String deleteAllProduct(Integer[] selectIds){
@@ -93,6 +120,7 @@ public class ProductController {
 	
 	@RequestMapping(value="/addProduct2")
 	public String addProduct2(Product product){
+		System.out.println(product);
 		productservice.addProduct(product);
 		return "redirect:/product/findAllProduct.action";
 	}

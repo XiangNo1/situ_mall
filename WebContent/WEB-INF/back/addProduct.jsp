@@ -82,7 +82,7 @@
 		            </ul>
 				   <div style="width:60%; margin-top:20px;">
 		            <div class="alert alert-danger" role="alert">请注意不要添加重复id的商品！！！</div>
- <form action="${ctx}/product/addProduct2.action" method="post">
+ <form action="${ctx}/product/addProduct2.action" method="post" enctype="multipart/form-data" id="form-add">
    	    商品id：<input class="form-control" type="text" name="id" id="id"/>
   	     分类id：<input class="form-control" type="text" name="category_id"/>
 	       商品名称：<input class="form-control" type="text" name="name"/>
@@ -93,34 +93,38 @@
  -->	         价格:<input id="price" name="price"  class="form-control">
 	         库存数量:<input id="stock" name="stock"  class="form-control">
 	         商品状态:<input id="status" name="status"  class="form-control">
+	   <div>
+	   插入图片：
+           <img alt="" id="imgId" src="" width=100 height=100>
+           <input type="hidden" name="main_image" id="main_image"/>
+           <input type="file" name="pictureFile" onchange="uploadPic();"/>
+       </div>
+	         
+	         
        <p><button class="btn btn-primary" type="submit">保存</button></p>
     </form>
 </div>
 </div>
 </div>
 <script type="text/javascript">
-/* $(function() {
-	$("#name").blur(function(){
-        var name = $(this).val();
-        $.post(
-			"${pageContext.request.contextPath}/student/checkStudentName.action",
-					{"name":name},
-					function(data) {
-						if(data.isExit){
-							$("#nameInfo").html("该用户已经存在");
-							$("#nameInfo").css("color", "red");
-						}else{
-							$("#nameInfo").html("该名称可用");
-							$("#nameInfo").css("color", "green");
-						}
-					},
-					"json"
-		);
-	});
-}); */
 
-
+function uploadPic() {
+   //定义参数
+   var options = {
+       url:"${ctx}/product/uploadPic.action",
+       dataType:"json",
+       type:"post",
+       success: function(data) {
+           $("#imgId").attr("src","/pic/" + data.fileName);
+           $("#main_image").val(data.fileName);
+       }
+   };
+    $("#form-add").ajaxSubmit(options);
+}
 </script>
+
+
+
 		
 	</body>
 </html>

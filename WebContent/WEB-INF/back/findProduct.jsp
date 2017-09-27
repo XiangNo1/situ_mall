@@ -96,9 +96,9 @@
 												<th>商品名称</th>
 <!-- 												<th>商品副标题</th>
 												<th>产品主图地址</th>
-												<th>图片地址</th>
 												<th>商品详情</th>
- -->												<th>价格</th>
+-->												<th>图片</th>
+ 												<th>价格</th>
 												<th>库存数量</th>
 												<th>商品状态</th>
 												<th>创建时间</th>
@@ -117,10 +117,14 @@
 										<td>${product.category_id }</td>
 										<td>${product.name }</td>
 <%-- 										<td>${product.subtitle}</td>
-										<td>${product.main_image}</td>
 										<td>${product.sub_images}</td>
 										<td>${product.detail}</td>
- --%>										<td>${product.price}</td>
+ --%>									
+ 										
+										<td>
+										<img alt="" src="/pic/${product.main_image}" width="50" height="50">
+										</td>
+ 										<td>${product.price}</td>
 										<td>${product.stock}</td>
 										<c:if test="${product.status==1}">
 										<td>在售</td>
