@@ -75,7 +75,6 @@
 		                <li class="active">
 		                	<a href="${ctx}/category/addCategory.action">添加分类</a>
 		                </li>
-		                <li><input  class="btn btn-primary" type="button" onclick="deleteAll()" value="批量删除"/></li>
 		            </ul>
 		            <div class="alert alert-info" role="alert">前请认真核对分类的信息<strong>确保无误</strong></div>
 					    
