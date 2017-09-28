@@ -33,5 +33,9 @@ public interface ProductDao {
 
 	List<Category> selectSecond(Integer id);
 
+	int upProductById(Integer id);
+
+	int downProductById(Integer id);
+
 
 }

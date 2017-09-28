@@ -91,5 +91,17 @@ public class ProductServiceImpl implements IProductService {
 		return productDao.selectSecond(id);
 	}
 
+	@Override
+	public boolean upProductById(Integer id) {
+		int i = productDao.upProductById(id);
+		return i>0?true:false;
+	}
+
+	@Override
+	public boolean downProductById(Integer id) {
+		int i = productDao.downProductById(id);
+		return i>0?true:false;
+	}
+
 	
 }

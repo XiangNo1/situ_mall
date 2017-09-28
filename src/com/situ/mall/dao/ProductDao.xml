@@ -5,6 +5,14 @@
 <mapper namespace="com.situ.mall.dao.ProductDao">
 
 
+	<update id="upProductById" parameterType="Integer">
+		update product set status=1 where id=#{id}
+	</update>
+	
+	<update id="downProductById" parameterType="Integer">
+		update product set status=2 where id=#{id}
+	</update>
+
 	<select id="selectSecond" parameterType="Integer" resultType="Category">
 		select * from category where parent_id=#{id}
 	</select>

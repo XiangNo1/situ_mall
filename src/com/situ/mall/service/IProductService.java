@@ -27,5 +27,9 @@ public interface IProductService {
 
 	List<Category> selectSecond(Integer id);
 
+	boolean upProductById(Integer id);
+
+	boolean downProductById(Integer id);
+
 
 }

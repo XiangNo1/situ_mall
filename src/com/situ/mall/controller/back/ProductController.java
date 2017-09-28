@@ -71,8 +71,33 @@ public class ProductController {
 	
 	@RequestMapping(value="/deleteAllProduct")
 	public String deleteAllProduct(Integer[] selectIds){
+		if (selectIds == null || selectIds.length < 1) {
+			return "redirect:/product/findAllProduct.action";
+		}
 		for (Integer id : selectIds) {
 			productservice.deleteProductById(id);
+		}
+		return "redirect:/product/findAllProduct.action";
+	}
+	
+	@RequestMapping(value="/upAllProduct")
+	public String upAllProduct(Integer[] selectIds){
+		if (selectIds == null || selectIds.length < 1) {
+			return "redirect:/product/findAllProduct.action";
+		}
+		for (Integer id : selectIds) {
+			productservice.upProductById(id);
+		}
+		return "redirect:/product/findAllProduct.action";
+	}
+	
+	@RequestMapping(value="/downAllProduct")
+	public String downAllProduct(Integer[] selectIds){
+		if (selectIds == null || selectIds.length < 1) {
+			return "redirect:/product/findAllProduct.action";
+		}
+		for (Integer id : selectIds) {
+			productservice.downProductById(id);
 		}
 		return "redirect:/product/findAllProduct.action";
 	}

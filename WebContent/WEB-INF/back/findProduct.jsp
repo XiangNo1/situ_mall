@@ -76,6 +76,8 @@
 		                	<a href="${ctx}/product/addProduct.action">添加商品</a>
 		                </li>
 		                <li><input  class="btn btn-primary" type="button" onclick="deleteAll()" value="批量删除"/></li>
+		                <li><input  class="btn btn-primary" type="button" onclick="upAll()" value="批量上架"/></li>
+		                <li><input  class="btn btn-primary" type="button" onclick="downAll()" value="批量下架"/></li>
 		            </ul>
 		            <div class="alert alert-info" role="alert">删除前请认真核对商品的信息<strong>确保无误</strong></div>
 					    
@@ -237,7 +239,22 @@
 		       $("#mainForm").attr("action", "${ctx}/product/deleteAllProduct.action");
 		       $("#mainForm").submit();
 		    }
-
+	};
+	function upAll() {
+		 var isDel = confirm("您确认要上架吗？");
+		    if (isDel) {
+		       //要删除
+		       $("#mainForm").attr("action", "${ctx}/product/upAllProduct.action");
+		       $("#mainForm").submit();
+		    }
+	};
+	function downAll() {
+		 var isDel = confirm("您确认要下架吗？");
+		    if (isDel) {
+		       //要删除
+		       $("#mainForm").attr("action", "${ctx}/product/downAllProduct.action");
+		       $("#mainForm").submit();
+		    }
 	};
 
 </script>	
