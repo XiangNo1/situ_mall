@@ -36,10 +36,11 @@ public class CategoryServiceImpl implements ICategoryService {
 		return pageBean;
 	}
 
-	/*@Override
-	public void addCategory(Category category) {
+	@Override
+	public boolean addCategory(Category category) {
 		// TODO Auto-generated method stub
-		categoryDao.addCategory(category);
+		int i = categoryDao.addCategory(category);
+		return i > 0? true:false;
 	}
 
 	@Override
@@ -47,10 +48,16 @@ public class CategoryServiceImpl implements ICategoryService {
 		// TODO Auto-generated method stub
 		return categoryDao.findCategoryById(id);
 	}
+	@Override
+	public boolean deleteCategoryById(Integer id) {
+		// TODO Auto-generated method stub
+		int i = categoryDao.deleteCategoryById(id);
+		return i > 0 ? true:false;
+	}
 
 	@Override
-	public void deleteCategoryById(Category category) {
-		// TODO Auto-generated method stub
-		categoryDao.deleteCategoryById(category);
-	}*/
+	public boolean updateCategory(Category category) {
+		int i = categoryDao.updateCategory(category);
+		return i>0?true:false;
+	}
 }

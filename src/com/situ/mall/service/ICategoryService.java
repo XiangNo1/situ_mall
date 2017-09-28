@@ -11,4 +11,12 @@ public interface ICategoryService {
 
 	PageBean getPageBeancategory(int pageIndex, int pageSize);
 
+	boolean addCategory(Category category);
+
+	boolean deleteCategoryById(Integer id);
+
+	Category findCategoryById(Integer id);
+
+	boolean updateCategory(Category category);
+
 }

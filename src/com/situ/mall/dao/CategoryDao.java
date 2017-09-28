@@ -14,4 +14,12 @@ public interface CategoryDao {
 
 	List<Category> findCategoryBeanList(@Param(value="index")int index, @Param(value="pageSize")int pageSize);
 
+	int addCategory(Category category);
+
+	int deleteCategoryById(Integer id);
+
+	Category findCategoryById(Integer id);
+
+	int updateCategory(Category category);
+
 }

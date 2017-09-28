@@ -63,7 +63,7 @@
 		        <div class="col-md-2">
 		            <div class="list-group">
 		                <a href="${ctx}/category/findAllCategory.action" class="list-group-item active">分类管理</a>
-		                <a href="${ctx}/product/addProduct.action" class="list-group-item">添加商品</a>
+		                <a href="${ctx}/category/addCategory.action" class="list-group-item">添加分类</a>
 		                
 		            </div>
 		        </div>
@@ -73,7 +73,7 @@
 		                    <a href="${ctx}/category/findAllCategory.action">分类管理</a>
 		                </li>
 		                <li>
-		                	<a href="${ctx}/product/addProduct.action">添加商品</a>
+		                	<a href="${ctx}/category/addCategory.action">添加分类</a>
 		                </li>
 		                <li><input  class="btn btn-primary" type="button" onclick="deleteAll()" value="批量删除"/></li>
 		            </ul>
