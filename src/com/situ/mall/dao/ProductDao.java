@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.context.annotation.Primary;
 
+import com.situ.mall.pojo.Category;
 import com.situ.mall.pojo.Product;
 import com.situ.mall.vo.SearchProductByCondition;
 
@@ -27,6 +28,10 @@ public interface ProductDao {
 	List<Product> findSearchProductBeanList(@Param(value="index")int index, @Param(value="searchCondition")SearchProductByCondition searchCondition);
 
 	int findTotalCountSearchProduct(SearchProductByCondition searchCondition);
+
+	List<Category> selectFirst();
+
+	List<Category> selectSecond(Integer id);
 
 
 }

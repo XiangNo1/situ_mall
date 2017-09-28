@@ -5,6 +5,14 @@
 <mapper namespace="com.situ.mall.dao.ProductDao">
 
 
+	<select id="selectSecond" parameterType="Integer" resultType="Category">
+		select * from category where parent_id=#{id}
+	</select>
+
+	<select id="selectFirst" resultType="Category">
+		select * from category where parent_id=0
+	</select>
+
 	<select id="findSearchProductBeanList" resultType="Product">
 		select * from product
 		<where>
@@ -45,7 +53,8 @@
 	</select>
 	
 	<insert id="addProduct" parameterType="Product">
-		insert into product(id,category_id,name,main_image,price,stock,status,create_time,update_time) values(#{id},#{category_id},#{name},#{main_image},#{price},#{stock},#{status},now(),now())
+		insert into product(id,category_id,name,main_image,price,stock,status,create_time,update_time)
+		 values(#{id},#{category_id},#{name},#{main_image},#{price},#{stock},#{status},now(),now())
 	</insert>
 	
 	<delete id="deleteProductById" parameterType="Integer">

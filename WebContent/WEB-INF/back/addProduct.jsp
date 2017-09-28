@@ -84,7 +84,20 @@
 		            <div class="alert alert-danger" role="alert">请注意不要添加重复id的商品！！！</div>
  <form action="${ctx}/product/addProduct2.action" method="post" enctype="multipart/form-data" id="form-add">
    	    商品id：<input class="form-control" type="text" name="id" id="id"/>
-  	     分类id：<input class="form-control" type="text" name="category_id"/>
+   	    
+   	    一级分类:
+    <select class="form-control" id="province" onchange="selectCitys(this)">
+       <option value="">-请选择-</option>
+       <c:forEach items="${province }" var="first">
+       		<option value="${first.id }">${first.name}</option>
+       </c:forEach>
+    </select>
+	  二级分类:
+	<select class="form-control" id="city" name="category_id">
+       <option value="">-请选择-</option>
+    </select>
+   	    
+   	    <br/>
 	       商品名称：<input class="form-control" type="text" name="name"/>
 <!-- 	       商品副标题：<input class="form-control" type="text" name="subtitle"/>
 	          产品主图地址：<input class="form-control" type="text" name="main_image"/>
@@ -107,6 +120,46 @@
 </div>
 </div>
 <script type="text/javascript">
+
+/* $(function() {
+    $.ajax({
+        url:"${ctx}/product/selectProvinces",
+        dataType:"json",
+        success:function(data,textStatus,ajax){
+           //append_template(data, "province");
+           var html = "<option>-请选择-</option>";
+           for(var i=0;i<data.length;i++){
+               html +="<option value='"+data[i].id+"'>"+data[i].name+"</option>";
+           }
+            $("#province").html(html);
+        }
+    });
+});
+ */
+function selectCitys(obj) {
+    var id = $(obj).val();
+    //清空城市下拉框中的内容，出第一项外
+    $("#city option:gt(0)").remove();
+    $.ajax({
+        url:"${ctx}/product/selectCitys.action",
+        data:"id="+id,
+        dataType:"json",
+        success:function(data,textStatus,ajax){
+           //alert(ajax.responseText);
+           //append_template(data, "city");
+           
+           var html = "<option>-请选择-</option>";
+           for(var i=0;i<data.length;i++){
+               html +="<option value='"+data[i].parent_id+"'>"+data[i].name+"</option>";
+           }
+           $("#city").html(html);
+        }
+    });
+}
+
+
+
+
 
 function uploadPic() {
    //定义参数

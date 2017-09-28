@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.situ.mall.dao.ProductDao;
+import com.situ.mall.pojo.Category;
 import com.situ.mall.pojo.Product;
 import com.situ.mall.vo.PageBean;
 import com.situ.mall.vo.SearchProductByCondition;
@@ -76,6 +77,18 @@ public class ProductServiceImpl implements IProductService {
 		List<Product> list = productDao.findSearchProductBeanList(index, searchCondition);
 		pageBean.setList(list);
 		return pageBean;
+	}
+
+	@Override
+	public List<Category> selectFirst() {
+		// TODO Auto-generated method stub
+		return productDao.selectFirst();
+	}
+
+	@Override
+	public List<Category> selectSecond(Integer id) {
+		// TODO Auto-generated method stub
+		return productDao.selectSecond(id);
 	}
 
 	

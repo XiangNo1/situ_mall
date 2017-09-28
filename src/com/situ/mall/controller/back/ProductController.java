@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
@@ -20,6 +21,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.situ.mall.pojo.Category;
 import com.situ.mall.pojo.Product;
 import com.situ.mall.service.IProductService;
 import com.situ.mall.vo.PageBean;
@@ -32,13 +34,15 @@ public class ProductController {
 	@Autowired
 	private IProductService productservice;
 	
-	@InitBinder
-	protected void initBinder(WebDataBinder binder) {
-        binder.registerCustomEditor(Date.class, new CustomDateEditor(
-                new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"), true));
-        binder.registerCustomEditor(Date.class, new CustomDateEditor(
-                new SimpleDateFormat("yyyy-MM-dd"), true));
-    }
+	@RequestMapping(value="/selectCitys")
+	public @ResponseBody List<Category> selectProvinces(Integer id){
+		List<Category> list = productservice.selectSecond(id);
+		for (Category category : list) {
+			System.out.println(category);
+		}
+		
+		return list;
+	}
 	
 	 @RequestMapping("/uploadPic")
 	    @ResponseBody
@@ -126,8 +130,14 @@ public class ProductController {
 	}
 	
 	@RequestMapping(value="/addProduct")
-	public String addProduct(){
-		return "addProduct";
+	public ModelAndView addProduct(ModelAndView modelAndView){
+		List<Category> list = productservice.selectFirst();
+		for (Category category : list) {
+			System.out.println(category);
+		}
+		modelAndView.addObject("province", list);
+		modelAndView.setViewName("addProduct");
+		return modelAndView;
 	}
 	
 	@RequestMapping(value="/findAllProduct")
