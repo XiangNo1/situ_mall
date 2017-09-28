@@ -88,9 +88,7 @@
    	    一级分类:
     <select class="form-control" id="province" onchange="selectCitys(this)">
        <option value="">-请选择-</option>
-       <c:forEach items="${province }" var="first">
-       		<option value="${first.id }">${first.name}</option>
-       </c:forEach>
+       
     </select>
 	  二级分类:
 	<select class="form-control" id="city" name="category_id">
@@ -121,9 +119,9 @@
 </div>
 <script type="text/javascript">
 
-/* $(function() {
+ $(function() {
     $.ajax({
-        url:"${ctx}/product/selectProvinces",
+        url:"${ctx}/product/selectProvince.action",
         dataType:"json",
         success:function(data,textStatus,ajax){
            //append_template(data, "province");
@@ -135,7 +133,7 @@
         }
     });
 });
- */
+ 
 function selectCitys(obj) {
     var id = $(obj).val();
     //清空城市下拉框中的内容，出第一项外

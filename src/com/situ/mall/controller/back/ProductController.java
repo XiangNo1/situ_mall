@@ -34,6 +34,17 @@ public class ProductController {
 	@Autowired
 	private IProductService productservice;
 	
+	@RequestMapping(value="/selectProvince")
+	public @ResponseBody List<Category> selectProvinces(ModelAndView modelAndView){
+		List<Category> list = productservice.selectFirst();
+		for (Category category : list) {
+			System.out.println(category);
+		}
+		modelAndView.addObject("province", list);
+		
+		return list;
+	}
+	
 	@RequestMapping(value="/selectCitys")
 	public @ResponseBody List<Category> selectProvinces(Integer id){
 		List<Category> list = productservice.selectSecond(id);
@@ -131,11 +142,7 @@ public class ProductController {
 	
 	@RequestMapping(value="/addProduct")
 	public ModelAndView addProduct(ModelAndView modelAndView){
-		List<Category> list = productservice.selectFirst();
-		for (Category category : list) {
-			System.out.println(category);
-		}
-		modelAndView.addObject("province", list);
+		
 		modelAndView.setViewName("addProduct");
 		return modelAndView;
 	}
