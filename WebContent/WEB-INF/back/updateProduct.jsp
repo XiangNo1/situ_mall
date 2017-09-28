@@ -82,7 +82,7 @@
 		            </ul>
 				   <div style="width:60%; margin-top:20px;">
 		            <div class="alert alert-danger" role="alert">请注意不要添加重复id的商品！！！</div>
- <form action="${ctx}/product/updateProduct2.action" method="post">
+ <form action="${ctx}/product/updateProduct2.action" method="post" enctype="multipart/form-data" id="form-add">
    	    商品id：<input class="form-control" type="text" name="id" id="id" value="${product.id }"/><br/>
   	     分类id：<input class="form-control" type="text" name="category_id" value="${product.category_id }"/><br/>
 	       商品名称：<input class="form-control" type="text" name="name" value="${product.name }"/><br/>
@@ -90,7 +90,13 @@
 	          产品主图地址：<input class="form-control" type="text" name="main_image" value="${product.main_image }"/><br/>
 	         图片地址:<input id="sub_images" name="sub_images"  class="form-control value="${product.sub_images }"">
 	         商品详情:<input id="detail" name="detail"  class="form-control value="${product.detail }"">
- -->	         价格:<input id="price" name="price"  class="form-control" value="${product.price }">
+ -->	 <div>      
+  		修改图片：
+           <img alt="" src="/pic/${product.main_image }" id="imgId" src="" width=100 height=100>
+           <input type="hidden" name="main_image" id="main_image"/>
+           <input type="file" name="pictureFile" onchange="uploadPic();"/>
+       </div>
+ 		  价格:<input id="price" name="price"  class="form-control" value="${product.price }">
 	         库存数量:<input id="stock" name="stock"  class="form-control" value="${product.stock }">
 	         商品状态:<input id="status" name="status"  class="form-control" value="${product.status }">
        <p><button class="btn btn-primary" type="submit">保存</button></p>
@@ -100,7 +106,19 @@
 </div>
 <script type="text/javascript">
 
-
+function uploadPic() {
+	   //定义参数
+	   var options = {
+	       url:"${ctx}/product/uploadPic.action",
+	       dataType:"json",
+	       type:"post",
+	       success: function(data) {
+	           $("#imgId").attr("src","/pic/" + data.fileName);
+	           $("#main_image").val(data.fileName);
+	       }
+	   };
+	    $("#form-add").ajaxSubmit(options);
+	}
 
 </script>
 		
