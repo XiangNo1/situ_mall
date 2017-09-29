@@ -8,6 +8,7 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1 , user-scalable=no">
 		<title></title>
+		
 	</head>
 	<body>
 	<%@include file="../common/head.jsp" %>
@@ -124,7 +125,7 @@
  --%>									
  										
 										<td>
-										<img alt="" src="/pic/${product.main_image}" width="50" height="50">
+										<img alt="[无图]" src="/pic/${product.main_image}" width="50" height="50">
 										</td>
  										<td>${product.price}</td>
 										<td>${product.stock}</td>
@@ -136,17 +137,17 @@
 										</c:if>
 										
 										<td>
-										<fmt:formatDate value="${product.create_time}" pattern="yyyy-MM-dd hh:mm:ss"/>
+										<fmt:formatDate value="${product.create_time}" pattern="yyyy-MM-dd HH:mm:ss"/>
 										</td>
 										<td>
-										<fmt:formatDate value="${product.update_time}" pattern="yyyy-MM-dd hh:mm:ss"/>
+										<fmt:formatDate value="${product.update_time}" pattern="yyyy-MM-dd HH:mm:ss"/>
 										</td>
 										
 										<c:if test="${product.status==1}">
-										<td><a href="${ctx }/product/updateStatusProduct.action?id=${product.id}&status=2">下架</a></td>
+										<td><a href="${ctx }/product/updateStatusProduct.action?id=${product.id}&status=2&pageIndex=${pageBean.pageIndex}">下架</a></td>
 										</c:if>
 										<c:if test="${product.status==2}">
-										<td><a href="${ctx }/product/updateStatusProduct.action?id=${product.id}&status=1">上架</a></td>
+										<td><a href="${ctx }/product/updateStatusProduct.action?id=${product.id}&status=1&pageIndex=${pageBean.pageIndex}">上架</a></td>
 										</c:if>
 										
 										<td><a href="javascript:delProduct(${product.id });">删除</a></td>

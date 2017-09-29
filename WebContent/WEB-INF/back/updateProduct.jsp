@@ -66,16 +66,16 @@
 		    <div class="row">
 		        <div class="col-md-2">
 		            <div class="list-group">
-		                <a href="${pageContext.request.contextPath}/student/searchByCondition.action" class="list-group-item">学生管理</a>
-		                <a href="${pageContext.request.contextPath}/student/addStudent.action" class="list-group-item active">添加学生</a>
+		                <a href="${pageContext.request.contextPath}/student/searchByCondition.action" class="list-group-item active">商品管理</a>
+		                <a href="${pageContext.request.contextPath}/student/addStudent.action" class="list-group-item">添加商品</a>
 		            </div>
 		        </div>
 		        <div class="col-md-10">
 		             <ul class="nav nav-tabs">
-		                <li>
+		                <li class="active">
 		                    <a href="${ctx}/product/findAllProduct.action">商品管理</a>
 		                </li>
-		                <li class="active">
+		                <li>
 		                	<a href="${ctx}/product/addProduct.action">添加商品</a>
 		                </li>
 		                <li><input  class="btn btn-primary" type="button" onclick="deleteAll()" value="批量删除"/></li>
@@ -83,8 +83,21 @@
 				   <div style="width:60%; margin-top:20px;">
 		            <div class="alert alert-danger" role="alert">请注意不要添加重复id的商品！！！</div>
  <form action="${ctx}/product/updateProduct2.action" method="post" enctype="multipart/form-data" id="form-add">
-   	    商品id：<input class="form-control" type="text" name="id" id="id" value="${product.id }"/><br/>
-  	     分类id：<input class="form-control" type="text" name="category_id" value="${product.category_id }"/><br/>
+   	    商品id：<input class="form-control" type="text" name="id" id="id" value="${product.id }" readonly="readonly"/><br/>
+   	    当前商品分类：
+   	    ${c1.name } &nbsp;&nbsp;&nbsp;${c2.name }
+   	    <br/>
+   	    <p>若要修改分类请选择(不修改请忽略)：</p>
+   	       一级分类:
+    <select class="form-control" id="province" onchange="selectCitys(this)">
+       <option value="">-请选择-</option>
+       
+    </select>
+	  二级分类:
+	<select class="form-control" id="city" name="category_id">
+       <option value="">-请选择-</option>
+    </select>
+   	    
 	       商品名称：<input class="form-control" type="text" name="name" value="${product.name }"/><br/>
 <!-- 	       商品副标题：<input class="form-control" type="text" name="subtitle" value="${product.subtitle }"/><br/>
 	          产品主图地址：<input class="form-control" type="text" name="main_image" value="${product.main_image }"/><br/>
@@ -98,13 +111,56 @@
        </div>
  		  价格:<input id="price" name="price"  class="form-control" value="${product.price }">
 	         库存数量:<input id="stock" name="stock"  class="form-control" value="${product.stock }">
-	         商品状态:<input id="status" name="status"  class="form-control" value="${product.status }">
+	           商品状态：    <select id="status" name="status"  class="form-control">
+	         	<option value="1">在售</option>
+	         	<option value="2">下架</option>
+	         </select>
        <p><button class="btn btn-primary" type="submit">保存</button></p>
     </form>
 </div>
 </div>
 </div>
 <script type="text/javascript">
+
+$(function(){
+    $("#status option[value='${product.status}']").prop("selected", true);
+ });
+
+$(function() {
+    $.ajax({
+        url:"${ctx}/product/selectProvince.action",
+        dataType:"json",
+        success:function(data,textStatus,ajax){
+           //append_template(data, "province");
+           var html = "<option>-请选择-</option>";
+           for(var i=0;i<data.length;i++){
+               html +="<option value='"+data[i].id+"'>"+data[i].name+"</option>";
+           }
+            $("#province").html(html);
+        }
+    });
+});
+ 
+function selectCitys(obj) {
+    var id = $(obj).val();
+    //清空城市下拉框中的内容，出第一项外
+    $("#city option:gt(0)").remove();
+    $.ajax({
+        url:"${ctx}/product/selectCitys.action",
+        data:"id="+id,
+        dataType:"json",
+        success:function(data,textStatus,ajax){
+           //alert(ajax.responseText);
+           //append_template(data, "city");
+           
+           var html = "<option>-请选择-</option>";
+           for(var i=0;i<data.length;i++){
+               html +="<option value='"+data[i].parent_id+"'>"+data[i].name+"</option>";
+           }
+           $("#city").html(html);
+        }
+    });
+}
 
 function uploadPic() {
 	   //定义参数

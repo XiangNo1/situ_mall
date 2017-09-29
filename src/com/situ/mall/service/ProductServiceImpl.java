@@ -103,5 +103,11 @@ public class ProductServiceImpl implements IProductService {
 		return i>0?true:false;
 	}
 
+	@Override
+	public Category findCategoryById(Integer id) {
+		// TODO Auto-generated method stub
+		return productDao.findCategoryById(id);
+	}
+
 	
 }

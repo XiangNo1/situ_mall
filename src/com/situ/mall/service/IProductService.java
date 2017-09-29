@@ -31,5 +31,7 @@ public interface IProductService {
 
 	boolean downProductById(Integer id);
 
+	Category findCategoryById(Integer parent_id);
+
 
 }

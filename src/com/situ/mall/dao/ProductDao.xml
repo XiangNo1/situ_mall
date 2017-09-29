@@ -5,6 +5,10 @@
 <mapper namespace="com.situ.mall.dao.ProductDao">
 
 
+	<select id="findCategoryById" parameterType="Integer" resultType="Category">
+		select * from category where id=#{id}
+	</select>
+
 	<update id="upProductById" parameterType="Integer">
 		update product set status=1 where id=#{id}
 	</update>

@@ -127,8 +127,9 @@ public class ProductController {
 	}
 	
 	@RequestMapping(value="updateStatusProduct")
-	public String updateStatusProduct(Integer id, Integer status){
+	public String updateStatusProduct(Integer id, Integer status, String pageIndex, Model model){
 		productservice.updateStatusProduct(id, status);
+		model.addAttribute("pageIndex", pageIndex);
 		return "redirect:/product/findAllProduct.action";
 	}
 	
@@ -143,6 +144,12 @@ public class ProductController {
 	public String updateProduct(Integer id, Model model){
 		Product product = productservice.findProductById(id);
 		System.out.println(product);
+		Category category2 = productservice.findCategoryById(product.getCategory_id());
+		Category category1 = productservice.findCategoryById(category2.getParent_id());
+		System.out.println(category1);
+		System.out.println(category2);
+		model.addAttribute("c1", category1);
+		model.addAttribute("c2", category2);
 		model.addAttribute("product", product);
 		return "updateProduct";
 	}

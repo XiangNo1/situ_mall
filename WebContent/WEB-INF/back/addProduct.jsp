@@ -103,7 +103,10 @@
 	         商品详情:<input id="detail" name="detail"  class="form-control">
  -->	         价格:<input id="price" name="price"  class="form-control">
 	         库存数量:<input id="stock" name="stock"  class="form-control">
-	         商品状态:<input id="status" name="status"  class="form-control">
+	     商品状态：    <select name="status"  class="form-control">
+	         	<option value="1">在售</option>
+	         	<option value="2">下架</option>
+	         </select>
 	   <div>
 	   插入图片：
            <img alt="" id="imgId" src="" width=100 height=100>

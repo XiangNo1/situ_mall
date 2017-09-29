@@ -37,5 +37,7 @@ public interface ProductDao {
 
 	int downProductById(Integer id);
 
+	Category findCategoryById(Integer id);
+
 
 }
