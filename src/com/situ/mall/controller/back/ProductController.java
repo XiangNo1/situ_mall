@@ -50,24 +50,6 @@ public class ProductController {
 		return list;
 	}
 	
-	 @RequestMapping("/uploadPic")
-	    @ResponseBody
-	    public Map<String, Object> uploadPic(MultipartFile pictureFile) {
-	       //为了防止重名生成随机的名字
-	       String name = UUID.randomUUID().toString().replace("-", "");
-	       //jpg,png
-	       String ext = FilenameUtils.getExtension(pictureFile.getOriginalFilename());
-	       String fileName = name + "." + ext;//数据库里面
-	       String filePath = "F:\\pic\\" + fileName;
-	       try {
-	           pictureFile.transferTo(new File(filePath));
-	       } catch (IllegalStateException | IOException e) {
-	           e.printStackTrace();
-	       }
-	       Map<String, Object> map = new HashMap<String, Object>();
-	       map.put("fileName", fileName);
-	       return map;
-	    }
 	
 	@RequestMapping(value="/deleteAllProduct")
 	public String deleteAllProduct(Integer[] selectIds){

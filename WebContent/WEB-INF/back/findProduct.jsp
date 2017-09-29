@@ -125,7 +125,7 @@
  --%>									
  										
 										<td>
-										<img alt="[无图]" src="/pic/${product.main_image}" width="50" height="50">
+										<img alt="[无图]" src="${product.fullUrl}" width="50" height="50">
 										</td>
  										<td>${product.price}</td>
 										<td>${product.stock}</td>

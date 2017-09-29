@@ -165,11 +165,11 @@ function selectCitys(obj) {
 function uploadPic() {
    //定义参数
    var options = {
-       url:"${ctx}/product/uploadPic.action",
+       url:"${ctx}/upload/uploadPic.action",
        dataType:"json",
        type:"post",
        success: function(data) {
-           $("#imgId").attr("src","/pic/" + data.fileName);
+           $("#imgId").attr("src",data.filePath);
            $("#main_image").val(data.fileName);
        }
    };
