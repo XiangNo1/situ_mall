@@ -65,8 +65,8 @@
 	</select>
 	
 	<insert id="addProduct" parameterType="Product">
-		insert into product(id,category_id,name,main_image,price,stock,status,create_time,update_time)
-		 values(#{id},#{category_id},#{name},#{main_image},#{price},#{stock},#{status},now(),now())
+		insert into product(id,category_id,name,main_image,sub_images,detail,price,stock,status,create_time,update_time)
+		 values(#{id},#{category_id},#{name},#{main_image},#{sub_images},#{detail},#{price},#{stock},#{status},now(),now())
 	</insert>
 	
 	<delete id="deleteProductById" parameterType="Integer">
