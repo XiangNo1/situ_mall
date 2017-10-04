@@ -1,8 +1,10 @@
 package com.situ.mall.vo;
 
+import java.io.Serializable;
+
 import com.situ.mall.pojo.Product;
 
-public class SearchProductByCondition {
+public class SearchProductByCondition implements Serializable {
 
 	private Integer pageIndex;
 	private Integer pageSize;

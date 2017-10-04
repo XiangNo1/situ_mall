@@ -5,7 +5,7 @@
 <head>
 <meta charset="utf-8">
 <title>靓淘优选</title>
-<%@include file="../common/head.jsp" %>
+<%@include file="../common/head_front.jsp" %>
 <link rel="stylesheet" href="${ctx}/resources/front/css/Style.css" />
 </head>
 
@@ -15,8 +15,8 @@
 		<div class="box1"><span class="wel">欢迎来到靓淘！ 首页</span></div>
 		<div class="box2">
         	<ul>
-            	<li><a class="login" href="">请登录</a></li>
-            	<li><a href="">快速注册</a></li>
+            	<li><a class="login" href="${ctx }/login/login.shtml">请登录</a></li>
+            	<li><a href="${ctx }/login/register.shtml">快速注册</a></li>
             	<li><a class="collect" href="">我的收藏</a></li>
             	<li><a class="order" href="">我的订单</a></li>
             	<li><a class="phone" href="">手机靓淘</a></li>
@@ -84,7 +84,7 @@
                 </p>
       			<span>数码</span>
      			<p>
-                	<a href="">手机</a>
+                	<a href="${ctx }/details/details.shtml">手机</a>
                 	<a href="">笔记本</a>
                 	<a href="">平板电脑</a>
                 </p>
@@ -173,7 +173,7 @@
             </ul>
         </div>
     	<div class="box40">
-        	<a href="">
+        	<a href="${ctx }/cart/cart.shtml">
 			<ul class="b40u1">
             	<li><img src="${ctx}/resources/front/image/gouwuche.png"></li>
             	<li>购</li>

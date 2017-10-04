@@ -1,6 +1,8 @@
 package com.situ.mall.pojo;
 
-public class Slideshow {
+import java.io.Serializable;
+
+public class Slideshow implements Serializable {
 
 	private Integer id;
 	private String uri;
