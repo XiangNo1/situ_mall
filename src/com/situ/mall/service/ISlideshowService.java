@@ -8,4 +8,16 @@ public interface ISlideshowService {
 
 	List<Slideshow> findSlideshow();
 
+	List<Slideshow> findSlideshowOnstatus();
+
+	boolean updateSlideshowStatus(Slideshow slideshow);
+
+	boolean addSlideshow(Slideshow slideshow);
+
+	boolean deleteSlideshow(Integer id);
+
+	Slideshow findSlideshowById(Integer id);
+
+	boolean updateSlideshow(Slideshow slideshow);
+
 }

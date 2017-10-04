@@ -63,54 +63,35 @@
 		    <div class="row">
 		        <div class="col-md-2">
 		            <div class="list-group">
-		                <a href="${ctx}/slideshow/findSlideshow.action" class="list-group-item active">轮播图管理</a>
-		                <a href="${ctx}/slideshow/addSlideshow.action" class="list-group-item">添加轮播图</a>
+		                <a href="${ctx}/slideshow/findSlideshow.action" class="list-group-item">轮播图管理</a>
+		                <a href="${ctx}/slideshow/addSlideshow.action" class="list-group-item active">添加轮播图</a>
 		                
 		            </div>
 		        </div>
 		        <div class="col-md-10">
 		            <ul class="nav nav-tabs">
-		                <li class="active">
+		                <li>
 		                    <a href="${ctx}/slideshow/findSlideshow.action">轮播图管理</a>
 		                </li>
-		                <li>
+		                <li class="active">
 		                	<a href="${ctx}/slideshow/addSlideshow.action">添加轮播图</a>
 		                </li>
 		            </ul>
-		            <div class="alert alert-info" role="alert">删除前请认真核对图片的信息<strong>确保无误</strong></div>
-					    <table class="table">
-					    	<tr>
-					    		<td>id</td>
-					    		<td>图片名称</td>
-					    		<td>图片链接地址</td>
-					    		<td>示意图</td>
-					    		<td>图片状态</td>
-					    		<td>删除</td>
-					    		<td>修改</td>
-					    	</tr>
-					    	<c:forEach items="${list}" var="slideshow">
-					    	<tr>
-					    		<td>${slideshow.id }</td>
-					    		<td>${slideshow.uri }</td>
-					    		<td>${slideshow.link }</td>
-					    		<td>
-					    		<img alt="[无图]" src="/pic/${slideshow.uri }" width="100" height="50"/>
-					    		</td>
-					    		<td>
-					    		<c:if test="${slideshow.status == 1 }">
-					    			<a href="${ctx}/slideshow/updateSlideshowStatus.action?status=2&id=${slideshow.id }">显示</a>
-					    		</c:if>
-					    		<c:if test="${slideshow.status == 2 }">
-					    			<a href="${ctx}/slideshow/updateSlideshowStatus.action?status=1&id=${slideshow.id }">隐藏</a>
-					    		</c:if>
-					    		</td>
-					    		<td><a href="javascript:delSlideshow(${slideshow.id})">删除</a></td>
-					    		<td><a href="${ctx}/slideshow/updateSlideshow.action?id=${slideshow.id}">修改</a></td>
-					    	</tr>
-					    	
-					    	</c:forEach>
-					    
-					    </table>
+		             <form style="width: 60%" action="${ctx}/slideshow/addSlideshow2.action" method="post" enctype="multipart/form-data" id="form-add">
+		   	 
+			         链接地址:<input id="link" name="link"  class="form-control">
+			    轮播图状态：    <select name="status"  class="form-control">
+			         	<option value="1">显示</option>
+			         	<option value="2">隐藏</option>
+			         </select>
+			   <div>
+			   插入图片：
+		           <img alt="" id="imgId" src="" width=100 height=100>
+		           <input type="hidden" name="uri" id="uri"/>
+		           <input type="file" name="pictureFile" onchange="uploadPic();"/>
+		       </div>
+		       <p><button class="btn btn-primary" type="submit">保存</button></p>
+   		 </form>
 					   
 					    
 					   
@@ -122,16 +103,21 @@
 		
 	<script>
 	
+	function uploadPic() {
+		   //定义参数
+		   var options = {
+		       url:"${ctx}/upload/uploadPic.action",
+		       dataType:"json",
+		       type:"post",
+		       success: function(data) {
+		           $("#imgId").attr("src",data.filePath);
+		           $("#uri").val(data.fileName);
+		       }
+		   };
+		    $("#form-add").ajaxSubmit(options);
+		}
 	
-	function delSlideshow(id) {
-	       var isDel = confirm("您确认要删除吗？");
-	       if (isDel) {
-	           //要删除
-	           location.href = "${ctx}/slideshow/deleteSlideshow.action?id="
-	                  + id;
-	       }
-	    };
-	
+
 </script>	
 	</body>
 </html>

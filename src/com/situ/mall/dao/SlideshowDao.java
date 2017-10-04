@@ -8,4 +8,16 @@ public interface SlideshowDao {
 
 	List<Slideshow> findSlideshow();
 
+	List<Slideshow> findSlideshowOnstatus();
+
+	int updateSlideshowStatus(Slideshow slideshow);
+
+	int addSlideshow(Slideshow slideshow);
+
+	int deleteSlideshow(Integer id);
+
+	Slideshow findSlideshowById(Integer id);
+
+	int updateSlideshow(Slideshow slideshow);
+
 }

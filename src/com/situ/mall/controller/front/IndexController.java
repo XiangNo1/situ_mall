@@ -18,7 +18,7 @@ public class IndexController {
 	
 	@RequestMapping("/index.shtml")
 	public String index(Model model) {
-		List<Slideshow> list = slideshowService.findSlideshow();
+		List<Slideshow> list = slideshowService.findSlideshowOnstatus();
 		model.addAttribute("list", list);
 		return "index";
 	}

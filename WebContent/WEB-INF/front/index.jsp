@@ -67,7 +67,9 @@
 <div class="wrraper">
 	<div class="box88">
 	<c:forEach items="${list}" var="slideshow">
-	    <img class="banner" src="${ctx}${slideshow.uri}">
+	<a href="${slideshow.link }">
+	   <img class="banner" src="/pic/${slideshow.uri}">
+	   </a>
 	</c:forEach>
 	
     </div>
@@ -204,6 +206,7 @@
 
 
 $(".box88 img").hide().eq(0).show();
+$(".circle li").eq(0).addClass("current");
 var n=0;
 function s(){
 	if(n<$(".box88 img").length-1){
