@@ -32,7 +32,7 @@
         <li><a href="${ctx}/product/findAllProduct.action"> <span class="glyphicon glyphicon-user" aria-hidden="true"></span> 商品管理 <span class="sr-only">(current)</span></a></li>
         <li class="active"><a href="${ctx}/category/findAllCategory.action"> <span class="glyphicon glyphicon-home" aria-hidden="true"></span> 分类管理 </a></li>
         <li><a href="${ctx}/slideshow/findSlideshow.action"> <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> 轮播图管理 </a></li>
-        <li><a href="${ctx}/banji/findJiaowu.action"> <span class="glyphicon glyphicon-tags" aria-hidden="true"></span> xx管理 </a></li>
+        <li><a href="${ctx}/user/findUser.action"> <span class="glyphicon glyphicon-tags" aria-hidden="true"></span> 用户管理 </a></li>
         <li><a href="#"> 欢迎回来:${accounts.name }</a> </li>
         
         
@@ -75,7 +75,7 @@
 		                <li>
 		                	<a href="${ctx}/category/addCategory.action">添加分类</a>
 		                </li>
-		                <li><input  class="btn btn-primary" type="button" onclick="deleteAll()" value="批量删除"/></li>
+		                <!-- <li><input  class="btn btn-primary" type="button" onclick="deleteAll()" value="批量删除"/></li> -->
 		            </ul>
 		            <div class="alert alert-info" role="alert">删除前请认真核对分类的信息<strong>确保无误</strong></div>
 					    
@@ -83,7 +83,7 @@
 						            <table class="table">
 						                <thead>
 						                    <tr>
-						                    <th><input type="checkbox" onclick="selectAll()" id="selectAlls"/></th>
+						                  <!--   <th><input type="checkbox" onclick="selectAll()" id="selectAlls"/></th> -->
 						                        <th>类别id</th>
 												<th>父类id</th>
 												<th>类别名称</th>
@@ -97,7 +97,7 @@
 						                    
 								<c:forEach items="${pageBean.list}" var="category">
 									<tr>
-									<td><input type="checkbox" name="selectIds" value="${category.id }"/></td>
+								<%-- 	<td><input type="checkbox" name="selectIds" value="${category.id }"/></td> --%>
 										<td>${category.id}</td>
 										<td>${category.parent_id }</td>
 										<td>${category.name }</td>
@@ -187,7 +187,7 @@
 		$("input[name=selectIds]").prop('checked',$("#selectAlls").is(":checked"))
 	};
 	
-	function deleteAll() {
+	/* function deleteAll() {
 		 var isDel = confirm("您确认要删除吗？");
 		    if (isDel) {
 		       //要删除
@@ -195,7 +195,7 @@
 		       $("#mainForm").submit();
 		    }
 
-	};
+	}; */
 
 </script>	
 	</body>
