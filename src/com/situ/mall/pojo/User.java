@@ -12,7 +12,7 @@ public class User implements Serializable {
 	private String phone;
 	private String question;
 	private String answer;
-	private Integer role;
+	private Integer role = 1;
 	private Date create_time;
 	private Date update_time;
 	public User() {

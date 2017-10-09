@@ -37,6 +37,7 @@
     	<p>COPYRIGHT 2010-2017 北京创锐文化传媒有限公司 JUMEI.COM 保留一切权利。客服热线：400-123-8888</p>
         <p>京公网安备 11010102001226|京ICP证111033号|食品流通许可证 SP1101051110165515（1-1）|执业营照</p>
 </div>
+<form action="${ctx }/login/loginIn.shtml" method="post">
 <div class="box5">
 	<label>
     	<tr>
@@ -45,11 +46,11 @@
         </tr>
     </label>
 	<div class="clearfix"></div>
-    <input class="b5in1" type="text" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;会员名/邮箱/手机号">
+    <input class="b5in1" type="text" name="user" placeholder="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;会员名/邮箱/手机号" />
 	<div class="clearfix"></div>
-    <input class="b5in2" type="text" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;密码">
+    <input class="b5in2" type="text" name="password" placeholder="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;密码"/>
 	<div class="clearfix"></div>
-	<input class="b5in3" type="button" value="登录">    
+	<input class="b5in3" type="submit" value="登录">    
 	<div class="clearfix"></div>
     <p class="b5p1">微博登录</p>
     <p class="b5p2">支付宝登录</p>
@@ -60,5 +61,6 @@
     	<li><a class="b5a3" href="">忘记密码</a></li>
     </ul>
 </div>
+</form>
 </body>
 </html>

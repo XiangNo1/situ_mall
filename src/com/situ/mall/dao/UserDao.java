@@ -21,5 +21,7 @@ public interface UserDao {
 
 	int updateUser(User user);
 
+	User findUserByUser(String user);
+
 	
 }

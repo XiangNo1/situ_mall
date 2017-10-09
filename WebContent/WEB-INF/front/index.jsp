@@ -15,7 +15,15 @@
 		<div class="box1"><span class="wel">欢迎来到靓淘！ 首页</span></div>
 		<div class="box2">
         	<ul>
+        	<c:if test="${userSession != null }">
+            	<li><a class="login">欢迎回来 ： ${userSession.username} </a>
+            		<a  href="${ctx }/login/loginOut.shtml">退出登录</a>
+            	</li>
+        	</c:if>
+        	
+        	<c:if test="${userSession == null }">
             	<li><a class="login" href="${ctx }/login/login.shtml">请登录</a></li>
+        	</c:if>
             	<li><a href="${ctx }/login/register.shtml">快速注册</a></li>
             	<li><a class="collect" href="">我的收藏</a></li>
             	<li><a class="order" href="">我的订单</a></li>

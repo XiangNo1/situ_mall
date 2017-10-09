@@ -16,4 +16,6 @@ public interface IUserService {
 
 	boolean updateUser(User user);
 
+	User findUserByUser(String user);
+
 }

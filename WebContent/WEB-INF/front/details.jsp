@@ -7,6 +7,7 @@
 <title>详情页</title>
 <%@include file="../common/head_front.jsp" %>
 <link rel="stylesheet" href="${ctx}/resources/front/css/details.css" />
+
 </head>
 
 <body>
@@ -80,13 +81,15 @@
 <div class="box-center">
 	<div class="box8">
     	<div class="box13">
-    		<div class="box9"><img src="${ctx}/resources/front/image/sm1.png"></div>
+    		<div class="box9">
+    		<img src="${ctx}/resources/front/image/sm1.png">
+    		</div>
     		<div class="box10">
             	<img class="b10i1" src="${ctx}/resources/front/image/18.png">
-            	<div class="box10d"><img src="${ctx}/resources/front/image/112.png"></div>
-                <div class="box10d"><img src="${ctx}/resources/front/image/113.png"></div>
-                <div class="box10d"><img src="${ctx}/resources/front/image/116.png"></div>
-                <div class="box10d"><img src="${ctx}/resources/front/image/114.png"></div>
+            	<div class="box10d"><img src="${ctx}/resources/front/image/sm1.png"></div>
+                <div class="box10d"><img src="${ctx}/resources/front/image/sm2.png"></div>
+                <div class="box10d"><img src="${ctx}/resources/front/image/sm3.png"></div>
+                <div class="box10d"><img src="${ctx}/resources/front/image/sm4.png"></div>
                 <img class="b10i2" src="${ctx}/resources/front/image/17.png">
 				<div class="clearfix"></div>
             </div>
@@ -128,10 +131,10 @@
                 </div>
  				<div class="clearfix"></div>
                 <p class="p2">数&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;量</p>
-                <input class="input1" type="text" value="1">
+                <input class="input1" type="text" value="1" id="input1">
                 <div class="b121">
-                	<input type="button" value="+">
-                    <input type="button" value="-">
+                	<input type="button" value="+" id="on">
+                    <input type="button" value="-" id="up">
                 </div>
                 <input class="input2" type="button" value="加入购物车">
                  <div class="clearfix"></div>
@@ -139,6 +142,53 @@
             </div>
        </div>
     </div>
+    
+    
+    <script type="text/javascript">
+        $(document).ready(function(){
+            var $miaobian=$('.box10>div');
+            var $huantu=$('.box9>img');
+            /* var $miaobian1=$('.Xcontent26>div'); */
+            $miaobian.mousemove(function(){miaobian(this);});
+            /* $miaobian1.click(function(){miaobian1(this);}); */
+            function miaobian(thisMb){
+                for(var i=0; i<$miaobian.length; i++){
+                    $miaobian[i].style.borderColor = '#dedede';
+                }
+                $huantu[0].src = thisMb.children[0].src;
+                thisMb.style.borderColor = '#cd2426';
+            }
+            /* function miaobian1(thisMb1){
+                for(var i=0; i<$miaobian1.length; i++){
+                    $miaobian1[i].style.borderColor = '#dedede';
+                }
+				//		thisMb.style.borderColor = '#cd2426';
+                $miaobian.css('border-color','#dedede');
+                thisMb1.style.borderColor = '#cd2426';
+                $huantu[0].src = thisMb1.children[0].src;
+            } */
+            
+            
+            $("#on").click(function(){
+                var value=parseInt($('#input1').val())+1;
+                if(value<11){
+               	 $('#input1').val(value);
+           		 }
+            });
+
+            $("#up").click(function(){
+                var num = $("#input1").val()
+                if(num>0){
+                    $("#input1").val(num-1);
+                }
+
+            });
+
+        })
+        
+       		 
+	</script>
+	
     <div class="box14">
 	    <ul class="ul6">
         	<li><a class="current" href="">人气配件</a></li>

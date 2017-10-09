@@ -40,21 +40,23 @@
         <p>京公网安备 11010102001226|京ICP证111033号|食品流通许可证 SP1101051110165515（1-1）|执业营照</p>
 </div>
 <div class="box5">
+<form action="${ctx }/login/newUser.shtml">
 	<h1>用户注册</h1>
     <h2>已有账户<a href="">在此登录</a></h2>
 	<div class="clearfix"></div>
-    <input class="b5i1" type="text" value="&nbsp;&nbsp;&nbsp;&nbsp;手机号">
+    <input class="b5i1" type="text" placeholder="&nbsp;&nbsp;&nbsp;&nbsp;手机号" name="username">
 	<div class="clearfix"></div>
-    <input class="b5i2" type="text" value="&nbsp;&nbsp;&nbsp;&nbsp;短信校验码">
+    <input class="b5i2" type="text" placeholder="&nbsp;&nbsp;&nbsp;&nbsp;短信校验码">
     <input class="b5i21" type="button" value="获取短信验证码">
  	<div class="clearfix"></div>
-   <input class="b5i3" type="text" value="&nbsp;&nbsp;&nbsp;&nbsp;密码">
+   <input class="b5i3" type="text" placeholder="&nbsp;&nbsp;&nbsp;&nbsp;密码" name="password">
  	<div class="clearfix"></div>
-   <input class="b5i4" type="text" value="&nbsp;&nbsp;&nbsp;&nbsp;重置密码">
+   <input class="b5i4" type="text" placeholder="&nbsp;&nbsp;&nbsp;&nbsp;重复密码">
 	<div class="clearfix"></div>
-    <input class="b5i5" type="button" value="同意协议并注册">
+    <input class="b5i5" type="submit" value="同意协议并注册">
 	<div class="clearfix"></div>
     <a class="b5a2" href="">《靓淘优选用户协议》</a>
+</form>
 </div>
 </body>
 </html>
