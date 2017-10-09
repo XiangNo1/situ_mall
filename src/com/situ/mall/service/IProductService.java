@@ -33,5 +33,7 @@ public interface IProductService {
 
 	Category findCategoryById(Integer parent_id);
 
+	List<Product> findProductByCategoryId(Integer parent_id);
+
 
 }

@@ -13,14 +13,10 @@ import com.situ.mall.service.ISlideshowService;
 @Controller
 public class IndexController {
 	
-	@Autowired
-	private ISlideshowService slideshowService;
 	
 	@RequestMapping("/index.shtml")
 	public String index(Model model) {
-		List<Slideshow> list = slideshowService.findSlideshowOnstatus();
-		model.addAttribute("list", list);
-		return "index";
+		return "redirect:/index/index.shtml";
 	}
 
 	// 商品身体

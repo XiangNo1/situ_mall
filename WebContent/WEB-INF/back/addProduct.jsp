@@ -102,8 +102,8 @@
    	    
    	    <br/>
 	       商品名称：<input class="form-control" type="text" name="name"/>
-<!-- 	       商品副标题：<input class="form-control" type="text" name="subtitle"/>
-	          产品主图地址：<input class="form-control" type="text" name="main_image"/>
+ 	       商品副标题：<input class="form-control" type="text" name="subtitle"/>
+<!--	          产品主图地址：<input class="form-control" type="text" name="main_image"/>
 	         图片地址:<input id="sub_images" name="sub_images"  class="form-control">
 	         商品详情:<input id="detail" name="detail"  class="form-control">
  -->	         价格:<input id="price" name="price"  class="form-control">
@@ -200,7 +200,7 @@ function selectCitys(obj) {
            
            var html = "<option>-请选择-</option>";
            for(var i=0;i<data.length;i++){
-               html +="<option value='"+data[i].parent_id+"'>"+data[i].name+"</option>";
+               html +="<option value='"+data[i].id+"'>"+data[i].name+"</option>";
            }
            $("#city").html(html);
         }

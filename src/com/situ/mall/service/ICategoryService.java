@@ -19,4 +19,6 @@ public interface ICategoryService {
 
 	boolean updateCategory(Category category);
 
+	List<Category> findCategory();
+
 }

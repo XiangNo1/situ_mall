@@ -2,6 +2,7 @@ package com.situ.mall.pojo;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 public class Category implements Serializable {
 
@@ -12,7 +13,26 @@ public class Category implements Serializable {
 	private Integer sort_order;
 	private Date create_time;
 	private Date update_time;
+	private List<Category> list;
 	
+	public List<Category> getList() {
+		return list;
+	}
+	public void setList(List<Category> list) {
+		this.list = list;
+	}
+	public Category(Integer id, Integer parent_id, String name, Integer status, Integer sort_order, Date create_time,
+			Date update_time, List<Category> list) {
+		super();
+		this.id = id;
+		this.parent_id = parent_id;
+		this.name = name;
+		this.status = status;
+		this.sort_order = sort_order;
+		this.create_time = create_time;
+		this.update_time = update_time;
+		this.list = list;
+	}
 	public Category() {
 		super();
 	}
@@ -72,7 +92,10 @@ public class Category implements Serializable {
 	@Override
 	public String toString() {
 		return "Category [id=" + id + ", parent_id=" + parent_id + ", name=" + name + ", status=" + status
-				+ ", sort_order=" + sort_order + ", create_time=" + create_time + ", update_time=" + update_time + "]";
+				+ ", sort_order=" + sort_order + ", create_time=" + create_time + ", update_time=" + update_time
+				+ ", list=" + list + "]";
 	}
+	
+	
 	
 }

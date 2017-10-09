@@ -22,4 +22,6 @@ public interface CategoryDao {
 
 	int updateCategory(Category category);
 
+	List<Category> findCategory();
+
 }

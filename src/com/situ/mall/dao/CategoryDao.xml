@@ -4,6 +4,26 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.situ.mall.dao.CategoryDao">
 
+	<resultMap type="Category" id="findCategory">
+		<result property="id" column="c1_id"/>
+		<result property="name" column="c1_name"/>
+		<collection property="list" ofType="Category">
+			<result property="id" column="c2_id"/>
+			<result property="name" column="c2_name"/>
+			<result property="parent_id" column="c2_parent_id"/>
+			<result property="status" column="c2_status"/>
+			<result property="sort_order" column="c2_sort_order"/>
+			<result property="create_time" column="c2_create_time"/>
+			<result property="update_time" column="c2_update_time"/>
+		</collection>
+	</resultMap>
+
+	<select id="findCategory" resultMap="findCategory">
+		SELECT c1.id AS c1_id,c1.name AS c1_name,c2.id AS c2_id,c2.name AS c2_name,c2.status as c2_status,c2.parent_id as c2_parent_id,c2.sort_order as c2_sort_order,c2.create_time as c2_create_time,c2.update_time as c2_update_time
+		FROM category AS c1 LEFT JOIN category AS c2 
+		ON c2.parent_id=c1.id WHERE c1.parent_id=0;
+	</select>
+
 	<update id="updateCategory" parameterType="Category">
 		update category set 
 		parent_id=#{parent_id},name=#{name},status=#{status},update_time=now()

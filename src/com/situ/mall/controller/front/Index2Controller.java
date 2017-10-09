@@ -7,7 +7,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.situ.mall.pojo.Category;
 import com.situ.mall.pojo.Slideshow;
+import com.situ.mall.service.ICategoryService;
 import com.situ.mall.service.ISlideshowService;
 
 @Controller
@@ -16,11 +18,16 @@ public class Index2Controller {
 	
 	@Autowired
 	private ISlideshowService slideshowService;
+	@Autowired
+	private ICategoryService categoryService;
 	
 	@RequestMapping("/index")
 	public String index(Model model) {
-		List<Slideshow> list = slideshowService.findSlideshowOnstatus();
-		model.addAttribute("list", list);
+		List<Slideshow> slideshows = slideshowService.findSlideshowOnstatus();
+		List<Category> categories = categoryService.findCategory();
+		System.out.println(categories);
+		model.addAttribute("categories", categories);
+		model.addAttribute("slideshows", slideshows);
 		return "index";
 	}
 

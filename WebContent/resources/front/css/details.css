@@ -813,8 +813,8 @@ input{
 	color:#f41443;
 	}
 .bigimg{
-	float:left;
-	margin-left:175px;
+	width:850px;
+	float:right;
 	}
 .box18{
 	width:890px;

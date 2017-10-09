@@ -82,14 +82,13 @@
 	<div class="box8">
     	<div class="box13">
     		<div class="box9">
-    		<img src="${ctx}/resources/front/image/sm1.png">
+    		<img style="width:320px; height:320px;" src="/pic/${product.main_image}">
     		</div>
     		<div class="box10">
             	<img class="b10i1" src="${ctx}/resources/front/image/18.png">
-            	<div class="box10d"><img src="${ctx}/resources/front/image/sm1.png"></div>
-                <div class="box10d"><img src="${ctx}/resources/front/image/sm2.png"></div>
-                <div class="box10d"><img src="${ctx}/resources/front/image/sm3.png"></div>
-                <div class="box10d"><img src="${ctx}/resources/front/image/sm4.png"></div>
+            	<c:forEach items="${img }" var="image">
+            		<div class="box10d"><img src="/pic/${image}"></div>
+            	</c:forEach>
                 <img class="b10i2" src="${ctx}/resources/front/image/17.png">
 				<div class="clearfix"></div>
             </div>
@@ -100,16 +99,16 @@
             </div>
         </div>
     	<div class="box12">
-        	<h1>华为 畅享6S 金色 移动联通电信4G手机 双卡双待</h1>
+        	<h1>${product.name }</h1>
 			<div class="clearfix"></div>
-            <h2>骁龙芯片！金属机身！享看又享玩！付款后7天内发货</h2>
+            <h2>${product.subtitle}</h2>
  			<div class="clearfix"></div>
             <div class="b12b1">
             	<img class="b12b1i1" src="${ctx}/resources/front/image/117.png">
                 <p class="b12b1p1">&nbsp;&nbsp;全靓淘实物商品通用</p>
                 <p class="b12b1p2">去刮卷</p>
   				<div class="clearfix"></div>
-                <span style="font-size:14px; color:#666666; float:left;">&nbsp;&nbsp;&nbsp;&nbsp;促&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;销</span><span style="color:#f41443;">&nbsp;&nbsp;&nbsp;￥1499.00</span><del>￥1999</del>
+                <span style="font-size:14px; color:#666666; float:left;">&nbsp;&nbsp;&nbsp;&nbsp;促&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;销</span><span style="color:#f41443;">&nbsp;&nbsp;&nbsp;￥${product.price}</span><del>￥1999</del>
                 <br/>
                 <span style="font-size:14px; color:#666666; float:left; margin-top:5px;">&nbsp;&nbsp;&nbsp;&nbsp;支&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;持</span><img style="float:left; margin-left:10px; margin-top:5px;" src="${ctx}/resources/front/image/119.png"><img style="float:left; margin-left:10px; margin-top:5px;" src="${ctx}/resources/front/image/118.png">
   				<div class="clearfix"></div>
@@ -130,7 +129,7 @@
                     <p><span>增值保障</span><a class="a7" href=""><img src="${ctx}/resources/front/image/cu.png">屏碎保一年 ￥66</a><a class="a9" href=""><img src="${ctx}/resources/front/image/124.png">一年内换新 ￥86</a><a class="a8" href=""><img src="${ctx}/resources/front/image/125.png">碎屏保两年 ￥96</a></p>
                 </div>
  				<div class="clearfix"></div>
-                <p class="p2">数&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;量</p>
+                <p class="p2">数&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;量(库存：${product.stock})</p>
                 <input class="input1" type="text" value="1" id="input1">
                 <div class="b121">
                 	<input type="button" value="+" id="on">
@@ -409,7 +408,7 @@
             </div>
         </div>
     </div>
-    <img class="bigimg" src="${ctx}/resources/front/image/tu.png">
+    <div class="bigimg">${product.detail }</div>
     <div class="box18">
     	<div class="b18b1"><span>售后保障</span></div>
         <div class="b18b2">

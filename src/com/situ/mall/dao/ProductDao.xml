@@ -5,6 +5,10 @@
 <mapper namespace="com.situ.mall.dao.ProductDao">
 
 
+	<select id="findProductByCategoryId" parameterType="Integer" resultType="Product">
+		select * from product where category_id=#{id}
+	</select>
+
 	<select id="findCategoryById" parameterType="Integer" resultType="Category">
 		select * from category where id=#{id}
 	</select>
@@ -49,7 +53,7 @@
 	</update>
 
 	<update id="updateProduct" parameterType="Product">
-		update product set category_id=#{category_id},name=#{name},price=#{price},main_image=#{main_image},stock=#{stock},status=#{status},update_time=now() where id=#{id}
+		update product set category_id=#{category_id},name=#{name},subtitle=#{subtitle},price=#{price},main_image=#{main_image},sub_images=#{sub_images},detail=#{detail},stock=#{stock},status=#{status},update_time=now() where id=#{id}
 	</update>
 
 	<select id="findProductById" parameterType="Integer" resultType="Product">
@@ -65,8 +69,8 @@
 	</select>
 	
 	<insert id="addProduct" parameterType="Product">
-		insert into product(id,category_id,name,main_image,sub_images,detail,price,stock,status,create_time,update_time)
-		 values(#{id},#{category_id},#{name},#{main_image},#{sub_images},#{detail},#{price},#{stock},#{status},now(),now())
+		insert into product(subtitle,id,category_id,name,main_image,sub_images,detail,price,stock,status,create_time,update_time)
+		 values(#{subtitle},#{id},#{category_id},#{name},#{main_image},#{sub_images},#{detail},#{price},#{stock},#{status},now(),now())
 	</insert>
 	
 	<delete id="deleteProductById" parameterType="Integer">

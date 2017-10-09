@@ -39,5 +39,7 @@ public interface ProductDao {
 
 	Category findCategoryById(Integer id);
 
+	List<Product> findProductByCategoryId(Integer parent_id);
+
 
 }

@@ -60,4 +60,10 @@ public class CategoryServiceImpl implements ICategoryService {
 		int i = categoryDao.updateCategory(category);
 		return i>0?true:false;
 	}
+
+	@Override
+	public List<Category> findCategory() {
+		// TODO Auto-generated method stub
+		return categoryDao.findCategory();
+	}
 }

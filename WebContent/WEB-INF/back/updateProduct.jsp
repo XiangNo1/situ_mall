@@ -8,9 +8,13 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1 , user-scalable=no">
 		<title></title>
+	<%@include file="../common/head.jsp" %>
+			<link href="${ctx}/resources/thirdlib/kindeditor/themes/default/default.css" type="text/css" rel="stylesheet">
+ <script type="text/javascript" charset="utf-8" src="${ctx}/resources/thirdlib/kindeditor/kindeditor-all-min.js"></script>
+ <script type="text/javascript" charset="utf-8" src="${ctx}/resources/thirdlib/kindeditor/lang/zh_CN.js"></script>
+	
 	</head>
 	<body>
-	<%@include file="../common/head.jsp" %>
 		<div class="container-fluid">
 		
 		<nav class="navbar navbar-default">
@@ -103,14 +107,14 @@
     </select>
    	    
 	       商品名称：<input class="form-control" type="text" name="name" value="${product.name }"/><br/>
-<!-- 	       商品副标题：<input class="form-control" type="text" name="subtitle" value="${product.subtitle }"/><br/>
-	          产品主图地址：<input class="form-control" type="text" name="main_image" value="${product.main_image }"/><br/>
+ 	       商品副标题：<input class="form-control" type="text" name="subtitle" value="${product.subtitle }"/><br/>
+<!--	          产品主图地址：<input class="form-control" type="text" name="main_image" value="${product.main_image }"/><br/>
 	         图片地址:<input id="sub_images" name="sub_images"  class="form-control value="${product.sub_images }"">
 	         商品详情:<input id="detail" name="detail"  class="form-control value="${product.detail }"">
  -->	 <div>      
   		修改图片：
            <img alt="" src="${product.fullUrl }" id="imgId" src="" width=100 height=100>
-           <input type="hidden" name="main_image" id="main_image"/>
+           <input type="hidden" name="main_image" id="main_image" value="${product.main_image }"/>
            <input type="file" name="pictureFile" onchange="uploadPic();"/>
        </div>
  		  价格:<input id="price" name="price"  class="form-control" value="${product.price }">
@@ -119,12 +123,58 @@
 	         	<option value="1">在售</option>
 	         	<option value="2">下架</option>
 	         </select>
+	         
+	         <div class="form-group">
+ 				  	<label>商品图片</label>
+ 				  	 <a href="javascript:void(0)" class="picFileUpload" id="picFileUpload">上传图片</a>
+ 	                 <input type="hidden" name="sub_images" id="subImages" value="${product.sub_images }"/>
+ 	                 <div id="J_imageView"></div>
+ 				  </div>
+ 				  <div class="form-group">
+ 				  	<label>商品描述</label>
+ 				  	 <textarea style="width:900px;height:300px;visibility:hidden;" name="detail" value="${product.detail }"></textarea>
+ 				  </div>  
        <p><button class="btn btn-primary" type="submit">保存</button></p>
     </form>
 </div>
 </div>
 </div>
 <script type="text/javascript">
+
+var myKindEditor ;
+KindEditor.ready(function(K) {
+	var kingEditorParams = {
+			//指定上传文件参数名称
+			filePostName  : "pictureFile",
+			//指定上传文件请求的url。
+			uploadJson : "${ctx}/upload/pic.action",
+			//上传类型，分别为image、flash、media、file
+			dir : "image"
+	}
+	var editor = K.editor(kingEditorParams);
+	//多图片上传
+	K('#picFileUpload').click(function() {
+		editor.loadPlugin('multiimage', function() {
+			editor.plugin.multiImageDialog({
+				clickFn : function(urlList) {
+					console.log(urlList);
+					var div = K('#J_imageView');
+					var imgArray = [];
+					div.html('');
+					K.each(urlList, function(i, data) {
+						imgArray.push(data.name);
+						div.append('<img src="' + data.url + '" width="80" height="50">');
+					});
+					$("#subImages").val(imgArray.join(","));
+					editor.hideDialog();
+				}
+			});
+		});
+	});
+	//富文本编辑器
+	myKindEditor = KindEditor.create('#form-add[name=detail]', kingEditorParams);
+});
+
 
 $(function(){
     $("#status option[value='${product.status}']").prop("selected", true);
@@ -159,7 +209,7 @@ function selectCitys(obj) {
            
            var html = "<option>-请选择-</option>";
            for(var i=0;i<data.length;i++){
-               html +="<option value='"+data[i].parent_id+"'>"+data[i].name+"</option>";
+               html +="<option value='"+data[i].id+"'>"+data[i].name+"</option>";
            }
            $("#city").html(html);
         }
