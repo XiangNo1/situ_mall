@@ -12,7 +12,7 @@
 <body>
 <div class="un">
 <div class="box-center">
-	<div class="box1"><span>欢迎来到靓淘！ 首页</span></div>
+	<div class="box1"><span>欢迎来到靓淘！<a href="${ctx }/index/index.shtml"> 首页</a></span></div>
 	<div class="box2">
         	<ul>
             	<li><a class="login" href="">请登录</a></li>

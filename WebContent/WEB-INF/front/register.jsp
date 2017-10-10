@@ -44,19 +44,45 @@
 	<h1>用户注册</h1>
     <h2>已有账户<a href="">在此登录</a></h2>
 	<div class="clearfix"></div>
-    <input class="b5i1" type="text" placeholder="&nbsp;&nbsp;&nbsp;&nbsp;手机号" name="username">
+    <input class="b5i1" type="text" placeholder="&nbsp;&nbsp;&nbsp;&nbsp;账户名称" name="username" id="username">
 	<div class="clearfix"></div>
-    <input class="b5i2" type="text" placeholder="&nbsp;&nbsp;&nbsp;&nbsp;短信校验码">
-    <input class="b5i21" type="button" value="获取短信验证码">
+    <span style="display: block; float: left; margin-left: 30px;" id="nameInfo"></span><br/>
+    <input class="b5i1" type="text" placeholder="&nbsp;&nbsp;&nbsp;&nbsp;账户密码" name="password">
  	<div class="clearfix"></div>
-   <input class="b5i3" type="text" placeholder="&nbsp;&nbsp;&nbsp;&nbsp;密码" name="password">
+   <input class="b5i3" type="text" placeholder="&nbsp;&nbsp;&nbsp;&nbsp;邮箱" name="email">
  	<div class="clearfix"></div>
-   <input class="b5i4" type="text" placeholder="&nbsp;&nbsp;&nbsp;&nbsp;重复密码">
+   <input class="b5i4" type="text" placeholder="&nbsp;&nbsp;&nbsp;&nbsp;电话号码" name="phone">
 	<div class="clearfix"></div>
     <input class="b5i5" type="submit" value="同意协议并注册">
 	<div class="clearfix"></div>
     <a class="b5a2" href="">《靓淘优选用户协议》</a>
 </form>
 </div>
+
+
+<script type="text/javascript">
+
+$(function() {
+	$("#username").blur(function(){
+        var name = $(this).val();
+        $.ajax({
+            url:"${ctx}/user/checkUsername.action",
+            data:"username="+name,
+            dataType:"json",
+            success:function(data,textStatus,ajax){
+            	
+            	if(data){
+					$("#nameInfo").html("该用户已经存在");
+					$("#nameInfo").css("color", "red");
+				}else{
+					$("#nameInfo").html("该名称可用");
+					$("#nameInfo").css("color", "green");
+				}
+            }
+        });
+
+	});
+});
+</script>
 </body>
 </html>

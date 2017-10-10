@@ -41,5 +41,9 @@ public interface ProductDao {
 
 	List<Product> findProductByCategoryId(Integer parent_id);
 
+	List<Product> findProductBeanListByid(@Param(value="index")int index, @Param(value="pageSize")int pageSize, @Param(value="id")Integer id);
+
+	int findTotalCountProductByid(Integer id);
+
 
 }

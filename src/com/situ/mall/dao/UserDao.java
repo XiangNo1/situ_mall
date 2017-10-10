@@ -23,5 +23,7 @@ public interface UserDao {
 
 	User findUserByUser(String user);
 
+	int checkUsername(String username);
+
 	
 }

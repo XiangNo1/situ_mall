@@ -5,6 +5,10 @@
 <mapper namespace="com.situ.mall.dao.UserDao">
 
 
+	<select id="checkUsername" parameterType="String" resultType="Integer">
+		select count(*) from user where username=#{username}
+	</select>
+
 	<select id="findUserByUser" parameterType="String" resultType="User">
 		select * from user where username=#{user}
 	</select>

@@ -64,5 +64,12 @@ public class UserServiceImpl implements IUserService {
 		return userDao.findUserByUser(user);
 	}
 
+	@Override
+	public boolean checkUsername(String username) {
+		// TODO Auto-generated method stub
+		int i = userDao.checkUsername(username);
+		return i>0?true:false;
+	}
+
 	
 }

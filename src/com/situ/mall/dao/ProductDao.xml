@@ -5,6 +5,14 @@
 <mapper namespace="com.situ.mall.dao.ProductDao">
 
 
+	<select id="findTotalCountProductByid" parameterType="Integer" resultType="Integer">
+		select count(*) from product where category_id=#{id}
+	</select>
+
+	<select id="findProductBeanListByid" resultType="Product">
+		select * from product where category_id=#{id} limit #{index},#{pageSize}
+	</select>
+
 	<select id="findProductByCategoryId" parameterType="Integer" resultType="Product">
 		select * from product where category_id=#{id}
 	</select>

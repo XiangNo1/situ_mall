@@ -12,7 +12,7 @@
 <body>
 <div class="bg-box">
 <div class="box-center">
-		<div class="box1"><span class="wel">欢迎来到靓淘！ 首页</span></div>
+		<div class="box1"><span class="wel">欢迎来到靓淘！ <a href="${ctx }/index/index.shtml"> 首页</a></span></div>
 		<div class="box2">
         	<ul>
         	<c:if test="${userSession != null }">
@@ -35,7 +35,7 @@
    	 	<div class="clearfix"></div>
     <div class="box3"><img src="${ctx}/resources/front/image/LOGO.png" width="110%" height="110%"></div>
     <div class="box4">
-    			 <input class="btn1" type="text" value="洗面奶">
+    			 <input class="btn1" type="text" placeholder="洗面奶">
         		 <input class="btn2" type="button" value="搜索">
 				<ul class="nav">
                 	<li><a href="" style="color:#F41443;">保湿&nbsp;|</a></li>
@@ -50,7 +50,7 @@
                 </ul>
     </div>
     	<div class="box5">
-        	<a href="" class="box5-2"><span class="box5-1">去购物车结算</span></a>
+        	<a href="${ctx }/cart/cart.shtml" class="box5-2"><span class="box5-1">去购物车结算</span></a>
        		<div class="box5-3"></div>
         </div>
     <div class="clearfix"></div>

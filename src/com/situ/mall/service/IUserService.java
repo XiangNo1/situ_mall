@@ -18,4 +18,6 @@ public interface IUserService {
 
 	User findUserByUser(String user);
 
+	boolean checkUsername(String username);
+
 }
