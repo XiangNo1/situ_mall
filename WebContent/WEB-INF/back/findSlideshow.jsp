@@ -85,6 +85,8 @@
 					    		<td>图片链接地址</td>
 					    		<td>示意图</td>
 					    		<td>图片状态</td>
+					    		<td>创建时间</td>
+					    		<td>修改时间</td>
 					    		<td>删除</td>
 					    		<td>修改</td>
 					    	</tr>
@@ -104,6 +106,12 @@
 					    			<a href="${ctx}/slideshow/updateSlideshowStatus.action?status=1&id=${slideshow.id }">隐藏</a>
 					    		</c:if>
 					    		</td>
+					    		<td>
+								<fmt:formatDate value="${slideshow.create_time}" pattern="yyyy-MM-dd HH:mm:ss"/>
+								</td>
+								<td>
+								<fmt:formatDate value="${slideshow.update_time}" pattern="yyyy-MM-dd HH:mm:ss"/>
+								</td>
 					    		<td><a href="javascript:delSlideshow(${slideshow.id})">删除</a></td>
 					    		<td><a href="${ctx}/slideshow/updateSlideshow.action?id=${slideshow.id}">修改</a></td>
 					    	</tr>

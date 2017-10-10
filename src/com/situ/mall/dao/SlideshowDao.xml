@@ -5,7 +5,7 @@
 <mapper namespace="com.situ.mall.dao.SlideshowDao">
 
 	<update id="updateSlideshow" parameterType="Slideshow">
-		update slideshow set uri=#{uri},status=#{status},link=#{link} where id=#{id}
+		update slideshow set uri=#{uri},status=#{status},link=#{link},update_time=now() where id=#{id}
 	</update>
 
 	<select id="findSlideshowById" parameterType="Integer" resultType="Slideshow">
@@ -17,7 +17,7 @@
 	</delete>
 
 	<insert id="addSlideshow" parameterType="Slideshow">
-		insert into slideshow(uri,status,link) values(#{uri},#{status},#{link})
+		insert into slideshow(uri,status,link,create_time,update_time) values(#{uri},#{status},#{link},now(),now())
 	</insert>
 
 	<update id="updateSlideshowStatus" parameterType="Slideshow">
