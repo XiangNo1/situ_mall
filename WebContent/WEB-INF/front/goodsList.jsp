@@ -87,18 +87,19 @@ body{
   				</c:forEach>
   				<br/><br/>
   			</c:forEach>
+  			<br/>
   			      			<span style="margin-right:50px; line-height: 20px; font-size: 24px">当前：${category.name}</span>	
       				</div>
       				
       				
-      				<div>
+      				<div style="width: 910px; float: right;">
 					<c:forEach items="${pageBean.list}" var="product">
 						<a href="${ctx }/details/details2.shtml?id=${product.id}">
-							<div style="margin-right:20px; margin-left:40px; margin-top:40px; width: 200px; height: 350px; float:left;" >
+							<div style="margin-right:50px; margin-left:50px; margin-top:40px; width: 200px; height: 350px; float:left;" >
 								<img alt="" src="/pic/${product.main_image}" width="180px" height="200px">
 								<br/>
-								<h5>${product.name }</h5>
-								<p style="color:red;">价格：￥${product.price}</p>
+								<h5>${product.name }</h5><div class="clearfix"></div>
+								<p style="color:red;">价格：￥${product.price}</p><div class="clearfix"></div>
 							</div>
 						</a>
 					</c:forEach>
@@ -106,7 +107,7 @@ body{
 					<div class="clearfix"></div>
 						<!-- 分页开始 -->
 					
-				<nav aria-label="Page navigation" class="pull-left">
+				<nav aria-label="Page navigation" class="pull-right">
 				 <ul class="pagination">
 			    <c:if test="${pageBean.pageIndex==1}">
 		              <li class="disabled">

@@ -30,7 +30,7 @@ public class detailsController {
 		if (pageIndex!= null && !pageIndex.equals("")) {
 			pageIndex1 = Integer.parseInt(pageIndex);
 		}
-		int pageSize1 = 3;
+		int pageSize1 = 9;
 		if (pageSize != null && !pageSize.equals("")) {
 			pageSize1 = Integer.parseInt(pageSize);
 		}
