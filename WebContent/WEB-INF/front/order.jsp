@@ -50,7 +50,7 @@
 		
 			<div class="checkout-box">
 			<h2 class="title">订单设置</h2>
-				<form  id="checkoutForm" action="#" method="post">
+				<form  id="checkoutForm" action="${ctx }/order/order2.shtml" method="post">
 					<div class="checkout-box-bd">
 						<!-- 地址状态 0：默认选择；1：新增地址；2：修改地址 -->
 						<input type="hidden" name="Checkout[addressState]" id="addrState"   value="0">
@@ -67,8 +67,8 @@
 								
 								<c:forEach items="${shippings}" var="shapping">
 									<dl class="item" >
-											<input type="checkbox" value="${shapping.id }" id="checkShapping"/>
 										<dt>
+											<input type="checkbox" name="shipping_id" value="${shapping.id }"/>
 											<strong class="itemConsignee">收货人：${shapping.receiver_name }</strong>
 											<span class="itemTag tag">家</span>
 										</dt>
@@ -222,6 +222,7 @@
 												<div class="col col-3">${cartItemVO.amount }</div>
 												<div class="col col-4">${cartItemVO.product.price * cartItemVO.amount }元</div>
 											</div>
+											<br/>
 										</c:forEach>
 											
 											
@@ -292,13 +293,12 @@
 						<div class="checkout-confirm">
 
 							<a href="${ctx }/cart/cart.shtml" class="btn btn-lineDakeLight btn-back-cart">返回购物车</a>
-							<a href="${ctx }/order/order2.shtml" class="btn btn-primary">立即下单</a>
-
+							<input type="submit"  class="btn btn-primary" value="立即下单"/>
 						</div>
 					</div>
+			</form>
 			</div>
 
-			</form>
 
 		</div>
 		
