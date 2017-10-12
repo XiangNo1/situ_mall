@@ -13,23 +13,13 @@
 <body>
 <div class="bg-box">
 <div class="box-center">
-	<div class="box1"><span class="wel">欢迎来到靓淘！ <a href="${ctx }/index/index.shtml"> 首页</a></span></div>
-	<div class="box2">
-    	<ul>
-            	<li><a class="login" href="">请登录</a></li>
-            	<li><a href="">快速注册</a></li>
-            	<li><a class="collect" href="">我的收藏</a></li>
-            	<li><a class="order" href="">我的订单</a></li>
-            	<li><a class="phone" href="">手机靓淘</a></li>
-            	<li><a href="">我的积分</a></li>
-            	<li><a href="">我的评价</a></li>
-        </ul>
-    </div>
-    <div class="clearfix"></div>
+	<%@include file="index_head.jsp" %>
     <div class="box3"><img src="${ctx}/resources/front/image/LOGO.png"></div>
     <div class="box4">
-    	<input class="b4i1" type="text" value="魅蓝 E2">
-        <input class="b4i2" type="button" value="搜索">
+    <form action="${ctx }/details/details1.shtml" method="post">
+    			 <input class="b4i1" type="text" placeholder="洗面奶" name="product_name" value="${product_name}${category.name}">
+        		 <input class="b4i2" type="submit" value="搜索">
+		</form>
     	<div class="clearfix"></div>
         <ul>
         	<li><a href="">值得买 |</a></li>
@@ -41,7 +31,7 @@
         </ul>
     </div>
     <div class="box5">
-        	<a href="" class="box5-2"><span class="box5-1">去购物车结算</span></a>
+        	<a href="${ctx }/cart/cart.shtml" class="box5-2"><span class="box5-1">去购物车结算</span></a>
        		<div class="box5-3"></div>
     </div>
     <div class="clearfix"></div>
@@ -135,7 +125,7 @@
                 	<input type="button" value="+" id="on">
                     <input type="button" value="-" id="up">
                 </div>
-                <input class="input2" type="button" value="加入购物车">
+                <input class="input2" type="button"  onclick="addCart(${product.id})" value="加入购物车">
                  <div class="clearfix"></div>
 					<p class="p3">温馨提示&nbsp;&nbsp;&nbsp;&nbsp;·支持7天无理由退货</p>
             </div>
@@ -183,7 +173,13 @@
 
             });
 
-        })
+        });
+        
+        
+        function addCart(productId){
+			var amount = $("#input1").val();
+			window.location.href="${ctx}/cart/addCart.shtml?productId="+productId+"&amount="+amount;
+		}
         
        		 
 	</script>

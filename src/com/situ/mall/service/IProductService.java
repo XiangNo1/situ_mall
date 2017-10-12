@@ -35,7 +35,7 @@ public interface IProductService {
 
 	List<Product> findProductByCategoryId(Integer parent_id);
 
-	PageBean getPageBeanproductByid(int pageIndex1, int pageSize1, Integer id);
+	PageBean getPageBeanproductByid(int pageIndex1, int pageSize1, Integer id, String name);
 
 
 }

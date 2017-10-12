@@ -12,48 +12,9 @@
 <body>
 <div class="bg-box">
 <div class="box-center">
-		<div class="box1"><span class="wel">欢迎来到靓淘！ <a href="${ctx }/index/index.shtml"> 首页</a></span></div>
-		<div class="box2">
-        	<ul>
-        	<c:if test="${userSession != null }">
-            	<li><a class="login">欢迎回来 ： ${userSession.username} </a>
-            		<a  href="${ctx }/login/loginOut.shtml">退出登录</a>
-            	</li>
-        	</c:if>
-        	
-        	<c:if test="${userSession == null }">
-            	<li><a class="login" href="${ctx }/login/login.shtml">请登录</a></li>
-        	</c:if>
-            	<li><a href="${ctx }/login/register.shtml">快速注册</a></li>
-            	<li><a class="collect" href="">我的收藏</a></li>
-            	<li><a class="order" href="">我的订单</a></li>
-            	<li><a class="phone" href="">手机靓淘</a></li>
-            	<li><a href="">我的积分</a></li>
-            	<li><a href="">我的评价</a></li>
-            </ul>
-        </div>
-   	 	<div class="clearfix"></div>
-    <div class="box3"><img src="${ctx}/resources/front/image/LOGO.png" width="110%" height="110%"></div>
-    <div class="box4">
-    			 <input class="btn1" type="text" placeholder="洗面奶">
-        		 <input class="btn2" type="button" value="搜索">
-				<ul class="nav">
-                	<li><a href="" style="color:#F41443;">保湿&nbsp;|</a></li>
-                	<li><a href="">面膜&nbsp;|</a></li>
-                	<li><a href="">洗面奶&nbsp;|</a></li>
-                	<li><a href="">补水&nbsp;|</a></li>
-                	<li><a href="">香水&nbsp;|</a></li>
-                	<li><a href="">眼霜&nbsp;|</a></li>
-                	<li><a href="">口红&nbsp;|</a></li>
-                	<li><a href="">护肤套装&nbsp;|</a></li>
-                	<li><a href="">BB霜&nbsp;|</a></li>
-                </ul>
-    </div>
-    	<div class="box5">
-        	<a href="${ctx }/cart/cart.shtml" class="box5-2"><span class="box5-1">去购物车结算</span></a>
-       		<div class="box5-3"></div>
-        </div>
-    <div class="clearfix"></div>
+		<%@include file="index_head.jsp" %>
+		<%@include file="index_head2.jsp" %>
+   
 </div>
 <div class="box6">
 	<div class="box-center">

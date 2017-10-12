@@ -18,48 +18,8 @@ body{
 <body>
 <div class="bg-box">
 <div class="box-center">
-		<div class="box1"><span class="wel">欢迎来到靓淘！<a href="${ctx }/index/index.shtml"> 首页</a></span></div>
-		<div class="box2">
-        	<ul>
-        	<c:if test="${userSession != null }">
-            	<li><a class="login">欢迎回来 ： ${userSession.username} </a>
-            		<a  href="${ctx }/login/loginOut.shtml">退出登录</a>
-            	</li>
-        	</c:if>
-        	
-        	<c:if test="${userSession == null }">
-            	<li><a class="login" href="${ctx }/login/login.shtml">请登录</a></li>
-        	</c:if>
-            	<li><a href="${ctx }/login/register.shtml">快速注册</a></li>
-            	<li><a class="collect" href="">我的收藏</a></li>
-            	<li><a class="order" href="">我的订单</a></li>
-            	<li><a class="phone" href="">手机靓淘</a></li>
-            	<li><a href="">我的积分</a></li>
-            	<li><a href="">我的评价</a></li>
-            </ul>
-        </div>
-   	 	<div class="clearfix"></div>
-    <div class="box3"><img src="${ctx}/resources/front/image/LOGO.png" width="110%" height="110%"></div>
-    <div class="box4">
-    			 <input class="btn1" type="text" placeholder="洗面奶">
-        		 <input class="btn2" type="button" value="搜索">
-				<ul class="nav">
-                	<li><a href="" style="color:#F41443;">保湿&nbsp;|</a></li>
-                	<li><a href="">面膜&nbsp;|</a></li>
-                	<li><a href="">洗面奶&nbsp;|</a></li>
-                	<li><a href="">补水&nbsp;|</a></li>
-                	<li><a href="">香水&nbsp;|</a></li>
-                	<li><a href="">眼霜&nbsp;|</a></li>
-                	<li><a href="">口红&nbsp;|</a></li>
-                	<li><a href="">护肤套装&nbsp;|</a></li>
-                	<li><a href="">BB霜&nbsp;|</a></li>
-                </ul>
-    </div>
-    	<div class="box5">
-        	<a href="" class="box5-2"><span class="box5-1">去购物车结算</span></a>
-       		<div class="box5-3"></div>
-        </div>
-    <div class="clearfix"></div>
+		<%@include file="index_head.jsp" %>
+		<%@include file="index_head2.jsp" %>
 </div>
 <div class="box6">
 	<div class="box-center">
@@ -88,7 +48,7 @@ body{
   				<br/><br/>
   			</c:forEach>
   			<br/>
-  			      			<span style="margin-right:50px; line-height: 20px; font-size: 24px">当前：${category.name}</span>	
+  			      			<%-- <span style="margin-right:50px; line-height: 20px; font-size: 24px">当前：${category.name}</span>	 --%>
       				</div>
       				
       				
@@ -118,7 +78,7 @@ body{
           		 </c:if>
 		           <c:if test="${pageBean.pageIndex!=1}">
 		              <li>
-		                 <a href="${ctx}/details/details1.shtml?pageIndex=${pageBean.pageIndex-1}&id=${id}" aria-label="Previous">
+		                 <a href="${ctx}/details/details1.shtml?pageIndex=${pageBean.pageIndex-1}&id=${id}&product_name=${product_name}" aria-label="Previous">
 		                   <span aria-hidden="true">&laquo;</span>
 		                 </a>
 		              </li>
@@ -126,7 +86,7 @@ body{
 
 			   <c:forEach begin="1" end="${pageBean.totalPage}" var="page">
               <c:if test="${pageBean.pageIndex!=page}">
-                   <li><a href="${ctx}/details/details1.shtml?pageIndex=${page}&id=${id}">${page}</a></li>
+                   <li><a href="${ctx}/details/details1.shtml?pageIndex=${page}&id=${id}&product_name=${product_name}">${page}</a></li>
               </c:if>
               <!-- 遍历的时候page和pageIndex相等，高亮显示 -->
               <c:if test="${pageBean.pageIndex==page}">
@@ -144,7 +104,7 @@ body{
           		 </c:if>
 		           <c:if test="${pageBean.pageIndex!=pageBean.totalPage}">
 		              <li>
-		                 <a href="${ctx}/details/details1.shtml?pageIndex=${pageBean.pageIndex+1}&id=${id}" aria-label="Previous">
+		                 <a href="${ctx}/details/details1.shtml?pageIndex=${pageBean.pageIndex+1}&id=${id}&product_name=${product_name}" aria-label="Previous">
 		                   <span aria-hidden="true">&raquo;</span>
 		                 </a>
 		              </li>
@@ -160,6 +120,34 @@ body{
 
  			
 	<div class="box-center">
+	 <div class="box20">
+    	<ul>
+        	<li class="b20l1">
+            	<span>
+                	<p>品质保障</p>
+                    <p>品质护航 购物无忧</p>
+                </span>
+            </li>
+        	<li class="b20l2">
+            	<span>
+                	<p>特色服务体验</p>
+                    <p>为您呈现不一样的服务</p>
+                </span>
+            </li>
+        	<li class="b20l3">
+            	<span>
+                	<p>帮助中心</p>
+                    <p>您的购物指南</p>
+                </span>
+            </li>
+        	<li class="b20l4">
+            	<span>
+                	<p>七天无理由退换货</p>
+                    <p>为您提供售货物有保障</p>
+                </span>
+            </li>
+        </ul>
+    </div>
     <div class="box22">
     	<ul class="b22u1">
         	<li>

@@ -116,16 +116,16 @@ public class ProductServiceImpl implements IProductService {
 	}
 
 	@Override
-	public PageBean getPageBeanproductByid(int pageIndex, int pageSize, Integer id) {
+	public PageBean getPageBeanproductByid(int pageIndex, int pageSize, Integer id, String name) {
 		PageBean<Product> pageBean = new PageBean<Product>();
 		pageBean.setPageIndex(pageIndex);
 		pageBean.setPageSize(pageSize);
-		int totalCount = productDao.findTotalCountProductByid(id);
+		int totalCount = productDao.findTotalCountProductByid(id, name);
 		pageBean.setTotalCount(totalCount);
 		int totalPage =(int) Math.ceil((double) totalCount / pageSize );
 		pageBean.setTotalPage(totalPage);
 		int index =( pageIndex - 1) * pageSize;
-		List<Product> list = productDao.findProductBeanListByid(index, pageSize, id);
+		List<Product> list = productDao.findProductBeanListByid(index, pageSize, id, name);
 		pageBean.setList(list);
 		return pageBean;
 	}

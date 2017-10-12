@@ -6,11 +6,28 @@
 
 
 	<select id="findTotalCountProductByid" parameterType="Integer" resultType="Integer">
-		select count(*) from product where category_id=#{id}
+		select count(*) from product
+		<where>
+	       <if test="id != null">
+	           and category_id=#{id}
+	       </if>
+	       <if test="name != null">
+	           and name like '%${name}%'
+	       </if>
+       </where>
 	</select>
 
 	<select id="findProductBeanListByid" resultType="Product">
-		select * from product where category_id=#{id} limit #{index},#{pageSize}
+		select * from product 
+		<where>
+			<if test="id != null">
+	           and category_id=#{id}
+	       </if>
+	       <if test="name != null">
+	           and name like '%${name}%'
+	       </if> 
+	     </where>
+	       limit #{index},#{pageSize}
 	</select>
 
 	<select id="findProductByCategoryId" parameterType="Integer" resultType="Product">

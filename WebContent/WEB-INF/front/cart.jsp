@@ -12,19 +12,8 @@
 <body>
 <div class="un">
 <div class="box-center">
-	<div class="box1"><span>欢迎来到靓淘！<a href="${ctx }/index/index.shtml"> 首页</a></span></div>
-	<div class="box2">
-        	<ul>
-            	<li><a class="login" href="">请登录</a></li>
-            	<li><a href="">快速注册</a></li>
-            	<li><a class="collect" href="">我的收藏</a></li>
-            	<li><a class="order" href="">我的订单</a></li>
-            	<li><a class="phone" href="">手机靓淘</a></li>
-            	<li><a href="">我的积分</a></li>
-            	<li><a href="">我的评价</a></li>
-            </ul>
-    </div>
-    <div class="clearfix"></div>
+	
+	<%@include file="index_head.jsp" %>
 	<div class="box3"><img src="${ctx}/resources/front/image/LOGO.png"><span>购物车</span></div>
 	<div class="box4">
     	<input class="b41" type="text" value="华为"><input class="b42" type="button" value="搜索">
@@ -60,6 +49,9 @@
     </div>
     <div class="box9"><img src="${ctx}/resources/front/image/157.png"></div>
     <div class="clearfix"></div>
+    
+    
+    <c:forEach items="${buyCartVO.items }" var="cartItemVO">
     <div class="box10">
     	<div class="un10">
         	<div class="uu1"><img src="${ctx}/resources/front/image/158.png">		
@@ -69,11 +61,10 @@
             <span class="s4">去凑单 &gt;</span>
         </div>
         <input class="b10i1" type="checkbox">
-        <div class="b10b1"><img src="${ctx}/resources/front/image/huawei2.jpg"></div>
+        <div class="b10b1"><img src="/pic/${cartItemVO.product.main_image}"></div>
         <div class="b10b2">
-        		<ul class="b10u1">
-                	<li>华为 畅享6S 银色 移动联通电信4G手</li>
-                	<li>机 双卡双待</li>
+        		<ul class="b10u1" style="width:260px;">
+                	<li>${cartItemVO.product.name}</li>
                 	<li class="b10ii1">支持7天无理由退货</li>
                 	<li class="b10ii2">选包装</li>
                 </ul>
@@ -81,165 +72,29 @@
         <ul class="ulul1">
             <li class="l90"><div>
             	<p><del style="color:#b3b3b3">￥1699.00</del></p>
-            	<p>￥1499.00</p>
+            	<p>￥${cartItemVO.product.price}</p>
                 </div>
             </li>
         	<li class="l91">
-            	<input class="inp1" type="button" value="-">
-            	<input class="inp2" type="text" value="1" size="4">
-            	<input class="inp1" type="button" value="+">
+            	<input class="inp1" type="button" value="-" onclick="sub(${cartItemVO.product.id})">
+            	<input type="hidden" value="${cartItemVO.amount}" id="input3"/>
+            	<input class="inp2" type="text" value="${cartItemVO.amount}" size="4" id="input">
+            	<input type="hidden" value="${cartItemVO.product.id}" id="input2"/>
+            	<input class="inp1" type="button" value="+" onclick="increase(${cartItemVO.product.id})">
                 
             </li>
-        	<li class="l92">￥1499.00</li>
-        	<li class="l93"><img src="${ctx}/resources/front/image/166.png"></li>
+        	<li class="l92">￥${cartItemVO.product.price*cartItemVO.amount}</li>
+        	<li class="l93"><img src="${ctx}/resources/front/image/166.png" onclick="deleteProduct(${cartItemVO.product.id})"></li>
         </ul>
     </div>
-    <div class="box10">
-    	<div class="un10">
-        	<div class="uu1"><img src="${ctx}/resources/front/image/158.png">		
-            </div>
-            <span class="s2">活动商品购满￥105.00，即可加价换购商品1件 &gt;</span>
-            <span class="s3">查看换购品</span>
-            <span class="s4">去凑单 &gt;</span>
-        </div>
-        <input class="b10i1" type="checkbox">
-        <div class="b10b1"><img src="${ctx}/resources/front/image/162.png"></div>
-        <div class="b10b2">
-        		<ul class="b10u1">
-                	<li>小熊（Beer）加湿器JSQ-A50U1 5L</li>
-                	<li>大容量静音卧室办公室加湿器</li>
-                	<li class="b10ii1">支持7天无理由退货</li>
-                	<li class="b10ii2">选包装</li>
-                </ul>
-        </div>
-        <ul class="ulul1">
-            <li class="l90"><div>
-            	<p><del style="color:#b3b3b3">￥199.00</del></p>
-            	<p>￥109.00</p>
-                </div>
-            </li>
-        	<li class="l91">
-            	<input class="inp1" type="button" value="-">
-            	<input class="inp2" type="text" value="1" size="4">
-            	<input class="inp1" type="button" value="+">
-                
-            </li>
-        	<li class="l92">￥109.00</li>
-        	<li class="l93"><img src="${ctx}/resources/front/image/166.png"></li>
-        </ul>
-    </div>
-    <div class="box10">
-    	<div class="un10">
-        	<div class="uu1"><img src="${ctx}/resources/front/image/158.png">		
-            </div>
-            <span class="s2">活动商品购满￥105.00，即可加价换购商品1件 &gt;</span>
-            <span class="s3">查看换购品</span>
-            <span class="s4">去凑单 &gt;</span>
-        </div>
-        <input class="b10i1" type="checkbox">
-        <div class="b10b1"><img src="${ctx}/resources/front/image/huawei4.jpg"></div>
-        <div class="b10b2">
-        		<ul class="b10u1">
-                	<li>罗马仕（ROMOSS） sense6Plus 移</li>
-                	<li>动电源/充电宝</li>
-                	<li class="b10ii1">支持7天无理由退货</li>
-                	<li class="b10ii2">选包装</li>
-                </ul>
-        </div>
-        <ul class="ulul1">
-            <li class="l90"><div>
-            	<p><del style="color:#b3b3b3">￥199.00</del></p>
-            	<p>￥109.00</p>
-                </div>
-            </li>
-        	<li class="l91">
-            	<input class="inp1" type="button" value="-">
-            	<input class="inp2" type="text" value="1" size="4">
-            	<input class="inp1" type="button" value="+">
-                
-            </li>
-        	<li class="l92">￥109.00</li>
-        	<li class="l93"><img src="${ctx}/resources/front/image/166.png"></li>
-        </ul>
-    </div>
-    <div class="box10">
-    	<div class="un10">
-        	<div class="uu1"><img src="${ctx}/resources/front/image/158.png">		
-            </div>
-            <span class="s2">活动商品购满￥105.00，即可加价换购商品1件 &gt;</span>
-            <span class="s3">查看换购品</span>
-            <span class="s4">去凑单 &gt;</span>
-        </div>
-        <input class="b10i1" type="checkbox">
-        <div class="b10b1"><img src="${ctx}/resources/front/image/164.png"></div>
-        <div class="b10b2">
-        		<ul class="b10u1">
-                	<li>华为 畅享6S 4GB 32GB 全网通4G手</li>
-                	<li>机 高配版</li>
-                	<li class="b10ii1">支持7天无理由退货</li>
-                	<li class="b10ii2">选包装</li>
-                </ul>
-        </div>
-        <ul class="ulul1">
-            <li class="l90"><div>
-            	<p><del style="color:#b3b3b3">￥1699.00</del></p>
-            	<p>￥1299.00</p>
-                </div>
-            </li>
-        	<li class="l91">
-            	<input class="inp1" type="button" value="-">
-            	<input class="inp2" type="text" value="1" size="4">
-            	<input class="inp1" type="button" value="+">
-                
-            </li>
-        	<li class="l92">￥1299.00</li>
-        	<li class="l93"><img src="${ctx}/resources/front/image/166.png"></li>
-        </ul>
-    </div>
-    <div class="box8">
-    	<input type="checkbox" id="xibianziying">
-        <label for="xibianziying"><span style=" background-color:white; color:#666666;">西边数码自营店</span></label>
-    </div>
-    <div class="box9"><img src="${ctx}/resources/front/image/157.png"></div>
-    <div class="clearfix"></div>
-    <div class="box10">
-    	<div class="un10">
-        	<div class="uu1"><img src="${ctx}/resources/front/image/158.png">		
-            </div>
-            <span class="s2">活动商品购满￥105.00，即可加价换购商品1件 &gt;</span>
-            <span class="s3">查看换购品</span>
-            <span class="s4">去凑单 &gt;</span>
-        </div>
-        <input class="b10i1" type="checkbox">
-        <div class="b10b1"><img src="${ctx}/resources/front/image/165.png"></div>
-        <div class="b10b2">
-        		<ul class="b10u1">
-                	<li>甲由T6可通电无线鼠标苹果笔记本超</li>
-                	<li>薄 女生电脑无线鼠标</li>
-                	<li class="b10ii1">支持7天无理由退货</li>
-                	<li class="b10ii2">选包装</li>
-                </ul>
-        </div>
-        <ul class="ulul1">
-            <li class="l90"><div>
-            	<p><del style="color:#b3b3b3">￥48.00</del></p>
-            	<p>￥32.00</p>
-                </div>
-            </li>
-        	<li class="l91">
-            	<input class="inp1" type="button" value="-">
-            	<input class="inp2" type="text" value="1" size="4">
-            	<input class="inp1" type="button" value="+">
-                
-            </li>
-        	<li class="l92">￥32.00</li>
-        	<li class="l93"><img src="${ctx}/resources/front/image/166.png"></li>
-        </ul>
-    </div>
+    
+    </c:forEach>
+    <br/>
+    <span><a style="line-height: 30px; font-size: 20px; " href="${ctx }/details/details2.shtml?id=${buyCartVO.productId}">返回继续购物</a></span>
     <div class="box11">
     	<input type="checkbox" id="quan"><label for="quan">全选</label>
-        <a href="" class="jiesuan">立即结算</a>
-        <span class="b11s1">总金额（已免运费）：<span class="b11s2">￥7175</span></span>
+        <a href="#" class="jiesuan">立即结算</a>
+        <span class="b11s1">总金额（已免运费）：<span class="b11s2">￥${buyCartVO.totalPrice}</span></span>
     </div>
     <div class="box12">
     	<ul>
@@ -331,5 +186,34 @@
         <p>京公网安备 11010102001226|京ICP证111033号|食品流通许可证 SP1101051110165515（1-1）|执业营照</p>
     </div>
 </div>
+
+<script type="text/javascript">
+	function increase(productId){
+		var amount = 1;
+		window.location.href="${ctx}/cart/addCart.shtml?productId="+productId+"&amount="+amount;
+	}
+	
+	function sub(productId){
+		var amount = -1;
+		window.location.href="${ctx}/cart/addCart.shtml?productId="+productId+"&amount="+amount;
+	}
+	
+	function deleteProduct(id) {
+	       var isDel = confirm("您确认要删除吗？");
+	       if (isDel) {
+	           //要删除
+	           location.href = "${ctx}/cart/deleteProduct.shtml?id="
+	                  + id;
+	       }
+	    };
+	$("#input").change(function(){
+		var amount = $("#input").val();
+		var productId = $("#input2").val();
+		var de =  amount - $("#input3").val();
+		window.location.href="${ctx}/cart/addCart.shtml?productId="+productId+"&amount="+de;
+	});
+	    
+	    
+</script>
 </body>
 </html>

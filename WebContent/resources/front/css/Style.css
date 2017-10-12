@@ -73,13 +73,13 @@ img{
 	margin-bottom:18px;
 }
 .box4{
-	margin-top:31px;
-	margin-bottom:18px;
+	margin-top:31px !important;
+	margin-bottom:18px !important;
 	float:left;
-	margin-left:170px;
+	margin-left:170px !important;
 	}
 .box4 input{
-	float:left;
+	float:left !important;
 	}
 input{
 	margin:0;
@@ -88,13 +88,13 @@ input{
 	outline:none;
 	}
 .box4 .btn1{
-	width:400px;
-	height:28px;
+	width:400px !important;
+	height:28px !important;
 	border:3px solid #F41443;
 	}
 .box4 .btn2{
 	width:100px;
-	height:34px;
+	height:34px !important;
 	background:#F41443;
 	color:white;
 	}
@@ -104,11 +104,11 @@ input{
 	margin-top:4px;
 	}
 .box4 a{
-	color:#808080;
+	color:#808080;padding:0 !important;
 	}
 .box4 li{
 	float:left;
-	margin-left:3px;
+	margin-left:3px !important;
 	}
 .box5{
 	width:137px;

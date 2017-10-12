@@ -24,8 +24,10 @@ public class detailsController {
 	@Autowired
 	private ICategoryService categoryService;
 	
+	
+	
 	@RequestMapping(value="/details1")
-	public ModelAndView findAllCategory(Integer id, String pageIndex, String pageSize,ModelAndView modelAndView) {
+	public ModelAndView findAllCategory(Integer id, String product_name, String pageIndex, String pageSize,ModelAndView modelAndView) {
 		int pageIndex1 = 1;
 		if (pageIndex!= null && !pageIndex.equals("")) {
 			pageIndex1 = Integer.parseInt(pageIndex);
@@ -34,7 +36,7 @@ public class detailsController {
 		if (pageSize != null && !pageSize.equals("")) {
 			pageSize1 = Integer.parseInt(pageSize);
 		}
-		PageBean pageBean = productService.getPageBeanproductByid(pageIndex1,pageSize1, id);
+		PageBean pageBean = productService.getPageBeanproductByid(pageIndex1,pageSize1, id, product_name);
 		System.out.println(pageBean);
 		List<Category> categories = categoryService.findCategory();
 		System.out.println(categories);
@@ -42,6 +44,7 @@ public class detailsController {
 		modelAndView.addObject("categories", categories);
 		modelAndView.addObject("category", category);
 		modelAndView.addObject("pageBean", pageBean);
+		modelAndView.addObject("product_name", product_name);
 		modelAndView.addObject("id", id);
 		modelAndView.setViewName("goodsList");
 		return modelAndView;
