@@ -93,7 +93,7 @@
     <span><a style="line-height: 30px; font-size: 20px; " href="${ctx }/details/details2.shtml?id=${buyCartVO.productId}">返回继续购物</a></span>
     <div class="box11">
     	<input type="checkbox" id="quan"><label for="quan">全选</label>
-        <a href="#" class="jiesuan">立即结算</a>
+        <a href="${ctx }/order/order.shtml" class="jiesuan">立即结算</a>
         <span class="b11s1">总金额（已免运费）：<span class="b11s2">￥${buyCartVO.totalPrice}</span></span>
     </div>
     <div class="box12">
