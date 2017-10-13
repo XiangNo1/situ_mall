@@ -18,7 +18,12 @@
 </div>
 <div class="clearfix"></div>
 
+<div class="box-center">
+	<div style="height: 300px; width: 250px;">
+		您已经成功下单
+	</div>
 
+</div>
 
 
 

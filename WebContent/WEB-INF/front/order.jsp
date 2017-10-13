@@ -68,7 +68,7 @@
 								<c:forEach items="${shippings}" var="shapping">
 									<dl class="item" >
 										<dt>
-											<input type="checkbox" name="shipping_id" value="${shapping.id }"/>
+											<input type="radio" name="shipping_id" value="${shapping.id }" checked="checked"/>
 											<strong class="itemConsignee">收货人：${shapping.receiver_name }</strong>
 											<span class="itemTag tag">家</span>
 										</dt>

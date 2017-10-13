@@ -18,7 +18,7 @@ public class UserServiceImpl implements IUserService {
 
 	@Override
 	public PageBean getPageBeanUser(int pageIndex, int pageSize) {
-		PageBean<Product> pageBean = new PageBean<Product>();
+		PageBean<User> pageBean = new PageBean<User>();
 		pageBean.setPageIndex(pageIndex);
 		pageBean.setPageSize(pageSize);
 		int totalCount = userDao.findTotalCountUser();
@@ -26,7 +26,7 @@ public class UserServiceImpl implements IUserService {
 		int totalPage =(int) Math.ceil((double) totalCount / pageSize );
 		pageBean.setTotalPage(totalPage);
 		int index =( pageIndex - 1) * pageSize;
-		List<Product> list = userDao.findUserBeanList(index, pageSize);
+		List<User> list = userDao.findUserBeanList(index, pageSize);
 		pageBean.setList(list);
 		return pageBean;
 	}

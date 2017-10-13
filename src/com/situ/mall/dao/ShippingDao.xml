@@ -6,6 +6,35 @@
 
 
 
+	<update id="updateShipping" parameterType="Shipping">
+		update shipping set user_id=#{user_id},receiver_name=#{receiver_name},receiver_phone=#{receiver_phone},receiver_mobile=#{receiver_mobile},receiver_province=#{receiver_province},receiver_city=#{receiver_city},receiver_district=#{receiver_district},receiver_address=#{receiver_address},receiver_zip=#{receiver_zip},update_time=now() where id=#{id}
+	</update>
+
+	<select id="findShippingById" parameterType="Integer" resultType="Shipping">
+		select * from shipping where id=#{id}
+	</select>
+
+	<delete id="deleteShippingByid" parameterType="Integer">
+		delete from shipping where id=#{id}
+	</delete>
+
+	<insert id="addShipping" parameterType="Shipping">
+		insert into shipping(user_id,receiver_name,receiver_phone,receiver_mobile,receiver_province,receiver_city,receiver_district,receiver_address,receiver_zip,create_time,update_time)
+		 values(#{user_id},#{receiver_name},#{receiver_phone},#{receiver_mobile},#{receiver_province},#{receiver_city},#{receiver_district},#{receiver_address},#{receiver_zip},now(),now())
+	</insert>
+
+	<select id="findShippingBeanList" resultType="Shipping">
+		select * from shipping limit #{index},#{pageSize}
+	</select>
+
+	<select id="findTotalCountShipping" resultType="Integer">
+		select count(*) from shipping
+	</select>
+
+	<select id="findShipping" resultType="Shipping">
+		select * from shipping
+	</select>
+
 	<select id="findShippingByUserId" parameterType="Integer" resultType="Shipping">
 		select * from shipping where user_id=#{id}
 	</select>

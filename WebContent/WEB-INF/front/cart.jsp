@@ -78,7 +78,7 @@
         	<li class="l91">
             	<input class="inp1" type="button" value="-" onclick="sub(${cartItemVO.product.id})">
             	<input type="hidden" value="${cartItemVO.amount}" id="input3"/>
-            	<input class="inp2" type="text" value="${cartItemVO.amount}" size="4" id="input">
+            	<input class="inp2" type="text" value="${cartItemVO.amount}" size="4" id="input${cartItemVO.product.id }" onchange="change(${cartItemVO.product.id },${cartItemVO.amount})">
             	<input type="hidden" value="${cartItemVO.product.id}" id="input2"/>
             	<input class="inp1" type="button" value="+" onclick="increase(${cartItemVO.product.id})">
                 
@@ -206,13 +206,20 @@
 	                  + id;
 	       }
 	    };
-	$("#input").change(function(){
+	    
+	    function change(id,amount){
+	    	var amount2= $("#input"+ id).val();
+	    	window.location.href="${ctx}/cart/updateCart.shtml?id="+id+"&amount="+amount2;
+	    }
+	    
+    /* var productId = $("#input2").val();
+    var inputid = "input" + productId;
+	$("#${inputid}").change(function(){
 		var amount = $("#input").val();
-		var productId = $("#input2").val();
 		var de =  amount - $("#input3").val();
 		window.location.href="${ctx}/cart/addCart.shtml?productId="+productId+"&amount="+de;
 	});
-	    
+	  $("#input${id}") */
 	    
 </script>
 </body>

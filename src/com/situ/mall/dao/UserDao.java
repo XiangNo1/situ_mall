@@ -11,7 +11,7 @@ public interface UserDao {
 
 	int findTotalCountUser();
 
-	List<Product> findUserBeanList(@Param(value="index")int index, @Param(value="pageSize")int pageSize);
+	List<User> findUserBeanList(@Param(value="index")int index, @Param(value="pageSize")int pageSize);
 
 	int addUser(User user);
 

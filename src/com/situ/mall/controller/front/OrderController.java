@@ -7,6 +7,7 @@ import java.util.List;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.situ.mall.constant.MallConstant;
 import com.situ.mall.pojo.Order;
 import com.situ.mall.pojo.OrderItem;
 import com.situ.mall.pojo.Product;
@@ -44,7 +46,7 @@ public class OrderController {
 	
 	
 	@RequestMapping(value="/order")
-	public String order(Model model, HttpServletRequest request){
+	public String order(Model model, HttpServletRequest request, HttpServletResponse response){
 		//从cookie获取buyCartVO
 		//springmvc
 		ObjectMapper objectMapper = new ObjectMapper();
@@ -79,11 +81,13 @@ public class OrderController {
 		//shapping 收货地址
 		List<Shipping> shippings = shippingService.findShippingByUserId(user.getId());
 		model.addAttribute("shippings", shippings);
+		
+
 		return "order";
 	}
 	
 	@RequestMapping(value="/order2")
-	public String order2(Integer[] shipping_id, HttpServletRequest request, Model model){
+	public String order2(Integer[] shipping_id, HttpServletRequest request,HttpServletResponse response, Model model){
 		//从cookie获取buyCartVO
 		//springmvc
 		ObjectMapper objectMapper = new ObjectMapper();
@@ -144,7 +148,11 @@ public class OrderController {
 			orderItem.setTotal_price(new BigDecimal(cartItemVO.getAmount() * product.getPrice().doubleValue()));
 			orderItemService.addOrderItem(orderItem);
 		}
-		
+		//4.生成订单后要清楚cookie
+	       Cookie cookie = new Cookie(MallConstant.BUY_CART_COOKIE,null);
+	       cookie.setPath("/");
+	       cookie.setMaxAge(0);
+	       response.addCookie(cookie);
 		return "order2";
 	}
 }
