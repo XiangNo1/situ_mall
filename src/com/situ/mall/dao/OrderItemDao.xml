@@ -6,6 +6,10 @@
 
 
 
+	<select id="findOrderItemByorder_no" parameterType="Long" resultType="OrderItem">
+		select * from order_item where order_no=#{order_no}
+	</select>
+
 	<insert id="addOrderItem" parameterType="OrderItem">
 		insert into order_item(user_id,order_no,product_id,product_name,product_image,current_unit_price,quantity,total_price,create_time,update_time) 
 		values(#{user_id},#{order_no},#{product_id},#{product_name},#{product_image},#{current_unit_price},#{quantity},#{total_price},now(),now())

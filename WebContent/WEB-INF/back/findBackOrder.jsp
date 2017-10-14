@@ -64,18 +64,14 @@
 		    <div class="row">
 		        <div class="col-md-2">
 		            <div class="list-group">
-		                <a href="${ctx}/shipping/findShipping.action" class="list-group-item active">收货地址管理</a>
-		                <a href="${ctx}/shipping/addShipping.action" class="list-group-item">添加地址</a>
+		                <a href="${ctx}/backOrder/findBackOrder.action" class="list-group-item active">订单管理</a>
 		                
 		            </div>
 		        </div>
 		        <div class="col-md-10">
 		            <ul class="nav nav-tabs">
 		                <li class="active">
-		                    <a href="${ctx}/shipping/findShipping.action">收货地址管理</a>
-		                </li>
-		                <li>
-		                	<a href="${ctx}/shipping/addShipping.action">添加收货地址</a>
+		                    <a href="${ctx}/backOrder/findBackOrder.action">订单管理</a>
 		                </li>
 		                <!-- <li><input  class="btn btn-primary" type="button" onclick="deleteAll()" value="批量删除"/></li> -->
 		            </ul>
@@ -134,8 +130,8 @@
 										<fmt:formatDate value="${orderr.update_time}" pattern="yyyy-MM-dd HH:mm:ss"/>
 										</td>
 										<td><a href="javascript:delShipping(${shipping.id });">删除</a></td>
-										<td><a href="${ctx }/shipping/updateShipping.action?id=${shipping.id}">修改</a></td>
-										<td><a href="${ctx }/shipping/updateShipping.action?id=${shipping.id}">详细信息</a></td>										
+										<td><a href="${ctx }/backOrder/updateBackOrder.action?id=${orderr.id}">修改</a></td>
+										<td><a onclick="moreAc(${orderr.order_no})">详细信息</a></td>										
 									</tr>
 								</c:forEach>
 						                </tbody>
@@ -198,6 +194,31 @@
 		</div>
 		
 	<script>
+function moreAc(order_no){
+	//iframe窗
+	layer.open({
+	  type: 2,
+	  title: false,
+	 // closeBtn: 0, //不显示关闭按钮
+	  shade: [0],
+	  area: ['1040px', '515px'],
+	 // offset: 'rb', //右下角弹出
+	 // time: 2000, //2秒后自动关闭
+	  anim: 2,
+	  content: ['${ctx}/backOrder/findOrderItem.action?order_no='+order_no, 'yes'], //iframe的url，no代表不显示滚动条
+	  /* end: function(){ //此处用于演示
+	    layer.open({
+	      type: 2,
+	      title: '很多时候，我们想最大化看，比如像这个页面。',
+	      shadeClose: true,
+	      shade: false,
+	      maxmin: true, //开启最大化最小化按钮
+	      area: ['893px', '600px'],
+	      content: '//fly.layui.com/'
+	    });
+	  } */
+	});
+}	
 	
 	function delShipping(id) {
 	       var isDel = confirm("您确认要删除吗？");

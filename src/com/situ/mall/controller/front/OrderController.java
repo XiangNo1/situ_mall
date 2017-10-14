@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -29,6 +30,7 @@ import com.situ.mall.service.IProductService;
 import com.situ.mall.service.IShippingService;
 import com.situ.mall.vo.BuyCartVO;
 import com.situ.mall.vo.CartItemVO;
+import com.situ.mall.vo.PageBean;
 
 @Controller
 @RequestMapping(value="/order")
@@ -44,6 +46,23 @@ public class OrderController {
 	@Autowired
 	private IOrderItemService orderItemService;
 	
+	
+	@RequestMapping(value="/myorder")
+	public ModelAndView myorder(String pageIndex, String pageSize,ModelAndView modelAndView) {
+		int pageIndex1 = 1;
+		if (pageIndex!= null && !pageIndex.equals("")) {
+			pageIndex1 = Integer.parseInt(pageIndex);
+		}
+		int pageSize1 = 3;
+		if (pageSize != null && !pageSize.equals("")) {
+			pageSize1 = Integer.parseInt(pageSize);
+		}
+		PageBean pageBean = orderService.getPageBeanBackOrder(pageIndex1,pageSize1);
+		System.out.println(pageBean);
+		modelAndView.addObject("pageBean", pageBean);
+		modelAndView.setViewName("myOrderList");
+		return modelAndView;
+	}
 	
 	@RequestMapping(value="/order")
 	public String order(Model model, HttpServletRequest request, HttpServletResponse response){
@@ -146,6 +165,7 @@ public class OrderController {
 			orderItem.setCurrent_unit_price(product.getPrice());
 			orderItem.setQuantity(cartItemVO.getAmount());
 			orderItem.setTotal_price(new BigDecimal(cartItemVO.getAmount() * product.getPrice().doubleValue()));
+			System.out.println(orderItem);
 			orderItemService.addOrderItem(orderItem);
 		}
 		//4.生成订单后要清楚cookie

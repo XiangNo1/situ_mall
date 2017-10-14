@@ -1,10 +1,15 @@
 package com.situ.mall.controller.back;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.situ.mall.pojo.OrderItem;
+import com.situ.mall.service.IOrderItemService;
 import com.situ.mall.service.IOrderService;
 import com.situ.mall.vo.PageBean;
 
@@ -14,6 +19,14 @@ public class BackOrderController {
 
 	@Autowired
 	private IOrderService orderService;
+	@Autowired
+	private IOrderItemService orderItemService;
+	@RequestMapping(value="/findOrderItem")
+	public String findOrderItem(Long order_no, Model model){
+		List<OrderItem> list = orderItemService.findOrderItemByorder_no(order_no);
+		model.addAttribute("list", list);
+		return "findOrderItem";
+	}
 	
 	@RequestMapping(value="/findBackOrder")
 	public ModelAndView findBackOrder(String pageIndex, String pageSize,ModelAndView modelAndView) {
