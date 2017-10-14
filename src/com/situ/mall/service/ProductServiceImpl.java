@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.situ.mall.common.ServerResponse;
 import com.situ.mall.dao.ProductDao;
 import com.situ.mall.pojo.Category;
 import com.situ.mall.pojo.Product;
@@ -33,15 +34,34 @@ public class ProductServiceImpl implements IProductService {
 	}
 
 	@Override
-	public void addProduct(Product product) {
+	public ServerResponse addProduct(Product product) {
 		// TODO Auto-generated method stub
-		productDao.addProduct(product);
+		try {
+ 			int rowCount = productDao.addProduct(product);
+ 			if (rowCount > 0) {
+ 				return ServerResponse.createSuccess("添加商品成功");
+ 			} else {
+ 				return ServerResponse.createError("添加商品失败");
+ 			}
+ 		} catch (Exception e) {
+ 			return ServerResponse.createError("添加商品失败");
+ 		}
 	}
 
 	@Override
-	public void deleteProductById(Integer id) {
+	public ServerResponse deleteProductById(Integer id) {
 		// TODO Auto-generated method stub
-		productDao.deleteProductById(id);
+		try {
+			int rowCount = productDao.deleteProductById(id);
+			if (rowCount > 0) {
+				return ServerResponse.createSuccess("删除商品成功");
+			}
+			else {
+				return ServerResponse.createError("删除商品失败");
+			}
+		} catch (Exception e) {
+			return ServerResponse.createError("删除商品失败");
+		}
 	}
 
 	@Override
@@ -51,9 +71,18 @@ public class ProductServiceImpl implements IProductService {
 	}
 
 	@Override
-	public void updateProduct(Product product) {
+	public ServerResponse updateProduct(Product product) {
 		// TODO Auto-generated method stub
-		productDao.updateProduct(product);
+		try {
+			int i = productDao.updateProduct(product);
+			if (i > 0) {
+				return ServerResponse.createSuccess("修改商品成功");
+			} else {
+				return ServerResponse.createError("修改商品失败");
+			}
+		} catch (Exception e) {
+			return ServerResponse.createError("修改商品失败");
+		}
 	}
 
 	@Override

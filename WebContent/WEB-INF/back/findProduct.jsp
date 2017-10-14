@@ -225,11 +225,29 @@
 	function delProduct(id) {
 	       var isDel = confirm("您确认要删除吗？");
 	       if (isDel) {
-	           //要删除
-	           location.href = "${ctx}/product/deleteProduct.action?id="
-	                  + id;
-	       }
-	    };
+		           //要删除
+		          var options = {
+				url:"${ctx}/product/deleteProduct.action",
+				type:"post",
+				dateType:"json",
+				data:'id='+id,
+				success:function(data){
+					if(data.status == 0){
+						layer.confirm(
+	            				'删除成功',
+	            				{btn:['关闭']},
+	            				function(){
+	            					window.location.href = "${ctx}/product/findAllProduct.action";
+	            				}
+	            			);
+					}else {
+						layer.msg("删除失败");
+					}
+				}
+			}
+			$.ajax(options)
+       }
+    };
 	function selectAll() {
 		
 		$("input[name=selectIds]").prop('checked',$("#selectAlls").is(":checked"))

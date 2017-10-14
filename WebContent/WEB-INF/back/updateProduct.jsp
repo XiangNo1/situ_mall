@@ -92,7 +92,7 @@
 		            </ul>
 				   <div style="width:60%; margin-top:20px;">
 		            <div class="alert alert-danger" role="alert">请注意不要添加重复id的商品！！！</div>
- <form action="${ctx}/product/updateProduct2.action" method="post" enctype="multipart/form-data" id="form-add">
+ <form action="${ctx}/product/updateProduct2.action" method="post" enctype="multipart/form-data" id="add-form">
    	    商品id：<input class="form-control" type="text" name="id" id="id" value="${product.id }" readonly="readonly"/><br/>
    	    当前商品分类：
    	    ${c1.name } &nbsp;&nbsp;&nbsp;${c2.name }
@@ -136,7 +136,8 @@
  				  	<label>商品描述</label>
  				  	 <textarea style="width:900px;height:300px;visibility:hidden;" name="detail" value="${product.detail }"></textarea>
  				  </div>  
-       <p><button class="btn btn-primary" type="submit">保存</button></p>
+       <p><button class="btn btn-primary" type="button" onclick="submitForm()">修改商品</button>
+       <button class="btn btn-primary" type="button" onclick="clearForm()">清空表单</button></p>
     </form>
 </div>
 </div>
@@ -174,7 +175,7 @@ KindEditor.ready(function(K) {
 		});
 	});
 	//富文本编辑器
-	myKindEditor = KindEditor.create('#form-add[name=detail]', kingEditorParams);
+	myKindEditor = KindEditor.create('#add-form[name=detail]', kingEditorParams);
 });
 
 
@@ -229,7 +230,35 @@ function uploadPic() {
 	           $("#main_image").val(data.fileName);
 	       }
 	   };
-	    $("#form-add").ajaxSubmit(options);
+	    $("#add-form").ajaxSubmit(options);
+	};
+	function submitForm() {
+		var options = {
+				url:"${ctx}/product/updateProduct2.action",
+				type:"post",
+				dateType:"json",
+				data:$("#add-form").serialize(),
+				success:function(data){
+					if(data.status == 0){
+						layer.confirm(
+		            				'修改成功',
+		            				{btn:['关闭','跳转到列表界面']},
+		            				function(index){
+		            					layer.close(index);
+		            				},
+		            				function(){
+		            					window.location.href = "${ctx}/product/findAllProduct.action";
+		            				}
+		            			);
+					}else {
+						layer.msg("修改失败");
+					}
+				}
+		}
+		$.ajax(options)
+	};
+	function clearForm() {
+		$("#add-form")[0].reset();
 	}
 
 </script>

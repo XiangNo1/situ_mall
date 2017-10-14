@@ -2,6 +2,7 @@ package com.situ.mall.service;
 
 import java.util.List;
 
+import com.situ.mall.common.ServerResponse;
 import com.situ.mall.pojo.Category;
 import com.situ.mall.pojo.Product;
 import com.situ.mall.vo.PageBean;
@@ -11,13 +12,13 @@ public interface IProductService {
 
 	PageBean getPageBeanproduct(int pageIndex, int pageSize);
 
-	void addProduct(Product product);
+	ServerResponse addProduct(Product product);
 
-	void deleteProductById(Integer id);
+	ServerResponse deleteProductById(Integer id);
 
 	Product findProductById(Integer id);
 
-	void updateProduct(Product product);
+	ServerResponse updateProduct(Product product);
 
 	boolean updateStatusProduct(Integer id, Integer status);
 

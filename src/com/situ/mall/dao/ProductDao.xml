@@ -94,8 +94,8 @@
 	</select>
 	
 	<insert id="addProduct" parameterType="Product">
-		insert into product(subtitle,id,category_id,name,main_image,sub_images,detail,price,stock,status,create_time,update_time)
-		 values(#{subtitle},#{id},#{category_id},#{name},#{main_image},#{sub_images},#{detail},#{price},#{stock},#{status},now(),now())
+		insert into product(subtitle,category_id,name,main_image,sub_images,detail,price,stock,status,create_time,update_time)
+		 values(#{subtitle},#{category_id},#{name},#{main_image},#{sub_images},#{detail},#{price},#{stock},#{status},now(),now())
 	</insert>
 	
 	<delete id="deleteProductById" parameterType="Integer">

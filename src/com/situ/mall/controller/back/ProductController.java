@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.situ.mall.common.ServerResponse;
 import com.situ.mall.pojo.Category;
 import com.situ.mall.pojo.Product;
 import com.situ.mall.service.IProductService;
@@ -116,10 +117,10 @@ public class ProductController {
 	}
 	
 	@RequestMapping(value="updateProduct2")
-	public String updateProduct2(Product product){
+	@ResponseBody
+	public ServerResponse updateProduct2(Product product){
 		System.out.println(product);
-		productservice.updateProduct(product);
-		return "redirect:/product/findAllProduct.action";
+		return productservice.updateProduct(product);
 	}
 	
 	@RequestMapping(value="updateProduct")
@@ -137,16 +138,17 @@ public class ProductController {
 	}
 	
 	@RequestMapping(value="deleteProduct")
-	public String deleteProduct(Integer id){
-		productservice.deleteProductById(id);
-		return "redirect:/product/findAllProduct.action";
+	@ResponseBody
+	public ServerResponse deleteProduct(Integer id){
+		return productservice.deleteProductById(id);
 	}
 	
 	@RequestMapping(value="/addProduct2")
-	public String addProduct2(Product product){
+	@ResponseBody
+	public ServerResponse addProduct2(Product product){
 		System.out.println(product);
-		productservice.addProduct(product);
-		return "redirect:/product/findAllProduct.action";
+		return productservice.addProduct(product);
+		
 	}
 	
 	@RequestMapping(value="/addProduct")

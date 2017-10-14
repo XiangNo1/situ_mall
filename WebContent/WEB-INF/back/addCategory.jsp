@@ -81,20 +81,47 @@
 		            <div class="alert alert-info" role="alert">前请认真核对分类的信息<strong>确保无误</strong></div>
 					    
 					     <div style="width:60%; margin-top:20px;">
-		            <div class="alert alert-danger" role="alert">请注意不要添加重复id的分类！！！</div>
- <form action="${ctx}/category/addCategory2.action" method="post">
+		            <div class="alert alert-danger" role="alert">请注意不要添加重复的分类！！！</div>
+ <form action="${ctx}/category/addCategory2.action" method="post" id="add-form">
  
-   	    类别id：<input class="form-control" type="text" name="id" id="id"/>
   	     父类id：<input class="form-control" type="text" name="parent_id"/>
 	       类别名称：<input class="form-control" type="text" name="name"/>
 	       	        类别状态:<input id="status" name="status"  class="form-control">
 <!-- 	       排序编号：<input class="form-control" type="text" name="sort_order"/>
- -->       <p><button class="btn btn-primary" type="submit">保存</button></p>
+ -->      <p><button class="btn btn-primary" type="button" onclick="submitForm()">添加分类</button>
+       <button class="btn btn-primary" type="button" onclick="clearForm()">清空表单</button></p>
     </form>
 </div>
 		            
 	<script>
-	
+	function submitForm() {
+		var options = {
+				url:"${ctx}/category/addCategory2.action",
+				type:"post",
+				dateType:"json",
+				data:$("#add-form").serialize(),
+				success:function(data){
+					if(data.status == 0){
+						layer.confirm(
+		            				'添加成功',
+		            				{btn:['关闭','跳转到列表界面']},
+		            				function(index){
+		            					layer.close(index);
+		            				},
+		            				function(){
+		            					window.location.href = "${ctx}/category/findAllCategory.action";
+		            				}
+		            			);
+					}else {
+						layer.msg("添加失败");
+					}
+				}
+		}
+		$.ajax(options)
+	};
+	function clearForm() {
+		$("#add-form")[0].reset();
+	}
 </script>	
 	</body>
 </html>

@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.situ.mall.common.ServerResponse;
 import com.situ.mall.dao.CategoryDao;
 import com.situ.mall.pojo.Category;
 import com.situ.mall.pojo.Product;
@@ -37,10 +38,18 @@ public class CategoryServiceImpl implements ICategoryService {
 	}
 
 	@Override
-	public boolean addCategory(Category category) {
+	public ServerResponse addCategory(Category category) {
 		// TODO Auto-generated method stub
-		int i = categoryDao.addCategory(category);
-		return i > 0? true:false;
+		try {
+			int i = categoryDao.addCategory(category);
+			if (i > 0) {
+				return ServerResponse.createSuccess("添加分类成功");
+			} else {
+				return ServerResponse.createError("添加分类失败");
+			}
+		} catch (Exception e) {
+			return ServerResponse.createError("添加分类失败");
+		}
 	}
 
 	@Override
@@ -49,16 +58,32 @@ public class CategoryServiceImpl implements ICategoryService {
 		return categoryDao.findCategoryById(id);
 	}
 	@Override
-	public boolean deleteCategoryById(Integer id) {
+	public ServerResponse deleteCategoryById(Integer id) {
 		// TODO Auto-generated method stub
-		int i = categoryDao.deleteCategoryById(id);
-		return i > 0 ? true:false;
+		try {
+			int i = categoryDao.deleteCategoryById(id);
+			if (i > 0) {
+				return ServerResponse.createSuccess("删除成功");
+			} else {
+				return ServerResponse.createError("删除失败");
+			}
+		} catch (Exception e) {
+			return ServerResponse.createError("删除失败");
+		}
 	}
 
 	@Override
-	public boolean updateCategory(Category category) {
+	public ServerResponse updateCategory(Category category) {
 		int i = categoryDao.updateCategory(category);
-		return i>0?true:false;
+		try {
+			if (i > 0) {
+				return ServerResponse.createSuccess("修改成功");
+			} else {
+				return ServerResponse.createError("修改失败");
+			}
+		} catch (Exception e) {
+			return ServerResponse.createError("修改失败");
+		}
 	}
 
 	@Override

@@ -89,8 +89,7 @@
 		            </ul>
 				   <div style="width:60%; margin-top:20px;">
 		            <div class="alert alert-danger" role="alert">请注意不要添加重复id的商品！！！</div>
- <form action="${ctx}/product/addProduct2.action" method="post" enctype="multipart/form-data" id="form-add">
-   	    商品id：<input class="form-control" type="text" name="id" id="id"/>
+ <form action="${ctx}/product/addProduct2.action" method="post" enctype="multipart/form-data" id="add-form">
    	    
    	    一级分类:
     <select class="form-control" id="province" onchange="selectCitys(this)">
@@ -133,7 +132,8 @@
  				  	 <textarea style="width:900px;height:300px;visibility:hidden;" name="detail"></textarea>
  				  </div>   
 	         
-       <p><button class="btn btn-primary" type="submit">保存</button></p>
+       <p><button class="btn btn-primary" type="button" onclick="submitForm()">添加商品</button>
+       <button class="btn btn-primary" type="button" onclick="clearForm()">清空表单</button></p>
     </form>
 </div>
 </div>
@@ -170,7 +170,7 @@ KindEditor.ready(function(K) {
 		});
 	});
 	//富文本编辑器
-	myKindEditor = KindEditor.create('#form-add[name=detail]', kingEditorParams);
+	myKindEditor = KindEditor.create('#add-form[name=detail]', kingEditorParams);
 });
 
  $(function() {
@@ -207,7 +207,7 @@ function selectCitys(obj) {
            $("#city").html(html);
         }
     });
-}
+};
 
 
 
@@ -224,46 +224,39 @@ function uploadPic() {
            $("#main_image").val(data.fileName);
        }
    };
-    $("#form-add").ajaxSubmit(options);
-}
-</script>
+    $("#add-form").ajaxSubmit(options);
+};
 
-<!-- <script type="text/javascript">
-var myKindEditor ;
-KindEditor.ready(function(K) {
-	var kingEditorParams = {
-			//指定上传文件参数名称
-			filePostName  : "pictureFile",
-			//指定上传文件请求的url。
-			uploadJson : ctx+'/upload/pic.action',
-			//上传类型，分别为image、flash、media、file
-			dir : "image"
-	}
-	var editor = K.editor(kingEditorParams);
-	//多图片上传
-	K('#picFileUpload').click(function() {
-		editor.loadPlugin('multiimage', function() {
-			editor.plugin.multiImageDialog({
-				clickFn : function(urlList) {
-					console.log(urlList);
-					var div = K('#J_imageView');
-					var imgArray = [];
-					div.html('');
-					K.each(urlList, function(i, data) {
-						imgArray.push(data.url);
-						div.append('<img src="' + data.url + '" width="80" height="50">');
-					});
-					$("#subImages").val(imgArray.join(","));
-					editor.hideDialog();
+function submitForm() {
+	var options = {
+			url:"${ctx}/product/addProduct2.action",
+			type:"post",
+			dateType:"json",
+			data:$("#add-form").serialize(),
+			success:function(data){
+				if(data.status == 0){
+					layer.confirm(
+	            				'添加成功',
+	            				{btn:['关闭','跳转到列表界面']},
+	            				function(index){
+	            					layer.close(index);
+	            				},
+	            				function(){
+	            					window.location.href = "${ctx}/product/findAllProduct.action";
+	            				}
+	            			);
+				}else {
+					layer.msg("添加失败");
 				}
-			});
-		});
-	});
-	//富文本编辑器
-	myKindEditor = KindEditor.create('#form-add[name=detail]', kingEditorParams);
-});
-</script> -->
+			}
+	}
+	$.ajax(options)
+};
+function clearForm() {
+	$("#add-form")[0].reset();
+}
 
+</script>
 
 		
 	</body>

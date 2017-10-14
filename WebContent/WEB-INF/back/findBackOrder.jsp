@@ -135,6 +135,7 @@
 										</td>
 										<td><a href="javascript:delShipping(${shipping.id });">删除</a></td>
 										<td><a href="${ctx }/shipping/updateShipping.action?id=${shipping.id}">修改</a></td>
+										<td><a href="${ctx }/shipping/updateShipping.action?id=${shipping.id}">详细信息</a></td>										
 									</tr>
 								</c:forEach>
 						                </tbody>

@@ -3,8 +3,10 @@ package com.situ.mall.controller.back;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.situ.mall.common.ServerResponse;
 import com.situ.mall.pojo.Category;
 import com.situ.mall.service.ICategoryService;
 import com.situ.mall.vo.PageBean;
@@ -18,9 +20,9 @@ public class CategoryController {
 	
 	
 	@RequestMapping(value="updateCategory2")
-	public String updateCategory2(Category category){
-		categoryService.updateCategory(category);
-		return "redirect:/category/findAllCategory.action";
+	@ResponseBody
+	public ServerResponse updateCategory2(Category category){
+		return categoryService.updateCategory(category);
 	}
 	
 	@RequestMapping(value="updateCategory")
@@ -33,16 +35,16 @@ public class CategoryController {
 	}
 	
 	@RequestMapping(value="deleteCategory")
-	public String deleteCategory(Integer id){
-		categoryService.deleteCategoryById(id);
-		return "redirect:/category/findAllCategory.action";
+	@ResponseBody
+	public ServerResponse deleteCategory(Integer id){
+		return categoryService.deleteCategoryById(id);
 		
 	}
 	
 	@RequestMapping(value="/addCategory2")
-	public String addCategory2(Category category){
-		categoryService.addCategory(category);
-		return "redirect:/category/findAllCategory.action";
+	@ResponseBody
+	public ServerResponse addCategory2(Category category){
+		return categoryService.addCategory(category);
 	}
 	
 	@RequestMapping(value="/addCategory")

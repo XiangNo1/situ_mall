@@ -15,13 +15,13 @@ public interface ProductDao {
 
 	List<Product> findProductBeanList(@Param(value="index")int index, @Param(value="pageSize")int pageSize);
 
-	void addProduct(Product product);
+	int addProduct(Product product);
 
-	void deleteProductById(Integer id);
+	int deleteProductById(Integer id);
 
 	Product findProductById(Integer id);
 
-	void updateProduct(Product product);
+	int updateProduct(Product product);
 
 	int updateStatusProduct(@Param(value="id")Integer id, @Param(value="status")Integer status);
 
