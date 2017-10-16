@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -46,6 +47,11 @@ public class OrderController {
 	@Autowired
 	private IOrderItemService orderItemService;
 	
+	@RequestMapping(value="/pay")
+	public String pay(){
+		
+		return "order2";
+	}
 	
 	@RequestMapping(value="/myorder")
 	public ModelAndView myorder( HttpServletRequest request,ModelAndView modelAndView) {
@@ -171,8 +177,10 @@ public class OrderController {
 	       response.addCookie(cookie);
 	       
 	       Shipping shipping = shippingService.findShippingById(i);
-	       model.addAttribute("shipping", shipping);
-	       model.addAttribute("order", order);
-		return "order2";
+	       session.setAttribute("shipping_session", shipping);
+	       session.setAttribute("order_session", order);
+	      /* model.addAttribute("shipping", shipping);
+	       model.addAttribute("order", order);*/
+		return "pay_info";
 	}
 }

@@ -7,7 +7,7 @@
 <title>靓淘优选</title>
 <%@include file="../common/head_front.jsp" %>
 <link rel="stylesheet" href="${ctx}/resources/front/css/Style.css" />
-<link rel="stylesheet" href="${ctx}/resources/front/css/order2.css" />
+<link rel="stylesheet" href="${ctx}/resources/front/css/order.css" />
 </head>
 
 <body>
@@ -20,29 +20,37 @@
 <div class="clearfix"></div>
 
 <div class="box-center">
-	<div class="take-delivery">
- <div class="status">
-   <h2>您已成功付款</h2>
-   <div class="successInfo">
-     <ul>
-       <li>付款金额<em>¥${order_session.payment }</em></li>
-       <div class="user-info">
-         <p>收货人：${shipping_session.receiver_name }</p>
-         <p>联系电话：${shipping_session.receiver_mobile }</p>
-         <p>收货地址：${shipping_session.receiver_address }</p>
-       </div>
-             请认真核对您的收货信息，如有错误请联系客服
-                               
-     </ul>
-     <div class="option">
-       <span class="info">您可以</span>
-        <a href="../person/order.html" class="J_MakePoint">查看<span>已买到的宝贝</span></a>
-        <a href="../person/orderinfo.html" class="J_MakePoint">查看<span>交易详情</span></a>
-     </div>
-    </div>
-  </div>
-</div>
-
+			<form action="${ctx }/order/pay.shtml" method="post">
+				<!-- 支付方式 -->
+							<div class="xm-box">
+								<div class="box-hd ">
+									<h2 class="title">支付平台</h2>
+								</div>
+								<div class="box-bd" style="float: left;">
+											<input type="radio" name="pay_platform" checked="checked" value="1">
+									<ul id="checkoutPaymentList" class="checkout-option-list clearfix J_optionList">
+										<li class="item selected">
+											<p>
+												支付宝                                <span></span>
+											</p>
+										</li>
+									</ul>
+								</div>
+								<div class="box-bd" style="float: left;">
+											<input type="radio" name="pay_platform" value="2">
+									<ul id="checkoutPaymentList" class="checkout-option-list clearfix J_optionList">
+										<li class="item selected">
+											<p>
+												微信                                <span></span>
+											</p>
+										</li>
+									</ul>
+								</div>
+							<div style="clear: both;"></div>
+							<input style="float: right;" type="submit"  class="btn btn-primary" value="立即支付"/>
+							</div>
+							<!-- 支付方式 END-->
+							</form>
 </div>
 
 
