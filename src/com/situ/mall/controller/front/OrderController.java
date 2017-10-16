@@ -54,11 +54,18 @@ public class OrderController {
 	}
 	
 	@RequestMapping(value="/myorder")
-	public ModelAndView myorder( HttpServletRequest request,ModelAndView modelAndView) {
+	public ModelAndView myorder(String pageIndex, HttpServletRequest request,ModelAndView modelAndView) {
 		HttpSession session = request.getSession();
 		User user = (User) session.getAttribute("userSession");
-		List<Order> orders = orderService.findOrderByUser(user.getId());
-		modelAndView.addObject("orders", orders);
+		int pageIndex1 = 1;
+		if (pageIndex!= null && !pageIndex.equals("")) {
+			pageIndex1 = Integer.parseInt(pageIndex);
+		}
+		int pageSize1 = 5;
+		PageBean pageBean = orderService.getPageBeanorder(user.getId(),pageIndex1,pageSize1);
+		System.out.println(pageBean);
+		//List<Order> orders = orderService.findOrderByUser(user.getId());
+		modelAndView.addObject("pageBean", pageBean);
 		List<OrderItem> orderItems = orderItemService.findOrderItemByUser(user.getId());
 		modelAndView.addObject("orderItems", orderItems);
 		modelAndView.setViewName("myOrderList");

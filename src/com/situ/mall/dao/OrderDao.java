@@ -16,4 +16,8 @@ public interface OrderDao {
 
 	List<Order> findOrderByUser(Integer id);
 
+	int findTotalCountOrder(Integer id);
+
+	List<Order> findOrderBeanList(@Param(value="id")Integer id, @Param(value="index")int index, @Param(value="pageSize")int pageSize);
+
 }

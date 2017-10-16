@@ -13,4 +13,6 @@ public interface IOrderService {
 
 	List<Order> findOrderByUser(Integer id);
 
+	PageBean getPageBeanorder(Integer id, int pageIndex, int pageSize);
+
 }

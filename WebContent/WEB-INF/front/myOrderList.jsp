@@ -8,6 +8,7 @@
 <%@include file="../common/head_front.jsp" %>
 <link rel="stylesheet" href="${ctx}/resources/front/css/Style.css" />
 <link rel="stylesheet" href="${ctx}/resources/front/css/myOrderList.css" />
+
 </head>
 
 <body>
@@ -82,7 +83,7 @@
 					<div class="member-sheet clearfix">
 						<ul>
 						
-						<c:forEach items="${orders}" var="order">
+						<c:forEach items="${pageBean.list}" var="order">
 							<li>
 								<div class="member-minute clearfix">
 									<span><fmt:formatDate value="${order.update_time}" pattern="yyyy-MM-dd HH:mm:ss"/></span>
@@ -148,16 +149,22 @@
 				<div class="H-over member-over" style="display:none;"><h2>交易完成</h2></div>
 				<div class="H-over member-over" style="display:none;"><h2>订单信息</h2></div>
 
+
+
+
+
+
+
 				<div class="clearfix" style="padding:30px 20px;">
 					<div class="fr pc-search-g pc-search-gs">
 						<a style="display:none" class="fl " href="#">上一页</a>
-						<a href="#" class="current">1</a>
-						<a href="javascript:;">2</a>
-						<a href="javascript:;">3</a>
-						<a href="javascript:;">4</a>
-						<a href="javascript:;">5</a>
-						<a href="javascript:;">6</a>
-						<a href="javascript:;">7</a>
+						<a href="${ctx}/order/myorder.shtml?pageIndex=1" class="current">1</a>
+						<a href="${ctx}/order/myorder.shtml?pageIndex=2">2</a>
+						<a href="${ctx}/order/myorder.shtml?pageIndex=3">3</a>
+						<a href="${ctx}/order/myorder.shtml?pageIndex=4">4</a>
+						<a href="${ctx}/order/myorder.shtml?pageIndex=5">5</a>
+						<a href="${ctx}/order/myorder.shtml?pageIndex=6">6</a>
+						<a href="${ctx}/order/myorder.shtml?pageIndex=7">7</a>
 						<span class="pc-search-di">…</span>
 						<a href="javascript:;">1088</a>
 						<a title="使用方向键右键也可翻到下一页哦！" class="" href="javascript:;">下一页</a>

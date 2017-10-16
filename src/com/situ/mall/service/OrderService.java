@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.situ.mall.dao.OrderDao;
 import com.situ.mall.pojo.Category;
 import com.situ.mall.pojo.Order;
+import com.situ.mall.pojo.User;
 import com.situ.mall.vo.PageBean;
 
 @Service
@@ -42,5 +43,20 @@ public class OrderService implements IOrderService{
 	public List<Order> findOrderByUser(Integer id) {
 		// TODO Auto-generated method stub
 		return orderDao.findOrderByUser(id);
+	}
+
+	@Override
+	public PageBean getPageBeanorder(Integer id, int pageIndex, int pageSize) {
+		PageBean<Order> pageBean = new PageBean<Order>();
+		pageBean.setPageIndex(pageIndex);
+		pageBean.setPageSize(pageSize);
+		int totalCount = orderDao.findTotalCountOrder(id);
+		pageBean.setTotalCount(totalCount);
+		int totalPage =(int) Math.ceil((double) totalCount / pageSize );
+		pageBean.setTotalPage(totalPage);
+		int index =( pageIndex - 1) * pageSize;
+		List<Order> list = orderDao.findOrderBeanList(id,index, pageSize);
+		pageBean.setList(list);
+		return pageBean;
 	}
 }
