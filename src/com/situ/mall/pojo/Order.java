@@ -3,6 +3,7 @@ package com.situ.mall.pojo;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
 
 public class Order implements Serializable{
 
@@ -133,5 +134,6 @@ public class Order implements Serializable{
 				+ status + ", payment_time=" + payment_time + ", send_time=" + send_time + ", end_time=" + end_time
 				+ ", close_time=" + close_time + ", create_time=" + create_time + ", update_time=" + update_time + "]";
 	}
+	
 	
 }

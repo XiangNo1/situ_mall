@@ -14,4 +14,6 @@ public interface OrderDao {
 
 	List<Order> findBackOrderBeanList(@Param(value="index")int index, @Param(value="pageSize")int pageSize);
 
+	List<Order> findOrderByUser(Integer id);
+
 }

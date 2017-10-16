@@ -10,4 +10,6 @@ public interface IOrderItemService {
 
 	List<OrderItem> findOrderItemByorder_no(Long order_no);
 
+	List<OrderItem> findOrderItemByUser(Integer id);
+
 }

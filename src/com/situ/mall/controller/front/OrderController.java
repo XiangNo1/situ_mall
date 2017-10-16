@@ -48,18 +48,13 @@ public class OrderController {
 	
 	
 	@RequestMapping(value="/myorder")
-	public ModelAndView myorder(String pageIndex, String pageSize,ModelAndView modelAndView) {
-		int pageIndex1 = 1;
-		if (pageIndex!= null && !pageIndex.equals("")) {
-			pageIndex1 = Integer.parseInt(pageIndex);
-		}
-		int pageSize1 = 3;
-		if (pageSize != null && !pageSize.equals("")) {
-			pageSize1 = Integer.parseInt(pageSize);
-		}
-		PageBean pageBean = orderService.getPageBeanBackOrder(pageIndex1,pageSize1);
-		System.out.println(pageBean);
-		modelAndView.addObject("pageBean", pageBean);
+	public ModelAndView myorder( HttpServletRequest request,ModelAndView modelAndView) {
+		HttpSession session = request.getSession();
+		User user = (User) session.getAttribute("userSession");
+		List<Order> orders = orderService.findOrderByUser(user.getId());
+		modelAndView.addObject("orders", orders);
+		List<OrderItem> orderItems = orderItemService.findOrderItemByUser(user.getId());
+		modelAndView.addObject("orderItems", orderItems);
 		modelAndView.setViewName("myOrderList");
 		return modelAndView;
 	}
@@ -106,7 +101,7 @@ public class OrderController {
 	}
 	
 	@RequestMapping(value="/order2")
-	public String order2(Integer[] shipping_id, HttpServletRequest request,HttpServletResponse response, Model model){
+	public String order2(Integer[] shipping_id,Integer payment_type, HttpServletRequest request,HttpServletResponse response, Model model){
 		//从cookie获取buyCartVO
 		//springmvc
 		ObjectMapper objectMapper = new ObjectMapper();
@@ -146,10 +141,11 @@ public class OrderController {
 		for (Integer ids : shipping_id) {
 			i = ids;
 		}
+		System.out.println(payment_type);
 		System.out.println(i);
 		order.setShipping_id(i);
 		order.setPayment(new BigDecimal(buyCartVO.getTotalPrice()));
-		order.setPayment_type(1);
+		order.setPayment_type(payment_type);
 		order.setPostage(0);
 		order.setStatus(10);
 		orderService.addOrder(order);
@@ -173,6 +169,10 @@ public class OrderController {
 	       cookie.setPath("/");
 	       cookie.setMaxAge(0);
 	       response.addCookie(cookie);
+	       
+	       Shipping shipping = shippingService.findShippingById(i);
+	       model.addAttribute("shipping", shipping);
+	       model.addAttribute("order", order);
 		return "order2";
 	}
 }

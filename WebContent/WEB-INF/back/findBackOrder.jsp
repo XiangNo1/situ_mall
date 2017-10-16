@@ -85,7 +85,7 @@
 						                        <th>id</th>
 												<th>订单号</th>
 												<th>用户id</th>
-												<th>shipping—id</th>
+												<th>收货id</th>
 												<th>实际付款金额</th>
 												<th>支付类型</th>
 												<th>运费</th>
@@ -108,9 +108,35 @@
 										<td>${orderr.user_id }</td>
 										<td>${orderr.shipping_id}</td>
 										<td>${orderr.payment}</td>
-										<td>${orderr.payment_type}</td>
+										<td>
+											<c:if test="${orderr.payment_type == 1}">
+												在线支付
+											</c:if>
+											<c:if test="${orderr.payment_type == 2}">
+												货到付款
+											</c:if>
+										</td>
 										<td>${orderr.postage}</td>
-										<td>${orderr.status}</td>
+										<td>
+											<c:if test="${orderr.status == 0 }">
+											已取消
+											</c:if>
+											<c:if test="${orderr.status == 10 }">
+												未付款
+											</c:if>
+											<c:if test="${orderr.status == 20 }">
+												已付款取消
+											</c:if>
+											<c:if test="${orderr.status == 40}">
+												已发货
+											</c:if>
+											<c:if test="${orderr.status ==50 }">
+												交易成功
+											</c:if>
+											<c:if test="${orderr.status ==60 }">
+												交易关闭
+											</c:if>
+										</td>
 										<td>
 										<fmt:formatDate value="${orderr.payment_time}" pattern="yyyy-MM-dd HH:mm:ss"/>
 										</td>

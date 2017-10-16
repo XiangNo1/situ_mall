@@ -156,16 +156,27 @@
 								<div class="box-hd ">
 									<h2 class="title">支付方式</h2>
 								</div>
-								<div class="box-bd">
+								<div class="box-bd" style="float: left;">
+											<input type="radio" name="payment_type" checked="checked" value="1">
 									<ul id="checkoutPaymentList" class="checkout-option-list clearfix J_optionList">
 										<li class="item selected">
-											<input type="radio" name="Checkout[pay_id]" checked="checked" value="1">
 											<p>
 												在线支付                                <span></span>
 											</p>
 										</li>
 									</ul>
 								</div>
+								<div class="box-bd" style="float: left;">
+											<input type="radio" name="payment_type" value="2">
+									<ul id="checkoutPaymentList" class="checkout-option-list clearfix J_optionList">
+										<li class="item selected">
+											<p>
+												货到付款                                <span></span>
+											</p>
+										</li>
+									</ul>
+								</div>
+							<div style="clear: both;"></div>
 							</div>
 							<!-- 支付方式 END-->
 							<div class="xm-box">

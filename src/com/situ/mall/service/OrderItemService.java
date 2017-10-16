@@ -26,5 +26,11 @@ public class OrderItemService implements IOrderItemService{
 		// TODO Auto-generated method stub
 		return orderItemDao.findOrderItemByorder_no(order_no);
 	}
+
+	@Override
+	public List<OrderItem> findOrderItemByUser(Integer id) {
+		// TODO Auto-generated method stub
+		return orderItemDao.findOrderItemByUser(id);
+	}
 	
 }

@@ -37,4 +37,10 @@ public class OrderService implements IOrderService{
 		pageBean.setList(list);
 		return pageBean;
 	}
+
+	@Override
+	public List<Order> findOrderByUser(Integer id) {
+		// TODO Auto-generated method stub
+		return orderDao.findOrderByUser(id);
+	}
 }

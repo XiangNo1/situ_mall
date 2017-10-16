@@ -5,6 +5,9 @@
 <mapper namespace="com.situ.mall.dao.OrderItemDao">
 
 
+	<select id="findOrderItemByUser" parameterType="Integer" resultType="OrderItem">
+		select * from order_item where user_id=#{id}
+	</select>
 
 	<select id="findOrderItemByorder_no" parameterType="Long" resultType="OrderItem">
 		select * from order_item where order_no=#{order_no}

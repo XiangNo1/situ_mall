@@ -54,9 +54,9 @@ body{
       				
       				<div style="width: 910px; float: right;">
 					<c:forEach items="${pageBean.list}" var="product">
-						<a href="${ctx }/details/details2.shtml?id=${product.id}">
+						<a onmouseover="inn(${product.id})" onmouseout="outt(${product.id})" href="${ctx }/details/details2.shtml?id=${product.id}">
 							<div style="margin-right:50px; margin-left:50px; margin-top:40px; width: 200px; height: 350px; float:left;" >
-								<img alt="" src="/pic/${product.main_image}" width="180px" height="200px">
+								<img id="img${product.id}" alt="" src="/pic/${product.main_image}" width="180px" height="200px">
 								<br/>
 								<h5>${product.name }</h5><div class="clearfix"></div>
 								<p style="color:red;">价格：￥${product.price}</p><div class="clearfix"></div>
@@ -211,5 +211,19 @@ body{
     </div>
     
     </div>
+    <script type="text/javascript">
+    //hover 触发两个事件，鼠标移上去和移走
+    //mousehover 只触发移上去事件
+    function inn(id) {
+    	$("#img"+id).width(190);
+    	$("#img"+id).height(210);
+    };
+    function outt(id) {
+    	$("#img"+id).width(180);
+    	$("#img"+id).height(200);
+    };
+    
+    
+    </script>
 </body>
 </html>

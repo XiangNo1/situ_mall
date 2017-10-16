@@ -4,6 +4,40 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.situ.mall.dao.OrderDao">
 
+	<resultMap type="Order" id="findOrderByUser">
+		<result property="id" column="id"/>
+		<result property="order_no" column="order_no"/>
+		<result property="user_id" column="user_id"/>
+		<result property="shipping_id" column="shipping_id"/>
+		<result property="payment" column="payment"/>
+		<result property="payment_type" column="payment_type"/>
+		<result property="postage" column="postage"/>
+		<result property="status" column="status"/>
+		<result property="payment_time" column="payment_time"/>
+		<result property="send_time" column="send_time"/>
+		<result property="end_time" column="end_time"/>
+		<result property="close_time" column="close_time"/>
+		<result property="create_time" column="create_time"/>
+		<result property="update_time" column="update_time"/>
+		<collection property="list" ofType="OrderItem">
+			<result property="id" column="id"/>
+			<result property="user_id" column="user_id"/>
+			<result property="order_no" column="order_no"/>
+			<result property="product_id" column="product_id"/>
+			<result property="product_name" column="product_name"/>
+			<result property="product_image" column="product_image"/>
+			<result property="current_unit_price" column="current_unit_price"/>
+			<result property="quantity" column="quantity"/>
+			<result property="total_price" column="total_price"/>
+			<result property="update_time" column="update_time"/>
+			<result property="update_time" column="update_time"/>
+		</collection>
+	</resultMap>
+
+	<select id="findOrderByUser" parameterType="Integer" resultType="Order">
+		select * from orderr where user_id=#{id}
+	</select>
+
 	<select id="findBackOrderBeanList" resultType="Order">
 		select * from orderr limit #{index},#{pageSize}
 	</select>
