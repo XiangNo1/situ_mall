@@ -9,36 +9,8 @@
 <link rel="stylesheet" href="${ctx}/resources/front/css/login.css" /></head>
 
 <body>
-<div class="box1"><img src="${ctx}/resources/front/image/LOGO.png"></div>
-<div class="box2">
-	<p class="b2p1">7天无理由退货</p>
-	<p class="b2p2">100%正品保障</p>
-	<p class="b2p3">退货反运费</p>
-</div>
-<div class="clearfix"></div>
-<div class="box3">
-	<img src="${ctx}/resources/front/image/beijing.png">
-</div>
-<div class="box4">
-	<ul>
-    	<li><a href="">关于靓淘 |</a></li>
-    	<li><a href="">帮助中心 |</a></li>
-    	<li><a href="">开放平台 |</a></li>
-    	<li><a href="">诚聘精英 |</a></li>
-    	<li><a href="">联系我们 |</a></li>
-    	<li><a href="">网站合作 |</a></li>
-    	<li><a href="">法律声明及隐私政策 |</a></li>
-    	<li><a href="">知识产权 |</a></li>
-    	<li><a href="">廉政举报 |</a></li>
-    	<li><a href="">规则意见征集</a></li>
-    </ul>
-</div>
-<div class="box6">
-    	<p>COPYRIGHT 2010-2017 北京创锐文化传媒有限公司 JUMEI.COM 保留一切权利。客服热线：400-123-8888</p>
-        <p>京公网安备 11010102001226|京ICP证111033号|食品流通许可证 SP1101051110165515（1-1）|执业营照</p>
-</div>
-<form action="${ctx }/login/loginIn.shtml" method="post">
-<div class="box5">
+<form action="" method="post" id="login_form">
+<div class="box5" style="top:0; right: 0;">
 	<label>
     	<tr>
         	<td><a class="b5a1" href="">密码登录</a></td>
@@ -51,7 +23,7 @@
 	<div class="clearfix"></div>
     <input class="b5in2" type="text" name="password" placeholder="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;密码"/>
 	<div class="clearfix"></div>
-	<input class="b5in3" type="submit" value="登录">    
+	<input class="b5in3" type="button" onclick="submitForm()" value="登录">    
 	<div class="clearfix"></div>
     <p class="b5p1">微博登录</p>
     <p class="b5p2">支付宝登录</p>
@@ -63,5 +35,30 @@
     </ul>
 </div>
 </form>
+
+<script type="text/javascript">
+	function submitForm() {
+		var options = {
+				url:"${ctx}/login/loginInPage.shtml",
+				type:"post",
+				dataType:"json",
+				data:$("#login_form").serialize(),
+				success:function(data){
+					if(data.status == 0) {
+						layer.msg(data.msg);
+						//当你在iframe页面关闭自身时
+						var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
+						setTimeout(function(){
+							parent.layer.close(index); //再执行关闭  
+							window.parent.location.href = "${ctx}/cart/addCart.shtml";
+						},1000);
+					} else {
+						layer.msg(data.msg);
+					} 
+				}
+		};
+		$.ajax(options);
+	}
+</script>
 </body>
 </html>

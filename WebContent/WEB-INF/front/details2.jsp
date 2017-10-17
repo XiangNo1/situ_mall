@@ -13,7 +13,32 @@
 <body>
 <div class="bg-box">
 <div class="box-center">
-	<%@include file="index_head.jsp" %>
+	<div class="box1"><span class="wel">欢迎来到靓淘！ <a href="${ctx }/index/index.shtml"> 首页</a></span></div>
+		<div class="box2">
+        	<ul>
+        	<c:if test="${userSession != null }">
+            	<li><a class="login">欢迎回来 ： ${userSession.username} </a>
+            		<a  href="${ctx }/login/loginOut.shtml?redirectUri=/details/details2.shtml?id=${product.id}">退出登录</a>
+            	</li>
+        	</c:if>
+        	
+        	<c:if test="${userSession == null }">
+            	<li><a class="login" href="${ctx }/login/login.shtml?redirectUri=/details/details2.shtml?id=${product.id}">请登录</a></li>
+        	</c:if>
+            	<li><a href="${ctx }/login/register.shtml">快速注册</a></li>
+            	<li><a class="collect" href="">我的收藏</a></li>
+            	<c:if test="${userSession != null }">
+            		<li><a class="order" href="${ctx }/order/myorder.shtml">我的订单</a></li>
+        		</c:if>
+        		<c:if test="${userSession == null }">
+            		<li><a class="order" href="${ctx }/login/login.shtml?redirectUri=/order/myorder.shtml">我的订单</a></li>
+        		</c:if>
+            	<li><a class="phone" href="">手机靓淘</a></li>
+            	<li><a href="">我的积分</a></li>
+            	<li><a href="">我的评价</a></li>
+            </ul>
+        </div>
+   	 	<div class="clearfix"></div>
     <div class="box3"><img src="${ctx}/resources/front/image/LOGO.png"></div>
     <div class="box4">
     <form action="${ctx }/details/details1.shtml" method="post">

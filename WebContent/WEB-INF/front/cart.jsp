@@ -13,7 +13,36 @@
 <div class="un">
 <div class="box-center">
 	
-	<%@include file="index_head.jsp" %>
+	<div class="box1"><span class="wel">欢迎来到靓淘！ <a href="${ctx }/index/index.shtml"> 首页</a></span></div>
+		<div class="box2">
+        	<ul>
+        	
+	        	<c:if test="${userSession != null }">
+	            	<li><a class="login">欢迎回来 ： ${userSession.username} </a>
+	            		<a  href="${ctx }/login/loginOut.shtml?redirectUri=/cart/addCart.shtml">退出登录</a>
+	            	</li>
+	        	</c:if>
+	        	<c:if test="${userSession == null }">
+	            	<li><a class="login" href="${ctx }/login/login.shtml?redirectUri=/cart/addCart.shtml">请登录</a></li>
+	        	</c:if>
+        	
+            	<li><a href="${ctx }/login/register.shtml">快速注册</a></li>
+            	<li><a class="collect" href="">我的收藏</a></li>
+            	
+            	<c:if test="${userSession != null }">
+            		<li><a class="order" href="${ctx }/order/myorder.shtml">我的订单</a></li>
+        		</c:if>
+        		<c:if test="${userSession == null }">
+            		<li><a class="order" href="${ctx }/login/login.shtml?redirectUri=/order/myorder.shtml">我的订单</a></li>
+        		</c:if>
+        	
+            	
+            	<li><a class="phone" href="">手机靓淘</a></li>
+            	<li><a href="">我的积分</a></li>
+            	<li><a href="">我的评价</a></li>
+            </ul>
+        </div>
+   	 	<div class="clearfix"></div>
 	<div class="box3"><img src="${ctx}/resources/front/image/LOGO.png"><span>购物车</span></div>
 	<div class="box4">
     	<input class="b41" type="text" value="华为"><input class="b42" type="button" value="搜索">
@@ -93,7 +122,12 @@
     <span><a style="line-height: 30px; font-size: 20px; " href="${ctx }/details/details2.shtml?id=${buyCartVO.productId}">返回继续购物</a></span>
     <div class="box11">
     	<input type="checkbox" id="quan"><label for="quan">全选</label>
-        <a href="${ctx }/order/order.shtml" class="jiesuan">立即结算</a>
+    	<c:if test="${userSession != null }">
+	        <a href="${ctx }/order/order.shtml" class="jiesuan">立即结算</a>
+   		</c:if>
+   		<c:if test="${userSession == null }">
+   			<a href="javascript:login()" class="jiesuan">立即结算</a>
+   		</c:if>
         <span class="b11s1">总金额（已免运费）：<span class="b11s2">￥${buyCartVO.totalPrice}</span></span>
     </div>
     <div class="box12">
@@ -188,6 +222,18 @@
 </div>
 
 <script type="text/javascript">
+	
+	function login() {
+		layer.open({
+			type:2,//（iframe层）
+			title:'用户登录',
+			area: ['360px', '390px'],
+			offset: '150px',//只定义top坐标，水平保持居中
+			content:"${ctx}/login/getLoginPage.shtml"
+		});
+	}
+
+
 	function increase(productId){
 		var amount = 1;
 		window.location.href="${ctx}/cart/addCart.shtml?productId="+productId+"&amount="+amount;
