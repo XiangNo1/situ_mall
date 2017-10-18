@@ -111,11 +111,12 @@
 									</c:forEach>
 									
 									
-									
+									<a onclick="addShipping()">
 									<div class="item use-new-addr"  id="J_useNewAddr" data-state="off">
 										<span class="iconfont icon-add"><img src="images/add_cart.png" /></span>
 										使用新地址
 									</div>
+									</a>
 								</div>
 								<input type="hidden" name="newAddress[type]" id="newType" value="common">
 								<input type="hidden" name="newAddress[consignee]" id="newConsignee">
@@ -415,5 +416,17 @@
         <p>京公网安备 11010102001226|京ICP证111033号|食品流通许可证 SP1101051110165515（1-1）|执业营照</p>
     </div>
 </div>
+
+<script type="text/javascript">
+	function addShipping() {
+	        layer.open({
+	            type:2,//（iframe层）
+	            title:'添加收货地址',
+	            area: ['500px', '400px'],
+	            offset: '50px',//只定义top坐标，水平保持居中
+	            content:"${ctx}/login/addShipping.shtml"
+	        });
+	    };
+</script>
 </body>
 </html>

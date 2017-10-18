@@ -12,15 +12,40 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.situ.mall.common.ServerResponse;
+import com.situ.mall.pojo.Shipping;
 import com.situ.mall.pojo.User;
+import com.situ.mall.service.IShippingService;
 import com.situ.mall.service.IUserService;
+import com.situ.mall.service.ShippingService;
 
 @Controller
 @RequestMapping(value="/login")
 public class LoginController {
 	
 	@Autowired
-	public IUserService userService;
+	private IUserService userService;
+	@Autowired
+	private IShippingService shippingService;
+	
+	
+	@RequestMapping(value="/addShipping2")
+	@ResponseBody
+	public ServerResponse addShipping2(Shipping shipping, HttpServletRequest request){
+		HttpSession session = request.getSession();
+		User user = (User) session.getAttribute("userSession");
+		shipping.setUser_id(user.getId());
+		boolean flag = shippingService.addShipping(shipping);
+		if (flag) {
+			return ServerResponse.createSuccess("添加成功");
+		}else{
+			return ServerResponse.createError("添加失败");
+		}
+	}
+	
+	@RequestMapping(value="/addShipping")
+	public String addSHipping(){
+		return "addShipping";
+	}
 	
 	@RequestMapping(value="/loginInPage")
 	@ResponseBody
