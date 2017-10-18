@@ -29,7 +29,13 @@
 					<td>${orderItem.user_id }</td>
 					<td>${orderItem.order_no }</td>
 					<td>${orderItem.product_id}</td>
-					<td>${orderItem.product_name}</td>
+					<td>
+					<c:if test="${fn:length(orderItem.product_name) > 3 }">
+						${fn:substring(orderItem.product_name,0,20)}...
+					</c:if>
+					<c:if test="${fn:length(orderItem.product_name)  <= 3 }">
+						${orderItem.product_name}
+					</c:if>
 					<td>
 						<img alt="" src="/pic/${orderItem.product_image}" width="100" height="100">
 					</td>

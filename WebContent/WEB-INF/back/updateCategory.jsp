@@ -13,7 +13,7 @@
 	<%@include file="../common/head.jsp" %>
 		<div style="margin-top: 40px;" class="container-fluid">
 		
-		
+		<div class="wrapper wrapper-content animated fadeInRight">
 		
 		
 		

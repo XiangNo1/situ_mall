@@ -12,7 +12,7 @@
 	<body>
 	<%@include file="../common/head.jsp" %>
 		<div style="margin-top: 40px;" class="container-fluid">
-		
+			<div class="wrapper wrapper-content animated fadeInRight">
 		
 		            <div class="alert alert-danger" role="alert">添加前请仔细检查！！！</div>
 						 <form action="${ctx}/shipping/addShipping2.action" method="post">
@@ -33,8 +33,6 @@
 		            
 		        </div>
 		    </div>
-		</div>
-		
 	<script>
 </script>	
 	</body>

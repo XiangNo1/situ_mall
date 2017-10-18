@@ -19,7 +19,7 @@
 		<div style="margin-top: 40px;" class="container-fluid">
 		
 		
-		
+		<div class="wrapper wrapper-content animated fadeInRight">
 		
 		            <div class="alert alert-danger" role="alert">请注意不要添加重复id的商品！！！</div>
  <form action="${ctx}/product/addProduct2.action" method="post" enctype="multipart/form-data" id="add-form">
@@ -68,7 +68,6 @@
        <p><button class="btn btn-primary" type="button" onclick="submitForm()">添加商品</button>
        <button class="btn btn-primary" type="button" onclick="clearForm()">清空表单</button></p>
     </form>
-</div>
 </div>
 </div>
 <script type="text/javascript">

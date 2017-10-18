@@ -67,6 +67,17 @@
     </servlet-mapping>
   
   
+  <servlet>
+  	<servlet-name>CheckImgServlet</servlet-name>
+  	<servlet-class>com.situ.mall.common.CheckImgServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>CheckImgServlet</servlet-name>
+  	<!-- 网名，以/开头 -->
+  	<url-pattern>/checkImgServlet</url-pattern>
+  </servlet-mapping>
+  
   <!-- 
   <filter>
     <filter-name>LoginFilter</filter-name>

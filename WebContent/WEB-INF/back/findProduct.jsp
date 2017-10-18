@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@page import="java.util.*"%>
+<%@include file="../common/head.jsp" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -11,12 +11,11 @@
 		
 	</head>
 	<body>
-	<%@include file="../common/head.jsp" %>
 		<div style="margin-top: 40px;" class="container-fluid">
 		
 		
 		
-		
+		<div class="wrapper wrapper-content animated fadeInRight">
 		        <div>
 		            <ul class="nav nav-tabs">
 		                <li><input  class="btn btn-primary" type="button" onclick="deleteAll()" value="批量删除"/></li>
@@ -61,7 +60,14 @@
 									<td><input type="checkbox" name="selectIds" value="${product.id }"/></td>
 										<td>${product.id}</td>
 										<td>${product.category_id }</td>
-										<td>${product.name }</td>
+										<td>
+										<c:if test="${fn:length(product.name ) > 10 }">
+											${fn:substring(product.name ,0,20)}...
+										</c:if>
+										<c:if test="${fn:length(product.name )  <= 10 }">
+											${product.name }
+										</c:if>
+										</td>
 <%-- 										<td>${product.subtitle}</td>
 										<td>${product.sub_images}</td>
 										<td>${product.detail}</td>

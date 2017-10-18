@@ -13,7 +13,7 @@
 	<body>
 	<%@include file="../common/head.jsp" %>
 		<div style="margin-top: 40px;" class="container-fluid">
-		
+		<div class="wrapper wrapper-content animated fadeInRight">
 		
 		            <div class="alert alert-info" role="alert">删除前请认真核对图片的信息<strong>确保无误</strong></div>
 					    <table class="table">

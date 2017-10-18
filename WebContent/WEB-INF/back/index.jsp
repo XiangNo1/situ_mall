@@ -38,16 +38,16 @@
                                 <span class="clear">
                                     <span class="block m-t-xs" style="font-size:20px;">
                                         <i class="fa fa-area-chart"></i>
-                                        <strong class="font-bold">hAdmin</strong>
+                                        <strong class="font-bold">${userBackSession.username }</strong>
                                     </span>
                                 </span>
                             </a>
                         </div>
-                        <div class="logo-element">hAdmin
+                        <div class="logo-element">${userBackSession.username }
                         </div>
                     </li>
                     <li>
-                        <a class="J_menuItem" href="${ctx}/backIndex/index_v1.action">
+                        <a class="J_menuItem" href="/pic/hAdmin/hAdmin/index_v1.html">
                             <i class="fa fa-home"></i>
                             <span class="nav-label">主页</span>
                         </a>
@@ -205,7 +205,7 @@
                 </nav>
             </div>
             <div class="row J_mainContent" id="content-main">
-                <iframe id="J_iframe" width="100%" height="100%" src="${ctx}/backIndex/index_v1.action?v=4.0" frameborder="0" data-id="index_v1.html" seamless></iframe>
+                <iframe id="J_iframe" width="100%" height="100%" src="/pic/hAdmin/hAdmin/index_v1.html" frameborder="0" data-id="index_v1.html" seamless></iframe>
             </div>
         </div>
         <!--右侧部分结束-->

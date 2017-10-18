@@ -15,7 +15,7 @@
 		<div style="margin-top: 40px;" class="container-fluid">
 		
 		
-		
+		<div class="wrapper wrapper-content animated fadeInRight">
 		             <form action="${ctx}/slideshow/addSlideshow2.action" method="post" enctype="multipart/form-data" id="form-add">
 		   	 
 			         链接地址:<input id="link" name="link"  class="form-control">

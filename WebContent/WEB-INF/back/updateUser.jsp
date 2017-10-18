@@ -12,7 +12,7 @@
 	<body>
 	<%@include file="../common/head.jsp" %>
 		<div style="margin-top: 40px;" class="container-fluid">
-		
+		<div class="wrapper wrapper-content animated fadeInRight">
 		
 		           <div class="alert alert-danger" role="alert">请注意不要添加重复的用户！！！</div>
 		           <form action="${ctx}/user/updateUser2.action" method="post">

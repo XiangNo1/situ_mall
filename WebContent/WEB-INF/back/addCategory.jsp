@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@page import="java.util.*"%>
+	<%@include file="../common/head.jsp" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -10,11 +11,10 @@
 		<title></title>
 	</head>
 	<body>
-	<%@include file="../common/head.jsp" %>
 		<div style="margin-top: 40px;" class="container-fluid">
 		
 		
-		
+		<div class="wrapper wrapper-content animated fadeInRight">
 		
 		            <div class="alert alert-info" role="alert">前请认真核对分类的信息<strong>确保无误</strong></div>
 					    
@@ -29,7 +29,7 @@
        <button class="btn btn-primary" type="button" onclick="clearForm()">清空表单</button></p>
     </form>
 </div>
-		            
+	</div>	            
 	<script>
 	function submitForm() {
 		var options = {

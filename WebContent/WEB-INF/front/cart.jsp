@@ -107,7 +107,7 @@
         	<li class="l91">
             	<input class="inp1" type="button" value="-" onclick="sub(${cartItemVO.product.id})">
             	<input type="hidden" value="${cartItemVO.amount}" id="input3"/>
-            	<input class="inp2" type="text" value="${cartItemVO.amount}" size="4" id="input${cartItemVO.product.id }" onchange="change(${cartItemVO.product.id },${cartItemVO.amount})">
+            	<input class="inp2" type="text" value="${cartItemVO.amount}" size="4" id="input${cartItemVO.product.id }" onchange="change(${cartItemVO.product.id })">
             	<input type="hidden" value="${cartItemVO.product.id}" id="input2"/>
             	<input class="inp1" type="button" value="+" onclick="increase(${cartItemVO.product.id})">
                 
@@ -253,7 +253,7 @@
 	       }
 	    };
 	    
-	    function change(id,amount){
+	    function change(id){
 	    	var amount2= $("#input"+ id).val();
 	    	window.location.href="${ctx}/cart/updateCart.shtml?id="+id+"&amount="+amount2;
 	    }

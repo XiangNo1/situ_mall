@@ -16,7 +16,7 @@
 	</head>
 	<body>
 		<div style="margin-top: 40px;" class="container-fluid">
-		
+		<div class="wrapper wrapper-content animated fadeInRight">
 		
 		            <div class="alert alert-danger" role="alert">请注意不要添加重复id的商品！！！</div>
  <form action="${ctx}/product/updateProduct2.action" method="post" enctype="multipart/form-data" id="add-form">

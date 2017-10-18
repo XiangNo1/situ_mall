@@ -12,7 +12,7 @@
 	<body>
 	<%@include file="../common/head.jsp" %>
 		<div style="margin-top: 40px;" class="container-fluid">
-		
+		<div class="wrapper wrapper-content animated fadeInRight">
 		            <div class="alert alert-danger" role="alert">修改前请仔细检查！！！</div>
 						 <form action="${ctx}/shipping/updateShipping2.action" method="post">
 					  	 	 id：<input class="form-control" type="text" name="id" value="${shipping.id }" readonly="readonly"/>

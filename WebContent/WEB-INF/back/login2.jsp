@@ -27,7 +27,15 @@
 <div class="wrapper wrapper-content animated fadeInRight">
 	<h1>欢迎进入商城后台管理系统！</h1>
 	<div style="width:30%; margin-top:150px;" class="container">
+	<form action="${ctx}/backIndex/backLogin2.action" method = "post">
+		用户名：<input  class="form-control" placeholder="请输入帐号" type="text" name="name"/><br/>
+		密 码 : <input  class="form-control" placeholder="请输入密码" type="text" name="password"/><br/>
+		验证码：<input class="form-control" type="text" name="checkCode"/>
+		<img id="codeImg" src="${ctx}/checkImgServlet" onclick="refreshCode()"/>
 		
+		<input class="btn btn-primary" type="submit" value="登录"/>
+		<a href="${ctx}/jsp/zhuce.jsp">注册账号</a>
+	</form>
 </div>
 </div>
 <script type="text/javascript">

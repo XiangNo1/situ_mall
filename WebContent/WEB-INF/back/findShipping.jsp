@@ -12,7 +12,7 @@
 	<body>
 	<%@include file="../common/head.jsp" %>
 		<div style="margin-top: 40px;" class="container-fluid">
-		
+		<div class="wrapper wrapper-content animated fadeInRight">
 		                <!-- <li><input  class="btn btn-primary" type="button" onclick="deleteAll()" value="批量删除"/></li> -->
 		            </ul>
 		            <div class="alert alert-info" role="alert">删除前请认真核对地址的信息<strong>确保无误</strong></div>
