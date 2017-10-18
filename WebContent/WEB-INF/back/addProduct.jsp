@@ -21,23 +21,6 @@
 		
 		
 		
-		    <div class="row">
-		        <div class="col-md-2">
-		            <div class="list-group">
-		                <a href="${ctx}/product/findAllProduct.action" class="list-group-item">商品管理</a>
-		                <a href="${ctx}/product/addProduct.action" class="list-group-item active">添加商品</a>
-		            </div>
-		        </div>
-		        <div class="col-md-10">
-		             <ul class="nav nav-tabs">
-		                <li>
-		                    <a href="${ctx}/product/findAllProduct.action">商品管理</a>
-		                </li>
-		                <li class="active">
-		                	<a href="${ctx}/product/addProduct.action">添加商品</a>
-		                </li>
-		            </ul>
-				   <div style="width:60%; margin-top:20px;">
 		            <div class="alert alert-danger" role="alert">请注意不要添加重复id的商品！！！</div>
  <form action="${ctx}/product/addProduct2.action" method="post" enctype="multipart/form-data" id="add-form">
    	    

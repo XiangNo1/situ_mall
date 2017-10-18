@@ -16,28 +16,7 @@
 		
 		
 		
-		
-		    <div class="row">
-		        <div class="col-md-2">
-		            <div class="list-group">
-		                <a href="${ctx}/slideshow/findSlideshow.action" class="list-group-item">轮播图管理</a>
-		                <a href="${ctx}/slideshow/addSlideshow.action" class="list-group-item">添加轮播图</a>
-		                <a href="${ctx}/slideshow/addSlideshow.action" class="list-group-item active">修改轮播图</a>		                
-		            </div>
-		        </div>
-		        <div class="col-md-10">
-		            <ul class="nav nav-tabs">
-		                <li>
-		                    <a href="${ctx}/slideshow/findSlideshow.action">轮播图管理</a>
-		                </li>
-		                <li>
-		                	<a href="${ctx}/slideshow/addSlideshow.action">添加轮播图</a>
-		                </li>
-		                <li class="active">
-		                	<a href="${ctx}/slideshow/addSlideshow.action">修改轮播图</a>
-		                </li>
-		            </ul>
-		             <form style="width: 60%" action="${ctx}/slideshow/updateSlideshow2.action" method="post" enctype="multipart/form-data" id="form-add">
+		             <form action="${ctx}/slideshow/updateSlideshow2.action" method="post" enctype="multipart/form-data" id="form-add">
 		   	 id<input name="id" class="form-control" value="${slideshow.id }" readonly="readonly" />
 			         链接地址:<input id="link" name="link"  class="form-control" value="${slideshow.link }">
 			    轮播图状态：    <select name="status"  class="form-control" id="status">

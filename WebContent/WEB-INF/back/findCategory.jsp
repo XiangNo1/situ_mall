@@ -14,25 +14,6 @@
 		<div style="margin-top: 40px;" class="container-fluid">
 		
 		
-		
-		    <div class="row">
-		        <div class="col-md-2">
-		            <div class="list-group">
-		                <a href="${ctx}/category/findAllCategory.action" class="list-group-item active">分类管理</a>
-		                <a href="${ctx}/category/addCategory.action" class="list-group-item">添加分类</a>
-		                
-		            </div>
-		        </div>
-		        <div class="col-md-10">
-		            <ul class="nav nav-tabs">
-		                <li class="active">
-		                    <a href="${ctx}/category/findAllCategory.action">分类管理</a>
-		                </li>
-		                <li>
-		                	<a href="${ctx}/category/addCategory.action">添加分类</a>
-		                </li>
-		                <!-- <li><input  class="btn btn-primary" type="button" onclick="deleteAll()" value="批量删除"/></li> -->
-		            </ul>
 		            <div class="alert alert-info" role="alert">删除前请认真核对分类的信息<strong>确保无误</strong></div>
 					    
 					    <form id="mainForm" action="" method="post">

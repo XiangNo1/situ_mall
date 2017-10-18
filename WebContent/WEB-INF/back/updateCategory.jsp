@@ -17,30 +17,8 @@
 		
 		
 		
-		    <div class="row">
-		        <div class="col-md-2">
-		            <div class="list-group">
-		                <a href="${ctx}/category/findAllCategory.action" class="list-group-item">分类管理</a>
-		                <a href="${ctx}/product/addProduct.action" class="list-group-item">添加分类</a>
-		                <a href="" class="list-group-item active">添加修改</a>
-		                
-		            </div>
-		        </div>
-		        <div class="col-md-10">
-		            <ul class="nav nav-tabs">
-		                <li>
-		                    <a href="${ctx}/category/findAllCategory.action">分类管理</a>
-		                </li>
-		                <li>
-		                	<a href="${ctx}/category/addCategory.action">添加分类</a>
-		                </li>
-		                <li class="active">
-		                	<a href="">修改分类</a>
-		                </li>
-		            </ul>
 		            <div class="alert alert-info" role="alert">前请认真核对分类的信息<strong>确保无误</strong></div>
 					    
-					     <div style="width:60%; margin-top:20px;">
 		            <div class="alert alert-danger" role="alert">请注意不要修改重复id的分类！！！</div>
  <form action="${ctx}/category/updateCategory2.action" method="post" id="add-form">
  

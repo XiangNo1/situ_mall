@@ -15,21 +15,6 @@
 		
 		
 		
-		
-		    <div class="row">
-		        <div class="col-md-2">
-		            <div class="list-group">
-		                <a href="${ctx}/backOrder/findBackOrder.action" class="list-group-item active">订单管理</a>
-		                
-		            </div>
-		        </div>
-		        <div class="col-md-10">
-		            <ul class="nav nav-tabs">
-		                <li class="active">
-		                    <a href="${ctx}/backOrder/findBackOrder.action">订单管理</a>
-		                </li>
-		                <!-- <li><input  class="btn btn-primary" type="button" onclick="deleteAll()" value="批量删除"/></li> -->
-		            </ul>
 		            <div class="alert alert-info" role="alert">删除前请认真核对订单的信息<strong>确保无误</strong></div>
 					    
 					    <form id="mainForm" action="" method="post">

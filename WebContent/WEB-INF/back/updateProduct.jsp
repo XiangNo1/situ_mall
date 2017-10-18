@@ -18,30 +18,6 @@
 		<div style="margin-top: 40px;" class="container-fluid">
 		
 		
-		
-		
-		    <div class="row">
-		        <div class="col-md-2">
-		            <div class="list-group">
-		                <a href="${pageContext.request.contextPath}/student/searchByCondition.action" class="list-group-item">商品管理</a>
-		                <a href="${pageContext.request.contextPath}/student/addStudent.action" class="list-group-item">添加商品</a>
-		                <a href="" class="list-group-item active">修改商品</a>
-		            </div>
-		        </div>
-		        <div class="col-md-10">
-		             <ul class="nav nav-tabs">
-		                <li>
-		                    <a href="${ctx}/product/findAllProduct.action">商品管理</a>
-		                </li>
-		                <li>
-		                	<a href="${ctx}/product/addProduct.action">添加商品</a>
-		                </li>
-		                <li class="active">
-		                	<a href="">修改商品</a>
-		                </li>
-		                <li><input  class="btn btn-primary" type="button" onclick="deleteAll()" value="批量删除"/></li>
-		            </ul>
-				   <div style="width:60%; margin-top:20px;">
 		            <div class="alert alert-danger" role="alert">请注意不要添加重复id的商品！！！</div>
  <form action="${ctx}/product/updateProduct2.action" method="post" enctype="multipart/form-data" id="add-form">
    	    商品id：<input class="form-control" type="text" name="id" id="id" value="${product.id }" readonly="readonly"/><br/>

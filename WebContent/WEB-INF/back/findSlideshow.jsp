@@ -15,23 +15,6 @@
 		<div style="margin-top: 40px;" class="container-fluid">
 		
 		
-		    <div class="row">
-		        <div class="col-md-2">
-		            <div class="list-group">
-		                <a href="${ctx}/slideshow/findSlideshow.action" class="list-group-item active">轮播图管理</a>
-		                <a href="${ctx}/slideshow/addSlideshow.action" class="list-group-item">添加轮播图</a>
-		                
-		            </div>
-		        </div>
-		        <div class="col-md-10">
-		            <ul class="nav nav-tabs">
-		                <li class="active">
-		                    <a href="${ctx}/slideshow/findSlideshow.action">轮播图管理</a>
-		                </li>
-		                <li>
-		                	<a href="${ctx}/slideshow/addSlideshow.action">添加轮播图</a>
-		                </li>
-		            </ul>
 		            <div class="alert alert-info" role="alert">删除前请认真核对图片的信息<strong>确保无误</strong></div>
 					    <table class="table">
 					    	<tr>

@@ -13,30 +13,6 @@
 	<%@include file="../common/head.jsp" %>
 		<div style="margin-top: 40px;" class="container-fluid">
 		
-		
-		
-		
-		    <div class="row">
-		        <div class="col-md-2">
-		            <div class="list-group">
-		                <a href="${ctx}/shipping/findShipping.action" class="list-group-item">收货地址管理</a>
-		                <a href="${ctx}/shipping/addShipping.action" class="list-group-item">添加收货地址</a>
-		                <a href="${ctx}/shipping/addShipping.action" class="list-group-item active">修改收货地址</a>		                
-		            </div>
-		        </div>
-		        <div class="col-md-10">
-		            <ul class="nav nav-tabs">
-		                <li>
-		                    <a href="${ctx}/shipping/findShipping.action">收货地址管理</a>
-		                </li>
-		                <li>
-		                	<a href="${ctx}/shipping/addShipping.action">添加收货地址</a>
-		                </li>
-		                <li class="active">
-		                	<a href="${ctx}/shipping/addShipping.action">修改收货地址</a>
-		                </li>
-		            </ul>
-				     <div style="width:60%; margin-top:20px;">
 		            <div class="alert alert-danger" role="alert">修改前请仔细检查！！！</div>
 						 <form action="${ctx}/shipping/updateShipping2.action" method="post">
 					  	 	 id：<input class="form-control" type="text" name="id" value="${shipping.id }" readonly="readonly"/>

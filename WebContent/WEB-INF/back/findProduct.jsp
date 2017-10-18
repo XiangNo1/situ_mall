@@ -17,22 +17,8 @@
 		
 		
 		
-		    <div class="row">
-		        <div class="col-md-2">
-		            <div class="list-group">
-		                <a href="${ctx}/product/findAllProduct.action" class="list-group-item active">商品管理</a>
-		                <a href="${ctx}/product/addProduct.action" class="list-group-item">添加商品</a>
-		                
-		            </div>
-		        </div>
-		        <div class="col-md-10">
+		        <div>
 		            <ul class="nav nav-tabs">
-		                <li class="active">
-		                    <a href="${ctx}/product/findAllProduct.action">商品管理</a>
-		                </li>
-		                <li>
-		                	<a href="${ctx}/product/addProduct.action">添加商品</a>
-		                </li>
 		                <li><input  class="btn btn-primary" type="button" onclick="deleteAll()" value="批量删除"/></li>
 		                <li><input  class="btn btn-primary" type="button" onclick="upAll()" value="批量上架"/></li>
 		                <li><input  class="btn btn-primary" type="button" onclick="downAll()" value="批量下架"/></li>
