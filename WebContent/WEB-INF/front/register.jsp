@@ -42,7 +42,7 @@
 <div class="box5">
 <form action="${ctx }/login/newUser.shtml">
 	<h1>用户注册</h1>
-    <h2>已有账户<a href="">在此登录</a></h2>
+    <h2>已有账户<a href="${ctx }/login/login.shtml">在此登录</a></h2>
 	<div class="clearfix"></div>
     <input class="b5i1" type="text" placeholder="&nbsp;&nbsp;&nbsp;&nbsp;账户名称" name="username" id="username">
 	<div class="clearfix"></div>

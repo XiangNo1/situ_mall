@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.situ.mall.pojo.User;
+
 
 public class LoginFilter implements Filter{
     @Override
@@ -26,7 +28,7 @@ public class LoginFilter implements Filter{
        String uri = req.getRequestURI();
        // /Java1705Web/login.jsp   /Java1705Web/loginFilter
        System.out.println(uri);
-       if (!uri.contains("order")) {
+       if (!uri.contains("backIndex") || uri.contains("backLogin")) {
            //直接放行
            chain.doFilter(request, response);
        } else {
@@ -34,8 +36,8 @@ public class LoginFilter implements Filter{
            // 1.得到Session对象
            HttpSession session = req.getSession();
            // 2.得到会话数据
-           if (session.getAttribute("userSession") == null) {
-               resp.sendRedirect(req.getContextPath() + "/login/login.shtml");
+           if (session.getAttribute("userBackSession") == null) {
+               resp.sendRedirect(req.getContextPath() + "/backIndex/backLogin.action");
                return;
            }else{
            //验证成功，放行(可以访问jsp或者servlet这些资源)

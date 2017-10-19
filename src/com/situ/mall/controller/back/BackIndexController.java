@@ -26,6 +26,13 @@ public class BackIndexController {
 		return "index_v1";
 	}
 	
+	@RequestMapping(value="/backLoginOut")
+	public String backLoginOut(HttpServletRequest request){
+		HttpSession session = request.getSession();
+		session.removeAttribute("userBackSession");
+		return "redirect:/backIndex/backLogin.action";
+	}
+	
 	@RequestMapping(value="/backLogin2")
 	public String login(String name, String password, String checkCode, HttpServletRequest request){
 		String checkCodeSession = (String) request.getSession().getAttribute("checkCodeSession");

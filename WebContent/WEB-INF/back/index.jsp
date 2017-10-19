@@ -34,7 +34,7 @@
                 <ul class="nav" id="side-menu">
                     <li class="nav-header">
                         <div class="dropdown profile-element">
-                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                            <a data-toggle="dropdown" class="dropdown-toggle">
                                 <span class="clear">
                                     <span class="block m-t-xs" style="font-size:20px;">
                                         <i class="fa fa-area-chart"></i>
@@ -42,6 +42,7 @@
                                     </span>
                                 </span>
                             </a>
+                                        <a href="${ctx }/backIndex/backLoginOut.action">退出</a>
                         </div>
                         <div class="logo-element">${userBackSession.username }
                         </div>

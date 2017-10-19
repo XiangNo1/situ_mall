@@ -58,7 +58,7 @@
 	<div class="clearfix"></div>
    	<input class="b5in4" type="checkbox" id="b51"><label for="b51">记住用户名</label>
     <ul class="b5u">
-    	<li><a class="b5a2" href="">免费注册</a></li>
+    	<li><a class="b5a2" href="${ctx }/login/register.shtml">免费注册</a></li>
     	<li><a class="b5a3" href="">忘记密码</a></li>
     </ul>
 </div>
