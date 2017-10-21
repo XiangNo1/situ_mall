@@ -28,7 +28,7 @@ public class LoginFilter implements Filter{
        String uri = req.getRequestURI();
        // /Java1705Web/login.jsp   /Java1705Web/loginFilter
        System.out.println(uri);
-       if (!uri.contains("backIndex") || uri.contains("backLogin")) {
+       if (!uri.contains("action") || uri.contains("backLogin") || uri.contains("backLogin2") || uri.contains("backRegister")) {
            //直接放行
            chain.doFilter(request, response);
        } else {

@@ -286,7 +286,7 @@ function moreAc(order_no){
 	 // offset: 'rb', //右下角弹出
 	 // time: 2000, //2秒后自动关闭
 	  anim: 2,
-	  content: ['${ctx}/backOrder/findOrderItem.action?order_no='+order_no, 'yes'], //iframe的url，no代表不显示滚动条
+	  content: ['${ctx}/order/findOrderItem.shtml?order_no='+order_no, 'yes'], //iframe的url，no代表不显示滚动条
 	  /* end: function(){ //此处用于演示
 	    layer.open({
 	      type: 2,

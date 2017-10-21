@@ -44,8 +44,15 @@ public class OrderController {
 	private IProductService productService;
 	@Autowired
 	private IShippingService shippingService;
+	
 	@Autowired
 	private IOrderItemService orderItemService;
+	@RequestMapping(value="/findOrderItem")
+	public String findOrderItem(Long order_no, Model model){
+		List<OrderItem> list = orderItemService.findOrderItemByorder_no(order_no);
+		model.addAttribute("list", list);
+		return "findOrderItem";
+	}
 	
 	@RequestMapping(value="/pay")
 	public String pay(){

@@ -24,23 +24,19 @@
 
 <body class="gray-bg">
 <div class="wrapper wrapper-content animated fadeInRight">
-	<h1>欢迎进入商城后台管理系统！<strong>登录页面</strong></h1>
+	<h1>欢迎进入商城后台管理系统！<strong>注册页面</strong></h1>
 	<div style="width:30%; margin-top:150px;" class="container">
 	<form action="${ctx}/backIndex/backLogin2.action" method = "post" id="form">
-		用户名：<input  class="form-control" placeholder="请输入帐号" type="text" name="name"/><br/>
+		用户名：<input  class="form-control" placeholder="请输入帐号" type="text" name="username"/><br/>
 		密 码 : <input  class="form-control" placeholder="请输入密码" type="text" name="password"/><br/>
-		验证码：<input class="form-control" type="text" name="checkCode"/>
-		<img id="codeImg" src="${ctx}/checkImgServlet" onclick="refreshCode()"/>
-		
-		<input class="btn btn-primary" type="button" onclick="submitForm()" value="登录"/>
-		<a href="${ctx}/backIndex/backRegister.action">注册账号</a>
+		<input class="btn btn-primary" type="button" onclick="submitForm()" value="注册"/>
 	</form>
 </div>
 </div>
 <script type="text/javascript">
 function submitForm() {
 	var options = {
-			url:"${ctx}/backIndex/backLogin2.action",
+			url:"${ctx}/backIndex/backRegister2.action",
 			type:"post",
 			dateType:"json",
 			data:$("#form").serialize(),
@@ -48,7 +44,7 @@ function submitForm() {
 				if(data.status == 0){
 					layer.msg(data.msg);
 					setTimeout(function(){
-	         			window.location.href = "${ctx}/backIndex/backIndex.action";
+	         			window.location.href = "${ctx}/backIndex/backLogin.action";
 					},1000);
 				}
 				else {
