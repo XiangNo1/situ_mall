@@ -30,6 +30,7 @@
 		用户名：<input  class="form-control" placeholder="请输入帐号" type="text" name="username"/><br/>
 		密 码 : <input  class="form-control" placeholder="请输入密码" type="text" name="password"/><br/>
 		<input class="btn btn-primary" type="button" onclick="submitForm()" value="注册"/>
+		已有账号<a href="${ctx}/backIndex/backLogin.action">在此登录</a>
 	</form>
 </div>
 </div>

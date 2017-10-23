@@ -74,7 +74,7 @@
         </ul>
     </div>
     <div class="box8">
-    	<input type="checkbox" id="liangtaoziying"><label for="liangtaoziying"><img src="${ctx}/resources/front/image/156.png"></label>
+    	<img src="${ctx}/resources/front/image/156.png">
     </div>
     <div class="box9"><img src="${ctx}/resources/front/image/157.png"></div>
     <div class="clearfix"></div>
