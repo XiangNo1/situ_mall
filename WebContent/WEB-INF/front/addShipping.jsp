@@ -37,11 +37,15 @@
 							      区/县：<input class="form-control" type="text" name="receiver_district"/> -->
 							      详细地址：<input class="form-control" type="text" name="receiver_address"/>
 							      邮编：<input class="form-control" type="text" name="receiver_zip"/>
-						       <p><button class="btn btn-primary" type="button" onclick="submitForm()"">保存</button></p>
+						       <p><button class="btn btn-primary" type="button" onclick="submitForm()">保存</button></p>
 					    </form>
 		
 	</body>
 	<script type="text/javascript">
+	
+	
+	
+	
 	$(function() {
         $.ajax({
             url:"${ctx}/province/selectProvinces.shtml",
