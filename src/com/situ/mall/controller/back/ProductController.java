@@ -87,7 +87,7 @@ public class ProductController {
 	
 	@RequestMapping(value="searchProductByCondition")
 	public ModelAndView searchByCondition(ModelAndView modelAndView, String pageIndex,String pageSize, Integer category_id){
-		
+			System.out.println(category_id);
 			int pageIndex1 = 1;
 			if (pageIndex!= null && !pageIndex.equals("")) {
 				pageIndex1 = Integer.parseInt(pageIndex);

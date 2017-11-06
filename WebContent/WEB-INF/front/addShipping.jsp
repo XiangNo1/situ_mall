@@ -11,7 +11,7 @@
 	</head>
 	<body>
 	<%@include file="../common/head.jsp" %>
-						 <form action="${ctx}/shipping/addShipping2.action" method="post" id="form">
+						 <form style="width: 90%;margin: 0 auto;" action="${ctx}/shipping/addShipping2.action" method="post" id="form">
 						 
 						  	     收货姓名：<input class="form-control" type="text" name="receiver_name"/>
 							      收货固定电话：<input class="form-control" type="text" name="receiver_phone"/>
