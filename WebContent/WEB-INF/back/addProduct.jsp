@@ -93,7 +93,7 @@ KindEditor.ready(function(K) {
 					div.html('');
 					K.each(urlList, function(i, data) {
 						imgArray.push(data.name);
-						div.append('<img src="' + data.url + '" width="80" height="50">');
+						div.append('<img src="' + data.url + '" width="50" height="50">');
 					});
 					$("#subImages").val(imgArray.join(","));
 					editor.hideDialog();

@@ -86,8 +86,8 @@ public class ProductController {
 	}
 	
 	@RequestMapping(value="searchProductByCondition")
-	public ModelAndView searchByCondition(ModelAndView modelAndView, String pageIndex,String pageSize, Integer category_id){
-			System.out.println(category_id);
+	public ModelAndView searchByCondition(ModelAndView modelAndView, String pageIndex,String pageSize, String name, Integer status){
+			System.out.println(name);
 			int pageIndex1 = 1;
 			if (pageIndex!= null && !pageIndex.equals("")) {
 				pageIndex1 = Integer.parseInt(pageIndex);
@@ -98,7 +98,12 @@ public class ProductController {
 			}
 			SearchProductByCondition searchCondition = new SearchProductByCondition(pageIndex1, pageSize1);
 			Product product = new Product();
-			product.setCategory_id(category_id);
+			if (name != null && !name.equals("")) {
+				product.setName(name);
+			}
+			if (status != null) {
+				product.setStatus(status);
+			}
 			searchCondition.setProduct(product);
 			PageBean pageBean = productservice.getProductSearchPageBean(searchCondition);
 			System.out.println(pageBean);
@@ -134,6 +139,11 @@ public class ProductController {
 		model.addAttribute("c1", category1);
 		model.addAttribute("c2", category2);
 		model.addAttribute("product", product);
+		String[] imgs = product.getSub_images().split(",");
+		model.addAttribute("imgs", imgs);
+		for (String string : imgs) {
+			System.out.println(string);
+		}
 		return "updateProduct";
 	}
 	

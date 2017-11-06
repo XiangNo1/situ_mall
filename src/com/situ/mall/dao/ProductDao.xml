@@ -6,27 +6,23 @@
 
 
 	<select id="findTotalCountProductByid" parameterType="Integer" resultType="Integer">
-		select count(*) from product
-		<where>
+		select count(*) from product where status=1
 	       <if test="id != null">
 	           and category_id=#{id}
 	       </if>
 	       <if test="name != null">
 	           and name like '%${name}%'
 	       </if>
-       </where>
 	</select>
 
 	<select id="findProductBeanListByid" resultType="Product">
-		select * from product 
-		<where>
+		select * from product where status=1
 			<if test="id != null">
 	           and category_id=#{id}
 	       </if>
 	       <if test="name != null">
 	           and name like '%${name}%'
 	       </if> 
-	     </where>
 	       limit #{index},#{pageSize}
 	</select>
 
@@ -57,9 +53,12 @@
 	<select id="findSearchProductBeanList" resultType="Product">
 		select * from product
 		<where>
-       <if test="searchCondition.product.category_id != null">
-           and category_id=#{searchCondition.product.category_id}
-       </if>
+	       <if test="searchCondition.product.name != null">
+	       		and name like '%${searchCondition.product.name}%'
+	       </if>
+	       <if test="searchCondition.product.status != null">
+	       		and status=#{searchCondition.product.status}
+	       </if>
        </where>
 		limit #{index},#{searchCondition.pageSize}
 	</select>
@@ -67,9 +66,12 @@
 	<select id="findTotalCountSearchProduct" parameterType="SearchProductByCondition" resultType="Integer">
 		select count(*) from product 
 		<where>
-       <if test="product.category_id != null">
-           and category_id=#{product.category_id}
-       </if>
+	       <if test="product.name != null">
+	           and name like '%${product.name}%'
+	       </if>
+	       <if test="product.status != null">
+	       		and status=#{product.status}
+	       </if>
        </where>
 	</select>
 

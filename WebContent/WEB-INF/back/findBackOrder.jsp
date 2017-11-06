@@ -95,8 +95,6 @@
 										<td>
 										<fmt:formatDate value="${orderr.update_time}" pattern="yyyy-MM-dd HH:mm:ss"/>
 										</td>
-										<td><a href="javascript:delShipping(${shipping.id });">删除</a></td>
-										<td><a href="${ctx }/backOrder/updateBackOrder.action?id=${orderr.id}">修改</a></td>
 										<td><a onclick="moreAc(${orderr.order_no})">详细信息</a></td>										
 									</tr>
 								</c:forEach>

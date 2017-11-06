@@ -21,7 +21,7 @@
 		            <div class="alert alert-danger" role="alert">请注意不要添加重复的分类！！！</div>
  <form action="${ctx}/category/addCategory2.action" method="post" id="add-form">
  
-  	     父类id：<input class="form-control" type="text" name="parent_id"/>
+  	     父类id<span style="color: red;">(如果要添加一级分类请填写0)</span>：<input class="form-control" type="text" name="parent_id"/>
 	       类别名称：<input class="form-control" type="text" name="name"/>
 	       	        类别状态:<input id="status" name="status"  class="form-control">
 <!-- 	       排序编号：<input class="form-control" type="text" name="sort_order"/>

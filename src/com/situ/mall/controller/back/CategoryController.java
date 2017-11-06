@@ -9,6 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.situ.mall.common.ServerResponse;
 import com.situ.mall.pojo.Category;
 import com.situ.mall.service.ICategoryService;
+import com.situ.mall.service.IProductService;
 import com.situ.mall.vo.PageBean;
 
 @Controller
@@ -17,7 +18,8 @@ public class CategoryController {
 
 	@Autowired
 	private ICategoryService categoryService;
-	
+	@Autowired
+	private IProductService productservice;
 	
 	@RequestMapping(value="updateCategory2")
 	@ResponseBody

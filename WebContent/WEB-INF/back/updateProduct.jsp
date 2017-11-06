@@ -21,18 +21,15 @@
 		            <div class="alert alert-danger" role="alert">请注意不要添加重复id的商品！！！</div>
  <form action="${ctx}/product/updateProduct2.action" method="post" enctype="multipart/form-data" id="add-form">
    	    商品id：<input class="form-control" type="text" name="id" id="id" value="${product.id }" readonly="readonly"/><br/>
-   	    当前商品分类：
-   	    ${c1.name } &nbsp;&nbsp;&nbsp;${c2.name }
-   	    <br/>
-   	    <p>若要修改分类请选择(不修改请忽略)：</p>
+   	    商品分类：<br/>
    	       一级分类:
     <select class="form-control" id="province" onchange="selectCitys(this)">
-       <option value="">-请选择-</option>
+       <option value="">${c1.name }</option>
        
     </select>
 	  二级分类:
 	<select class="form-control" id="city" name="category_id">
-       <option value="">-请选择-</option>
+       <option value="${c2.id }">${c2.name }</option>
     </select>
    	    
 	       商品名称：<input class="form-control" type="text" name="name" value="${product.name }"/><br/>
@@ -57,6 +54,11 @@
  				  	<label>商品图片</label>
  				  	 <a href="javascript:void(0)" class="picFileUpload" id="picFileUpload">上传图片</a>
  	                 <input type="hidden" name="sub_images" id="subImages" value="${product.sub_images }"/>
+ 	                 <div id="is">
+ 	                 <c:forEach var="img" items="${imgs}">
+ 	                 	<img alt="" src="/pic/${img }" style="width: 50px; height:50px;">
+ 	                 </c:forEach>
+ 	                 </div>
  	                 <div id="J_imageView"></div>
  				  </div>
  				  <div class="form-group">
@@ -93,8 +95,9 @@ KindEditor.ready(function(K) {
 					div.html('');
 					K.each(urlList, function(i, data) {
 						imgArray.push(data.name);
-						div.append('<img src="' + data.url + '" width="80" height="50">');
+						div.append('<img src="' + data.url + '" width="50" height="50">');
 					});
+					$("#is").hide();
 					$("#subImages").val(imgArray.join(","));
 					editor.hideDialog();
 				}
@@ -116,7 +119,7 @@ $(function() {
         dataType:"json",
         success:function(data,textStatus,ajax){
            //append_template(data, "province");
-           var html = "<option>-请选择-</option>";
+           var html = "<option>${c1.name }</option>";
            for(var i=0;i<data.length;i++){
                html +="<option value='"+data[i].id+"'>"+data[i].name+"</option>";
            }

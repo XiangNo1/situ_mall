@@ -26,7 +26,13 @@
 					    
 					    <form id="searchForm" class="container" action="${ctx}/product/searchProductByCondition.action" method="post">
 					    	<input type="hidden" name="pageIndex" id="pageIndex" />
-					  	 	    请输入要查询的商品分类id:<input type="text" name="category_id" value="${searchCondition.product.category_id}"/>
+					  	 	    请输入要查询的商品名称:<input type="text" name="name" value="${searchCondition.product.name}"/>
+					  	 	    请选择要查询的商品状态:
+					  	 	    <select name="status" id="status">
+					  	 	    	<option value="">请选择</option>
+					  	 	    	<option value="1">在售</option>
+					  	 	    	<option value="2">下架</option>
+					  	 	    </select>
 					           	&nbsp;&nbsp;&nbsp;
 					      	 <button class="btn btn-primary">搜索</button>
 					    </form>
@@ -224,7 +230,9 @@
 		       $("#mainForm").submit();
 		    }
 	};
-
+	$(function(){
+	       $("#status option[value='${searchCondition.product.status}']").prop("selected", true);
+	    });
 </script>	
 	</body>
 </html>
