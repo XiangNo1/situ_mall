@@ -61,9 +61,7 @@
     </div>
     <div class="clearfix"></div>
     <div class="box7">
-    	<input class="b7i" type="checkbox" id="quanxuan">
         <ul class="b7u1">
-        	<li><label for="quanxuan">全选</label></li>
         	<li>商品</li>
         </ul>
         <ul class="b7u2">
@@ -89,7 +87,7 @@
             <span class="s3">查看换购品</span>
             <span class="s4">去凑单 &gt;</span>
         </div>
-        <input class="b10i1" type="checkbox">
+        <input class="b10i1" type="checkbox" id="">
         <div class="b10b1"><img src="/pic/${cartItemVO.product.main_image}"></div>
         <div class="b10b2">
         		<ul class="b10u1" style="width:260px;">
@@ -106,13 +104,11 @@
             </li>
         	<li class="l91">
             	<input class="inp1" type="button" value="-" onclick="sub(${cartItemVO.product.id})">
-            	<input type="hidden" value="${cartItemVO.amount}" id="input3"/>
             	<input class="inp2" type="text" value="${cartItemVO.amount}" size="4" id="input${cartItemVO.product.id }" onchange="change(${cartItemVO.product.id })">
-            	<input type="hidden" value="${cartItemVO.product.id}" id="input2"/>
             	<input class="inp1" type="button" value="+" onclick="increase(${cartItemVO.product.id})">
                 
             </li>
-        	<li class="l92">￥${cartItemVO.product.price*cartItemVO.amount}</li>
+        	<li class="l92">￥<label id="price1${cartItemVO.product.id }">${cartItemVO.product.price*cartItemVO.amount}</label></li>
         	<li class="l93"><img src="${ctx}/resources/front/image/166.png" onclick="deleteProduct(${cartItemVO.product.id})"></li>
         </ul>
     </div>
@@ -121,7 +117,6 @@
     <br/>
     <span><a style="line-height: 30px; font-size: 20px; " href="${ctx }/details/details2.shtml?id=${buyCartVO.productId}">返回继续购物</a></span>
     <div class="box11">
-    	<input type="checkbox" id="quan"><label for="quan">全选</label>
     	<c:if test="${userSession != null }">
 	        <a href="${ctx }/order/order.shtml" class="jiesuan">立即结算</a>
    		</c:if>
@@ -236,12 +231,28 @@
 
 	function increase(productId){
 		var amount = 1;
-		window.location.href="${ctx}/cart/addCart.shtml?productId="+productId+"&amount="+amount;
+		$.post(
+	               "${ctx}/cart/addCart2.shtml?productId="+productId+"&amount="+amount,
+	               function(data) { 
+	            	   $("#input"+productId).val(data.amount);
+	            	   var price = data.product.price*data.amount;
+	            	   $("#price1"+productId).html(price);
+	               },
+	               "json" //type
+	           );
 	}
 	
 	function sub(productId){
 		var amount = -1;
-		window.location.href="${ctx}/cart/addCart.shtml?productId="+productId+"&amount="+amount;
+		$.post(
+	               "${ctx}/cart/addCart2.shtml?productId="+productId+"&amount="+amount,
+	               function(data) { 
+	            	   $("#input"+productId).val(data.amount);
+	            	   var price = data.product.price*data.amount;
+	            	   $("#price1"+productId).html(price);
+	               },
+	               "json" //type
+	           );
 	}
 	
 	function deleteProduct(id) {
@@ -258,14 +269,10 @@
 	    	window.location.href="${ctx}/cart/updateCart.shtml?id="+id+"&amount="+amount2;
 	    }
 	    
-    /* var productId = $("#input2").val();
-    var inputid = "input" + productId;
-	$("#${inputid}").change(function(){
-		var amount = $("#input").val();
-		var de =  amount - $("#input3").val();
-		window.location.href="${ctx}/cart/addCart.shtml?productId="+productId+"&amount="+de;
-	});
-	  $("#input${id}") */
+	    function selectAll() {
+			
+			$("input[name=selectIds]").prop('checked',$("#selectAlls").is(":checked"))
+		};
 	    
 </script>
 </body>

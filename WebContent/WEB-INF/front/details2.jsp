@@ -192,7 +192,7 @@
 
             $("#up").click(function(){
                 var num = $("#input1").val()
-                if(num>0){
+                if(num>1){
                     $("#input1").val(num-1);
                 }
 
