@@ -10,9 +10,12 @@
 	</select>
 
 	<select id="findUserByUser" parameterType="String" resultType="User">
-		select * from user where username=#{user}
+		select * from user where username=#{user} and role=0
 	</select>
 
+	<select id="findUserByUser2" parameterType="String" resultType="User">
+		select * from user where username=#{user}
+	</select>
 	<update id="updateUser" parameterType="User">
 		update user set
 		username=#{username},password=#{password},email=#{email},phone=#{phone},question=#{question},answer=#{answer},role=#{role},update_time=now()

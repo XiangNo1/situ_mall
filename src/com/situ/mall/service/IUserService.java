@@ -20,4 +20,6 @@ public interface IUserService {
 
 	boolean checkUsername(String username);
 
+	User findUserByUser2(String user);
+
 }

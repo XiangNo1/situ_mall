@@ -71,5 +71,11 @@ public class UserServiceImpl implements IUserService {
 		return i>0?true:false;
 	}
 
+	@Override
+	public User findUserByUser2(String user) {
+		// TODO Auto-generated method stub
+		return userDao.findUserByUser2(user);
+	}
+
 	
 }

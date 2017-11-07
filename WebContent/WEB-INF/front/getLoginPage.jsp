@@ -50,7 +50,7 @@
 						var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
 						setTimeout(function(){
 							parent.layer.close(index); //再执行关闭  
-							window.parent.location.href = "${ctx}/order/order.shtml";
+							window.parent.location.href = "${ctx}/cart/addCart.shtml";
 						},1000);
 					} else {
 						layer.msg(data.msg);

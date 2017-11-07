@@ -53,7 +53,7 @@ public class LoginController {
 		System.out.println(user);
 		System.out.println(password);
 		User u = null; 
-		u = userService.findUserByUser(user);
+		u = userService.findUserByUser2(user);
 		if (u == null) {
 			return ServerResponse.createError("登录失败");
 		}

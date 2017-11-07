@@ -62,6 +62,7 @@
     <div class="clearfix"></div>
     <div class="box7">
         <ul class="b7u1">
+       		<li><input type="checkbox" checked="checked" onclick="selectAll()" id="selectAlls"/>全选</li>
         	<li>商品</li>
         </ul>
         <ul class="b7u2">
@@ -87,7 +88,7 @@
             <span class="s3">查看换购品</span>
             <span class="s4">去凑单 &gt;</span>
         </div>
-        <input class="b10i1" type="checkbox" id="">
+        <input class="b10i1" type="checkbox" name="selectIds" onclick="getTotalprice()" id="checks" checked="checked" value="${cartItemVO.product.id}">
         <div class="b10b1"><img src="/pic/${cartItemVO.product.main_image}"></div>
         <div class="b10b2">
         		<ul class="b10u1" style="width:260px;">
@@ -118,12 +119,12 @@
     <span><a style="line-height: 30px; font-size: 20px; " href="${ctx }/details/details2.shtml?id=${buyCartVO.productId}">返回继续购物</a></span>
     <div class="box11">
     	<c:if test="${userSession != null }">
-	        <a href="${ctx }/order/order.shtml" class="jiesuan">立即结算</a>
+	        <a href="javascript:jiesuan();" class="jiesuan">立即结算</a>
    		</c:if>
    		<c:if test="${userSession == null }">
    			<a href="javascript:login()" class="jiesuan">立即结算</a>
    		</c:if>
-        <span class="b11s1">总金额（已免运费）：<span class="b11s2">￥${buyCartVO.totalPrice}</span></span>
+        <span class="b11s1">总金额（已免运费）：<span class="b11s2" id="totalprice">￥${buyCartVO.totalPrice}</span></span>
     </div>
     <div class="box12">
     	<ul>
@@ -237,6 +238,7 @@
 	            	   $("#input"+productId).val(data.amount);
 	            	   var price = data.product.price*data.amount;
 	            	   $("#price1"+productId).html(price);
+						getTotalprice();
 	               },
 	               "json" //type
 	           );
@@ -250,6 +252,7 @@
 	            	   $("#input"+productId).val(data.amount);
 	            	   var price = data.product.price*data.amount;
 	            	   $("#price1"+productId).html(price);
+						getTotalprice();
 	               },
 	               "json" //type
 	           );
@@ -264,16 +267,43 @@
 	       }
 	    };
 	    
-	    function change(id){
+	   /*  function change(id){
 	    	var amount2= $("#input"+ id).val();
 	    	window.location.href="${ctx}/cart/updateCart.shtml?id="+id+"&amount="+amount2;
-	    }
+	    } */
 	    
 	    function selectAll() {
-			
-			$("input[name=selectIds]").prop('checked',$("#selectAlls").is(":checked"))
-		};
+ 			$("input[name=selectIds]").prop("checked",$("#selectAlls").is(":checked"));
+ 			getTotalprice();
+ 		}
 	    
+	    function getTotalprice() {
+	    	var selectId  = $("input[name='selectIds']:checked");
+ 			var selectIds = [];
+ 			for (var i = 0; i < selectId.length; i++) {
+ 				selectIds.push(selectId[i].value);
+ 			}
+	 			$.ajax({
+		 				url:"${ctx}/cart/getTotalprice.shtml",
+		 				data:"selectIds=" + selectIds,
+		 				dataType:"json",
+		 				success:function (data) {
+		 					$("#totalprice").html(data);
+		 				}
+		 			});
+		};
+	   function jiesuan(){
+		   var selectId  = $("input[name='selectIds']:checked");
+			var selectIds = [];
+			for (var i = 0; i < selectId.length; i++) {
+				selectIds.push(selectId[i].value);
+			}
+			if(selectIds.length == 0){
+				alert("请选择商品");
+				return;
+			};
+			window.location.href="${ctx}/order/order.shtml?ids="+selectIds;
+	   } 
 </script>
 </body>
 </html>

@@ -330,6 +330,7 @@
 						<div class="checkout-confirm">
 
 							<a href="${ctx }/cart/cart.shtml" class="btn btn-lineDakeLight btn-back-cart">返回购物车</a>
+							<input type="hidden" name="idsss" value="${ids }"/>
 							<input type="submit"  class="btn btn-primary" value="立即下单"/>
 						</div>
 					</div>

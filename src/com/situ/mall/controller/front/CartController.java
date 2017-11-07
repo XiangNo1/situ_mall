@@ -176,6 +176,7 @@ public class CartController {
 					Product product = new Product();
 					product.setId(productId);
 					product.setStock(productTemp.getStock());
+					product.setPrice(productTemp.getPrice());
 					CartItemVO cartItemVO = new CartItemVO();
 					cartItemVO.setProduct(product);
 					cartItemVO.setAmount(amount);
@@ -253,6 +254,7 @@ public class CartController {
 					Product product = new Product();
 					product.setId(productId);
 					product.setStock(productTemp.getStock());
+					product.setPrice(productTemp.getPrice());
 					CartItemVO cartItemVO = new CartItemVO();
 					cartItemVO.setProduct(product);
 					cartItemVO.setAmount(amount);
@@ -300,5 +302,55 @@ public class CartController {
 	@RequestMapping(value="/cart")
 	public String cart(){
 		return "redirect:/cart/addCart.shtml";
+	}
+	
+	@RequestMapping(value="/getTotalprice")
+	@ResponseBody
+	public Double getTotalprice(Integer[] selectIds, Model model, 
+			HttpServletRequest request, HttpServletResponse response){
+		for (Integer integer : selectIds) {
+			System.out.println(integer);
+		}
+		//springmvc
+		ObjectMapper objectMapper = new ObjectMapper();
+		//只有对象里面不是null的才转换
+		objectMapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
+		BuyCartVO buyCartVO = null;
+		Cookie[] cookies = request.getCookies();
+		//1.如果cookie有这个购物车对象，那就从cookie里面取出这个购物车对象
+		if (null != cookies && cookies.length > 0) {
+			for (Cookie cookie : cookies) {
+				if ("buy_cart_cookie".equals(cookie.getName())) {
+					//之前已经有购物车
+					//"{\"items\":[{\"product\":{\"id\":45},\"amount\":1}],\"productId\":45}"
+					String value = cookie.getValue();
+					try {
+						buyCartVO = objectMapper.readValue(value, BuyCartVO.class);
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+				}
+			}
+		}
+		System.out.println(buyCartVO);
+		Double totalprice = 0.0;
+		for (CartItemVO cartItemVO : buyCartVO.getItems()) {
+			for (Integer id : selectIds) {
+				if (cartItemVO.getProduct().getId().equals(id)) {
+					Double d1= cartItemVO.getAmount().doubleValue();
+					System.out.println(d1);
+					System.out.println(cartItemVO.getProduct().getPrice());
+					Double d2 = cartItemVO.getProduct().getPrice().doubleValue();
+					System.out.println(d1);
+					System.out.println(d2);
+					totalprice = totalprice + (d1 * d2);
+					System.out.println(totalprice);
+				}
+			}
+		}
+		
+		
+		
+		return totalprice;
 	}
 }
